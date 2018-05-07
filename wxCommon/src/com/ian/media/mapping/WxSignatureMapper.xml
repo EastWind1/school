@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ian.media.dao.WxSignatureMapper" >
+  <resultMap id="BaseResultMap" type="com.ian.media.model.WxSignature" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="signature" property="signature" jdbcType="VARCHAR" />
+    <result column="timestamp" property="timestamp" jdbcType="VARCHAR" />
+    <result column="nonce" property="nonce" jdbcType="VARCHAR" />
+    <result column="echostr" property="echostr" jdbcType="VARCHAR" />
+    <result column="filed1" property="filed1" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, signature, timestamp, nonce, echostr, filed1
+  </sql>
+  
+   <select id="get" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+        	select
+        	<include refid="Base_Column_List"/>
+        	from wx_signature
+        	where 1=1
+        	<if test="id != null" >
+		     	and id = #{id,jdbcType=VARCHAR}
+		      </if>
+		      <if test="signature != null" >
+		     	and signature = #{signature,jdbcType=VARCHAR}
+		      </if>
+		      <if test="timestamp != null" >
+		     	and timestamp = #{timestamp,jdbcType=VARCHAR}
+		      </if>
+		      <if test="nonce != null" >
+		     	and nonce = #{nonce,jdbcType=VARCHAR}
+		      </if>
+		      <if test="echostr != null" >
+		     	and echostr = #{echostr,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed1 != null" >
+		     	and filed1 = #{filed1,jdbcType=VARCHAR}
+		      </if>
+        order by filed1 desc
+        <if test="pageIndex !=null">
+            limit #{pageIndex},#{rows}
+        </if>
+    </select>
+  
+  <select id="getCount" resultType="int" parameterType="java.util.HashMap">
+        select
+        count(*)
+        from wx_signature
+        where 1=1
+        <if test="id != null" >
+		     	and id = #{id,jdbcType=VARCHAR}
+		      </if>
+		      <if test="signature != null" >
+		     	and signature = #{signature,jdbcType=VARCHAR}
+		      </if>
+		      <if test="timestamp != null" >
+		     	and timestamp = #{timestamp,jdbcType=VARCHAR}
+		      </if>
+		      <if test="nonce != null" >
+		     	and nonce = #{nonce,jdbcType=VARCHAR}
+		      </if>
+		      <if test="echostr != null" >
+		     	and echostr = #{echostr,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed1 != null" >
+		     	and filed1 = #{filed1,jdbcType=VARCHAR}
+		      </if>
+        </select>
+  
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wx_signature
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wx_signature
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ian.media.model.WxSignature" >
+    insert into wx_signature (id, signature, timestamp, 
+      nonce, echostr, filed1
+      )
+    values (#{id,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR}, #{timestamp,jdbcType=VARCHAR}, 
+      #{nonce,jdbcType=VARCHAR}, #{echostr,jdbcType=VARCHAR}, #{filed1,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ian.media.model.WxSignature" >
+    insert into wx_signature
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="signature != null" >
+        signature,
+      </if>
+      <if test="timestamp != null" >
+        timestamp,
+      </if>
+      <if test="nonce != null" >
+        nonce,
+      </if>
+      <if test="echostr != null" >
+        echostr,
+      </if>
+      <if test="filed1 != null" >
+        filed1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null" >
+        #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="timestamp != null" >
+        #{timestamp,jdbcType=VARCHAR},
+      </if>
+      <if test="nonce != null" >
+        #{nonce,jdbcType=VARCHAR},
+      </if>
+      <if test="echostr != null" >
+        #{echostr,jdbcType=VARCHAR},
+      </if>
+      <if test="filed1 != null" >
+        #{filed1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ian.media.model.WxSignature" >
+    update wx_signature
+    <set >
+      <if test="signature != null" >
+        signature = #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="timestamp != null" >
+        timestamp = #{timestamp,jdbcType=VARCHAR},
+      </if>
+      <if test="nonce != null" >
+        nonce = #{nonce,jdbcType=VARCHAR},
+      </if>
+      <if test="echostr != null" >
+        echostr = #{echostr,jdbcType=VARCHAR},
+      </if>
+      <if test="filed1 != null" >
+        filed1 = #{filed1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ian.media.model.WxSignature" >
+    update wx_signature
+    set signature = #{signature,jdbcType=VARCHAR},
+      timestamp = #{timestamp,jdbcType=VARCHAR},
+      nonce = #{nonce,jdbcType=VARCHAR},
+      echostr = #{echostr,jdbcType=VARCHAR},
+      filed1 = #{filed1,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,11 @@
+{
+        "appName": "ios-explorer",
+        "appDescription": "发现新版本，请点击升级",
+        "packageName": "com.github.snowdream.android.apps.explorer",
+        "versionCode": "1.3",
+        "versionName": "1.3",
+        "forceUpdate": false,
+        "autoUpdate": true,
+        "ipaUrl": "http://ychz.s4s.com.cn/nl_meet/data/app/icu-v-1.3-20160505.ipa",
+        "updateTips":"升级提示"
+}

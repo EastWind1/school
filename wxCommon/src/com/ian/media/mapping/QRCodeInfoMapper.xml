@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ian.media.dao.QRCodeInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.ian.media.model.QRCodeInfo" >
+    <id column="pkid" property="pkid" jdbcType="VARCHAR" />
+    <result column="scene_id" property="sceneId" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="place" property="place" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="field1" property="field1" jdbcType="VARCHAR" />
+    <result column="field2" property="field2" jdbcType="VARCHAR" />
+    <result column="field3" property="field3" jdbcType="VARCHAR" />
+    <result column="field4" property="field4" jdbcType="VARCHAR" />
+    <result column="field5" property="field5" jdbcType="VARCHAR" />
+    <result column="field6" property="field6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pkid, scene_id, type, open_id, place, create_user, create_time, field1, field2, field3, 
+    field4, field5, field6
+  </sql>
+  <select id="get" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+    select 
+    <include refid="Base_Column_List" />
+    from qr_code_info
+    where scene_id = #{sceneId,jdbcType=VARCHAR}
+  </select>
+  
+   <select id="getCount" resultType="int" parameterType="java.util.HashMap">
+        select
+        count(*)
+    from qr_code_info
+    where scene_id = #{sceneId,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from qr_code_info
+    where pkid = #{pkid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from qr_code_info
+    where pkid = #{pkid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ian.media.model.QRCodeInfo" >
+    insert into qr_code_info (pkid, scene_id, type, 
+      open_id, place, create_user, 
+      create_time, field1, field2, 
+      field3, field4, field5, 
+      field6)
+    values (#{pkid,jdbcType=VARCHAR}, #{sceneId,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{openId,jdbcType=VARCHAR}, #{place,jdbcType=VARCHAR}, #{createUser,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{field1,jdbcType=VARCHAR}, #{field2,jdbcType=VARCHAR}, 
+      #{field3,jdbcType=VARCHAR}, #{field4,jdbcType=VARCHAR}, #{field5,jdbcType=VARCHAR}, 
+      #{field6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ian.media.model.QRCodeInfo" >
+    insert into qr_code_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkid != null" >
+        pkid,
+      </if>
+      <if test="sceneId != null" >
+        scene_id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="place != null" >
+        place,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="field1 != null" >
+        field1,
+      </if>
+      <if test="field2 != null" >
+        field2,
+      </if>
+      <if test="field3 != null" >
+        field3,
+      </if>
+      <if test="field4 != null" >
+        field4,
+      </if>
+      <if test="field5 != null" >
+        field5,
+      </if>
+      <if test="field6 != null" >
+        field6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkid != null" >
+        #{pkid,jdbcType=VARCHAR},
+      </if>
+      <if test="sceneId != null" >
+        #{sceneId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null" >
+        #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="field1 != null" >
+        #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null" >
+        #{field2,jdbcType=VARCHAR},
+      </if>
+      <if test="field3 != null" >
+        #{field3,jdbcType=VARCHAR},
+      </if>
+      <if test="field4 != null" >
+        #{field4,jdbcType=VARCHAR},
+      </if>
+      <if test="field5 != null" >
+        #{field5,jdbcType=VARCHAR},
+      </if>
+      <if test="field6 != null" >
+        #{field6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ian.media.model.QRCodeInfo" >
+    update qr_code_info
+    <set >
+      <if test="sceneId != null" >
+        scene_id = #{sceneId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null" >
+        place = #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="field1 != null" >
+        field1 = #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null" >
+        field2 = #{field2,jdbcType=VARCHAR},
+      </if>
+      <if test="field3 != null" >
+        field3 = #{field3,jdbcType=VARCHAR},
+      </if>
+      <if test="field4 != null" >
+        field4 = #{field4,jdbcType=VARCHAR},
+      </if>
+      <if test="field5 != null" >
+        field5 = #{field5,jdbcType=VARCHAR},
+      </if>
+      <if test="field6 != null" >
+        field6 = #{field6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pkid = #{pkid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ian.media.model.QRCodeInfo" >
+    update qr_code_info
+    set scene_id = #{sceneId,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      open_id = #{openId,jdbcType=VARCHAR},
+      place = #{place,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      field1 = #{field1,jdbcType=VARCHAR},
+      field2 = #{field2,jdbcType=VARCHAR},
+      field3 = #{field3,jdbcType=VARCHAR},
+      field4 = #{field4,jdbcType=VARCHAR},
+      field5 = #{field5,jdbcType=VARCHAR},
+      field6 = #{field6,jdbcType=VARCHAR}
+    where pkid = #{pkid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,870 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ian.media.dao.MemberMapper" >
+  <resultMap id="BaseResultMap" type="com.ian.media.model.Member" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="public_no" property="publicNo" jdbcType="VARCHAR" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="hospital_name" property="hospitalName" jdbcType="VARCHAR" />
+    <result column="hospital_offices" property="hospitalOffices" jdbcType="VARCHAR" />
+    <result column="job_title" property="jobTitle" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="filed1" property="filed1" jdbcType="VARCHAR" />
+    <result column="filed2" property="filed2" jdbcType="VARCHAR" />
+    <result column="filed3" property="filed3" jdbcType="VARCHAR" />
+    <result column="filed4" property="filed4" jdbcType="VARCHAR" />
+    <result column="filed5" property="filed5" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="post" property="post" jdbcType="VARCHAR" />
+    <result column="education" property="education" jdbcType="VARCHAR" />
+    <result column="doctor_num" property="doctorNum" jdbcType="VARCHAR" />
+    <result column="is_taiget" property="isTaiget" jdbcType="INTEGER" />
+    <result column="card1" property="card1" jdbcType="VARCHAR" />
+    <result column="card2" property="card2" jdbcType="VARCHAR" />
+    <result column="card3" property="card3" jdbcType="VARCHAR" />
+    <result column="delete_state" property="deleteState" jdbcType="INTEGER" />
+    <result column="online_id" property="onlineId" jdbcType="VARCHAR" />
+    <result column="filed6" property="filed6" jdbcType="VARCHAR" />
+    <result column="filed7" property="filed7" jdbcType="VARCHAR" />
+    <result column="filed8" property="filed8" jdbcType="VARCHAR" />
+    <result column="filed9" property="filed9" jdbcType="VARCHAR" />
+    <result column="filed10" property="filed10" jdbcType="VARCHAR" />
+          
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, public_no, open_id, name, tel, birthday, email, sex, type, hospital_name, hospital_offices, 
+    job_title, state, create_time, filed1, filed2, filed3, filed4, filed5 ,province ,city ,area ,post ,education ,doctor_num ,is_taiget,
+    online_id,filed6,filed7,filed8,filed9,filed10 
+  </sql>
+ 	
+  
+  <select id="telsel" resultMap="BaseResultMap" parameterType="java.lang.String">
+     	select 
+       <include refid="Base_Column_List"/> 
+       from member  
+       where tel=#{tel,jdbcType=VARCHAR}
+     </select>
+  	<select id="othertel" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+     	select 
+       <include refid="Base_Column_List"/> 
+       from member  
+       where id != #{id,jdbcType=VARCHAR} and  tel=#{tel,jdbcType=VARCHAR}
+    </select>
+  	<select id="othersel" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+     	select 
+       <include refid="Base_Column_List"/> 
+       from member  
+       where id != #{id,jdbcType=VARCHAR} and  email=#{email,jdbcType=VARCHAR}
+     </select>
+     
+     <select id="otherseltel" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+     	select 
+       <include refid="Base_Column_List"/> 
+       from member  
+       where id != #{id,jdbcType=VARCHAR} and  tel=#{tel,jdbcType=VARCHAR}
+     </select>
+   <select id="hospitalCount" resultType="com.ian.media.model.Member" parameterType="java.util.HashMap">
+   	select count(*) number, m.hospital_name hospitalName from member m join member_order mo on m.id=mo.member_openId group by m.hospital_name 
+   	order by number desc 
+   	<if test="pageIndex !=null">
+     limit #{pageIndex},#{rows}
+    </if>
+   </select>
+  <select id="tjjobTitleUsers" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+     	select job_title,count(*) as number  from member  
+     	group by job_title 
+     	order by number desc
+     	<if test="pageIndex !=null">
+            limit #{pageIndex},#{rows}
+        </if>
+     </select>
+     
+  <select id="tjhospitalNameUsers" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+     	select hospital_name,count(*) as number  from member 
+     	group by hospital_name 
+     	order by number desc
+     	<if test="pageIndex !=null">
+            limit #{pageIndex},#{rows}
+        </if>
+     </select>
+  
+  <select id="getCheck" resultType="com.ian.media.model.Member" parameterType="java.util.HashMap" >
+  select   mem.id, mem.public_no publicNo, mem.open_id as openId, mem.name, mem.tel, mem.birthday, mem.email, mem.sex, mem.type, mem.hospital_name hospitalName, mem.hospital_offices hospitalOffices, 
+    mem.job_title jobTitle, mem.state, mem.create_time createTime, mem.filed1, mem.filed2, mem.filed3, mem.filed4, mem.filed5 ,mem.province ,mem.city ,mem.area ,mem.post ,mem.education ,mem.doctor_num doctorNum,mem.is_taiget isTaiget,memcard.delete_state as deleteState,(select memcard.card from member_card memcard where mem.id=memcard.member_id and memcard.type=1 and memcard.delete_state=1 group by mem.open_id)as card1,
+  (select memcard.card from member_card memcard where mem.id=memcard.member_id and memcard.type=2 and memcard.delete_state=1 group by mem.open_id)as card2,
+  (select memcard.card from member_card memcard where mem.id=memcard.member_id and memcard.type=3 and memcard.delete_state=1 group by mem.open_id)as card3 
+  from member mem,member_card memcard where mem.id=memcard.member_id 
+        <if test="id != null">
+            and mem.id=#{id,jdbcType=VARCHAR}
+        </if>
+        <if test="openId != null">
+            and mem.open_id=#{openId,jdbcType=VARCHAR}
+        </if>
+        <if test="publicNo != null">
+            and mem.public_no=#{publicNo,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null">
+            and mem.name like '%${name}%'
+        </if>
+        <if test="tel != null">
+            and mem.tel like '%${tel}%'
+        </if>
+        <if test="birthday != null">
+            and mem.birthday=#{birthday,jdbcType=VARCHAR}
+        </if>
+        <if test="email != null">
+            and mem.email=#{email,jdbcType=VARCHAR}
+        </if>
+        <if test="sex != null">
+            and mem.sex=#{sex,jdbcType=INTEGER}
+        </if>
+        <if test="type != null">
+            and mem.type=#{type,jdbcType=INTEGER}
+        </if>
+        <if test="hospitalName != null">
+            and mem.hospital_name=#{hospitalName,jdbcType=VARCHAR}
+        </if>
+        <if test="state != null">
+            and mem.state=#{state,jdbcType=INTEGER}
+        </if>
+        <if test="hospitalOffices != null">
+            and mem.hospital_offices=#{hospitalOffices,jdbcType=VARCHAR}
+        </if>
+        <if test="jobTitle != null">
+            and mem.job_title=#{jobTitle,jdbcType=VARCHAR}
+        </if>
+         <if test="createTime != null">
+            and mem.create_time=#{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="filed1 != null">
+            and mem.filed1=#{filed1,jdbcType=VARCHAR}
+        </if>
+        <if test="filed2 != null">
+            and mem.filed2=#{filed2,jdbcType=VARCHAR}
+        </if>
+        <if test="filed3 != null">
+            and mem.filed3=#{filed3,jdbcType=VARCHAR}
+        </if>
+        <if test="filed4 != null">
+            and mem.filed4=#{filed4,jdbcType=VARCHAR}
+        </if>
+        <if test="filed5 != null">
+            and mem.filed5=#{filed5,jdbcType=VARCHAR}
+        </if>
+        <if test="province != null">
+            and mem.province=#{province,jdbcType=VARCHAR}
+        </if>
+        <if test="city != null">
+            and mem.city=#{city,jdbcType=VARCHAR}
+        </if>
+        <if test="area != null">
+            and mem.area=#{area,jdbcType=VARCHAR}
+        </if>
+         <if test="post != null">
+            and mem.post=#{post,jdbcType=VARCHAR}
+        </if>
+        <if test="education != null">
+            and mem.education=#{education,jdbcType=VARCHAR}
+        </if>
+         <if test="doctorNum != null">
+            and mem.doctor_num=#{doctorNum,jdbcType=VARCHAR}
+        </if>
+        <if test="isTaiget != null">
+            and mem.is_taiget=#{isTaiget,jdbcType=INTEGER}
+        </if>
+         <if test="deleteState != null">
+            and memcard.delete_state=#{deleteState,jdbcType=INTEGER}
+        </if> 
+        group by mem.open_id 
+        order by mem.create_time desc
+        <if test="pageIndex !=null">
+            limit #{pageIndex},#{rows}
+        </if>
+  </select>
+  
+  <select id="getCheckNum" resultType="int" parameterType="java.util.HashMap">
+  	select count(*) from(
+  		 select mem.*,memcard.delete_state as deleteState,(select memcard.card from member_card memcard where mem.id=memcard.member_id and memcard.type=1 and memcard.delete_state=1 group by mem.open_id)as card1,
+  (select memcard.card from member_card memcard where mem.id=memcard.member_id and memcard.type=2 and memcard.delete_state=1 group by mem.open_id)as card2,
+  (select memcard.card from member_card memcard where mem.id=memcard.member_id and memcard.type=3 and memcard.delete_state=1 group by mem.open_id)as card3 
+  from member mem,member_card memcard where mem.id=memcard.member_id
+        <if test="id != null">
+            and mem.id=#{id,jdbcType=VARCHAR}
+        </if>
+        <if test="openId != null">
+            and mem.open_id=#{openId,jdbcType=VARCHAR}
+        </if>
+        <if test="publicNo != null">
+            and mem.public_no=#{publicNo,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null">
+            and mem.name=#{name,jdbcType=VARCHAR}
+        </if>
+        <if test="tel != null">
+            and mem.tel=#{tel,jdbcType=VARCHAR}
+        </if>
+        <if test="birthday != null">
+            and mem.birthday=#{birthday,jdbcType=VARCHAR}
+        </if>
+        <if test="email != null">
+            and mem.email=#{email,jdbcType=VARCHAR}
+        </if>
+        <if test="sex != null">
+            and mem.sex=#{sex,jdbcType=INTEGER}
+        </if>
+        <if test="type != null">
+            and mem.type=#{type,jdbcType=INTEGER}
+        </if>
+        <if test="hospitalName != null">
+            and mem.hospital_name=#{hospitalName,jdbcType=VARCHAR}
+        </if>
+        <if test="state != null">
+            and mem.state=#{state,jdbcType=INTEGER}
+        </if>
+        <if test="hospitalOffices != null">
+            and mem.hospital_offices=#{hospitalOffices,jdbcType=VARCHAR}
+        </if>
+        <if test="jobTitle != null">
+            and mem.job_title=#{jobTitle,jdbcType=VARCHAR}
+        </if>
+         <if test="createTime != null">
+            and mem.create_time=#{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="filed1 != null">
+            and mem.filed1=#{filed1,jdbcType=VARCHAR}
+        </if>
+        <if test="filed2 != null">
+            and mem.filed2=#{filed2,jdbcType=VARCHAR}
+        </if>
+        <if test="filed3 != null">
+            and mem.filed3=#{filed3,jdbcType=VARCHAR}
+        </if>
+        <if test="filed4 != null">
+            and mem.filed4=#{filed4,jdbcType=VARCHAR}
+        </if>
+        <if test="filed5 != null">
+            and mem.filed5=#{filed5,jdbcType=VARCHAR}
+        </if>
+        <if test="province != null">
+            and mem.province=#{province,jdbcType=VARCHAR}
+        </if>
+        <if test="city != null">
+            and mem.city=#{city,jdbcType=VARCHAR}
+        </if>
+        <if test="area != null">
+            and mem.area=#{area,jdbcType=VARCHAR}
+        </if>
+         <if test="post != null">
+            and mem.post=#{post,jdbcType=VARCHAR}
+        </if>
+        <if test="education != null">
+            and mem.education=#{education,jdbcType=VARCHAR}
+        </if>
+         <if test="doctorNum != null">
+            and mem.doctor_num=#{doctorNum,jdbcType=VARCHAR}
+        </if>
+        <if test="isTaiget != null">
+            and mem.is_taiget=#{isTaiget,jdbcType=INTEGER}
+        </if>
+         <if test="deleteState != null">
+            and memcard.delete_state=#{deleteState,jdbcType=INTEGER}
+        </if> 
+        group by mem.open_id 
+  	) b
+  </select>
+  
+  
+  
+  <select id="get" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List"/>
+        from member
+        where 1=1
+        <if test="id != null">
+            and id=#{id,jdbcType=VARCHAR}
+        </if>
+        <if test="openId != null">
+            and open_id=#{openId,jdbcType=VARCHAR}
+        </if>
+        <if test="publicNo != null">
+            and public_no=#{publicNo,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null">
+            and name like '%${name}%'
+        </if>
+        <if test="tel != null">
+            and tel like '%${tel}%'
+        </if>
+        <if test="birthday != null">
+            and birthday=#{birthday,jdbcType=VARCHAR}
+        </if>
+        <if test="email != null">
+            and email like '%${email}%'
+        </if>
+        <if test="sex != null">
+            and sex=#{sex,jdbcType=INTEGER}
+        </if>
+        <if test="type != null">
+            and type=#{type,jdbcType=INTEGER}
+        </if>
+        <if test="hospitalName != null">
+            and hospital_name like '%${hospitalName}%'
+        </if>
+        <if test="state != null">
+            and state=#{state,jdbcType=INTEGER}
+        </if>
+        <if test="hospitalOffices != null">
+            and hospital_offices=#{hospitalOffices,jdbcType=VARCHAR}
+        </if>
+        <if test="jobTitle != null">
+            and job_title=#{jobTitle,jdbcType=VARCHAR}
+        </if>
+         <if test="createTime != null">
+            and create_time=#{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="filed1 != null">
+            and filed1=#{filed1,jdbcType=VARCHAR}
+        </if>
+        <if test="filed2 != null">
+            and filed2=#{filed2,jdbcType=VARCHAR}
+        </if>
+        <if test="filed3 != null">
+            and filed3=#{filed3,jdbcType=VARCHAR}
+        </if>
+        <if test="filed4 != null">
+            and filed4=#{filed4,jdbcType=VARCHAR}
+        </if>
+        <if test="filed5 != null">
+            and filed5=#{filed5,jdbcType=VARCHAR}
+        </if>
+        <if test="province != null">
+            and province=#{province,jdbcType=VARCHAR}
+        </if>
+        <if test="city != null">
+            and city=#{city,jdbcType=VARCHAR}
+        </if>
+        <if test="area != null">
+            and area=#{area,jdbcType=VARCHAR}
+        </if>
+         <if test="post != null">
+            and post=#{post,jdbcType=VARCHAR}
+        </if>
+        <if test="education != null">
+            and education=#{education,jdbcType=VARCHAR}
+        </if>
+         <if test="doctorNum != null">
+            and doctor_num=#{doctorNum,jdbcType=VARCHAR}
+        </if>
+        <if test="isTaiget != null">
+            and is_taiget=#{isTaiget,jdbcType=INTEGER}
+        </if>
+         <if test="onlineId != null">
+            and online_id=#{onlineId,jdbcType=VARCHAR}
+        </if>
+         <if test="filed6 != null">
+            and filed6=#{filed6,jdbcType=VARCHAR}
+        </if>
+         <if test="filed7 != null">
+            and filed7=#{filed7,jdbcType=VARCHAR}
+        </if>
+         <if test="filed8 != null">
+            and filed8=#{filed8,jdbcType=VARCHAR}
+        </if>
+         <if test="filed9 != null">
+            and filed9=#{filed9,jdbcType=VARCHAR}
+        </if>
+         <if test="filed10 != null">
+            and filed10=#{filed10,jdbcType=VARCHAR}
+        </if>
+     
+        order by create_time desc
+        <if test="pageIndex !=null">
+            limit #{pageIndex},#{rows}
+        </if>
+    </select>
+    
+   <select id="getCount" resultType="int" parameterType="java.util.HashMap">
+        select
+        count(*)
+        from member
+        where 1=1
+        <if test="id != null">
+            and id=#{id,jdbcType=VARCHAR}
+        </if>
+        <if test="openId != null">
+            and open_id=#{openId,jdbcType=VARCHAR}
+        </if>
+        <if test="publicNo != null">
+            and public_no=#{publicNo,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null">
+            and name like '%${name}%'
+        </if>
+        <if test="tel != null">
+            and tel like '%${tel}%'
+        </if>
+        <if test="birthday != null">
+            and birthday=#{birthday,jdbcType=VARCHAR}
+        </if>
+        <if test="email != null">
+            and email like '%${email}%'
+        </if>
+        <if test="sex != null">
+            and sex=#{sex,jdbcType=INTEGER}
+        </if>
+        <if test="type != null">
+            and type=#{type,jdbcType=INTEGER}
+        </if>
+        <if test="hospitalName != null">
+            and hospital_name=#{hospitalName,jdbcType=VARCHAR}
+        </if>
+        <if test="state != null">
+            and state=#{state,jdbcType=INTEGER}
+        </if>
+        <if test="hospitalOffices != null">
+            and hospital_offices=#{hospitalOffices,jdbcType=VARCHAR}
+        </if>
+        <if test="jobTitle != null">
+            and job_title=#{jobTitle,jdbcType=VARCHAR}
+        </if>
+         <if test="createTime != null">
+            and create_time=#{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="filed1 != null">
+            and filed1=#{filed1,jdbcType=VARCHAR}
+        </if>
+        <if test="filed2 != null">
+            and filed2=#{filed2,jdbcType=VARCHAR}
+        </if>
+        <if test="filed3 != null">
+            and filed3=#{filed3,jdbcType=VARCHAR}
+        </if>
+        <if test="filed4 != null">
+            and filed4=#{filed4,jdbcType=VARCHAR}
+        </if>
+        <if test="filed5 != null">
+            and filed5=#{filed5,jdbcType=VARCHAR}
+        </if>
+         <if test="province != null">
+            and province=#{province,jdbcType=VARCHAR}
+        </if>
+        <if test="city != null">
+            and city=#{city,jdbcType=VARCHAR}
+        </if>
+        <if test="area != null">
+            and area=#{area,jdbcType=VARCHAR}
+        </if>
+         <if test="post != null">
+            and post=#{post,jdbcType=VARCHAR}
+        </if>
+        <if test="education != null">
+            and education=#{education,jdbcType=VARCHAR}
+        </if>
+         <if test="doctorNum != null">
+            and doctor_num=#{doctorNum,jdbcType=VARCHAR}
+        </if>
+        <if test="isTaiget != null">
+            and is_taiget=#{isTaiget,jdbcType=INTEGER}
+        </if>
+        <if test="onlineId != null">
+            and online_id=#{onlineId,jdbcType=VARCHAR}
+        </if>
+         <if test="filed6 != null">
+            and filed6=#{filed6,jdbcType=VARCHAR}
+        </if>
+         <if test="filed7 != null">
+            and filed7=#{filed7,jdbcType=VARCHAR}
+        </if>
+         <if test="filed8 != null">
+            and filed8=#{filed8,jdbcType=VARCHAR}
+        </if>
+         <if test="filed9 != null">
+            and filed9=#{filed9,jdbcType=VARCHAR}
+        </if>
+         <if test="filed10 != null">
+            and filed10=#{filed10,jdbcType=VARCHAR}
+        </if>
+    </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from member
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from member
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ian.media.model.Member" >
+    insert into member (id, public_no, open_id, 
+      name, tel, birthday, 
+      email, sex, type, hospital_name, 
+      hospital_offices, job_title, state, 
+      create_time, filed1, filed2, 
+      filed3, filed4, filed5 ,province ,city ,area ,post ,education ,doctor_num ,is_taiget ,online_id,
+      filed6 ,filed7 ,filed8 ,filed9 ,filed10
+      )
+    values (#{id,jdbcType=VARCHAR}, #{publicNo,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{hospitalName,jdbcType=VARCHAR}, 
+      #{hospitalOffices,jdbcType=VARCHAR}, #{jobTitle,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=VARCHAR}, #{filed1,jdbcType=VARCHAR}, #{filed2,jdbcType=VARCHAR}, 
+      #{filed3,jdbcType=VARCHAR}, #{filed4,jdbcType=VARCHAR}, #{filed5,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR},
+      #{city,jdbcType=VARCHAR},#{area,jdbcType=VARCHAR},#{post,jdbcType=VARCHAR},#{education,jdbcType=VARCHAR},#{doctorNum,jdbcType=VARCHAR},#{isTaiget,jdbcType=INTEGER}, 
+      #{onlineId,jdbcType=VARCHAR},#{filed6,jdbcType=VARCHAR},#{filed7,jdbcType=VARCHAR},#{filed8,jdbcType=VARCHAR},#{filed9,jdbcType=VARCHAR},#{filed10,jdbcType=VARCHAR} 
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ian.media.model.Member" >
+    insert into member
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="publicNo != null" >
+        public_no,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="hospitalName != null" >
+        hospital_name,
+      </if>
+      <if test="hospitalOffices != null" >
+        hospital_offices,
+      </if>
+      <if test="jobTitle != null" >
+        job_title,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="filed1 != null" >
+        filed1,
+      </if>
+      <if test="filed2 != null" >
+        filed2,
+      </if>
+      <if test="filed3 != null" >
+        filed3,
+      </if>
+      <if test="filed4 != null" >
+        filed4,
+      </if>
+      <if test="filed5 != null" >
+        filed5,
+      </if>
+      <if test="province != null">
+         province,
+        </if>
+        <if test="city != null">
+           city,
+        </if>
+        <if test="area != null">
+            area,
+        </if>
+         <if test="post != null">
+           post,
+        </if>
+        <if test="education != null">
+          education,
+        </if>
+         <if test="doctorNum != null">
+          doctor_num,
+        </if>
+        <if test="isTaiget != null">
+           is_taiget,
+        </if>
+        <if test="onlineId != null">
+          online_id,
+        </if>
+         <if test="filed6 != null" >
+       		 filed6,
+     	 </if>
+      	<if test="filed7 != null" >
+        	filed7,
+      	</if>
+      	<if test="filed8 != null" >
+        	filed8,
+      	</if>
+      	<if test="filed9 != null" >
+       		 filed9,
+      	</if>
+      	<if test="filed10 != null" >
+        	filed10
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="publicNo != null" >
+        #{publicNo,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="hospitalName != null" >
+        #{hospitalName,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalOffices != null" >
+        #{hospitalOffices,jdbcType=VARCHAR},
+      </if>
+      <if test="jobTitle != null" >
+        #{jobTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="filed1 != null" >
+        #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null" >
+        #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null" >
+        #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="filed4 != null" >
+        #{filed4,jdbcType=VARCHAR},
+      </if>
+      <if test="filed5 != null" >
+        #{filed5,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+        </if>
+        <if test="city != null">
+         #{city,jdbcType=VARCHAR},
+        </if>
+        <if test="area != null">
+          #{area,jdbcType=VARCHAR},
+        </if>
+         <if test="post != null">
+          #{post,jdbcType=VARCHAR},
+        </if>
+        <if test="education != null">
+          #{education,jdbcType=VARCHAR},
+        </if>
+         <if test="doctorNum != null">
+          #{doctorNum,jdbcType=VARCHAR},
+        </if>
+        <if test="isTaiget != null">
+          #{isTaiget,jdbcType=INTEGER},
+        </if>
+         <if test="onlineId != null">
+          #{onlineId,jdbcType=VARCHAR},
+        </if>
+        <if test="filed6 != null" >
+        #{filed6,jdbcType=VARCHAR},
+      </if>
+      <if test="filed7 != null" >
+        #{filed7,jdbcType=VARCHAR},
+      </if>
+      <if test="filed8 != null" >
+        #{filed8,jdbcType=VARCHAR},
+      </if>
+      <if test="filed9 != null" >
+        #{filed9,jdbcType=VARCHAR},
+      </if>
+      <if test="filed10 != null" >
+        #{filed10,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ian.media.model.Member" >
+    update member
+    <set >
+      <if test="publicNo != null" >
+        public_no = #{publicNo,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="hospitalName != null" >
+        hospital_name = #{hospitalName,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalOffices != null" >
+        hospital_offices = #{hospitalOffices,jdbcType=VARCHAR},
+      </if>
+      <if test="jobTitle != null" >
+        job_title = #{jobTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="filed1 != null" >
+        filed1 = #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null" >
+        filed2 = #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null" >
+        filed3 = #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="filed4 != null" >
+        filed4 = #{filed4,jdbcType=VARCHAR},
+      </if>
+      <if test="filed5 != null" >
+        filed5 = #{filed5,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province=#{province,jdbcType=VARCHAR},
+        </if>
+        <if test="city != null">
+        city=#{city,jdbcType=VARCHAR},
+        </if>
+        <if test="area != null">
+         area=#{area,jdbcType=VARCHAR},
+        </if>
+         <if test="post != null">
+         post=#{post,jdbcType=VARCHAR},
+        </if>
+        <if test="education != null">
+         education=#{education,jdbcType=VARCHAR},
+        </if>
+         <if test="doctorNum != null">
+         doctor_num=#{doctorNum,jdbcType=VARCHAR},
+        </if>
+        <if test="isTaiget != null">
+         is_taiget=#{isTaiget,jdbcType=INTEGER},
+        </if>
+        <if test="onlineId != null" >
+        online_id = #{onlineId,jdbcType=VARCHAR},
+      </if>
+      <if test="filed6 != null" >
+        filed6 = #{filed6,jdbcType=VARCHAR},
+      </if>
+      <if test="filed7 != null" >
+        filed7 = #{filed7,jdbcType=VARCHAR},
+      </if>
+      <if test="filed8 != null" >
+        filed8 = #{filed8,jdbcType=VARCHAR},
+      </if>
+      <if test="filed9 != null" >
+        filed9 = #{filed9,jdbcType=VARCHAR},
+      </if>
+      <if test="filed10 != null" >
+        filed10 = #{filed10,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+   
+  <update id="updateByPrimaryKey" parameterType="com.ian.media.model.Member" >
+    update member
+    set public_no = #{publicNo,jdbcType=VARCHAR},
+      open_id = #{openId,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      hospital_name = #{hospitalName,jdbcType=VARCHAR},
+      hospital_offices = #{hospitalOffices,jdbcType=VARCHAR},
+      job_title = #{jobTitle,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      filed1 = #{filed1,jdbcType=VARCHAR},
+      filed2 = #{filed2,jdbcType=VARCHAR},
+      filed3 = #{filed3,jdbcType=VARCHAR},
+      filed4 = #{filed4,jdbcType=VARCHAR},
+      filed5 = #{filed5,jdbcType=VARCHAR},
+      province=#{province,jdbcType=VARCHAR},
+      city=#{city,jdbcType=VARCHAR},
+      area=#{area,jdbcType=VARCHAR},
+      post=#{post,jdbcType=VARCHAR},
+      education=#{education,jdbcType=VARCHAR},
+      doctor_num=#{doctorNum,jdbcType=VARCHAR},
+      is_taiget=#{isTaiget,jdbcType=INTEGER},
+      online_id = #{onlineId,jdbcType=VARCHAR},
+      filed6 = #{filed6,jdbcType=VARCHAR},
+      filed7 = #{filed7,jdbcType=VARCHAR},
+      filed8 = #{filed8,jdbcType=VARCHAR},
+      filed9 = #{filed9,jdbcType=VARCHAR},
+      filed10 = #{filed10,jdbcType=VARCHAR},
+      where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <delete id="deleteMoreByPK" parameterType="list" >
+    delete from member
+    where id in
+     <foreach collection="list" index="index" item="item" open="("
+    separator="," close=")">
+	   #{item}  
+	</foreach>
+  </delete>
+</mapper>

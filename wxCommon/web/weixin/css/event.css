@@ -1,0 +1,315 @@
+/*重置默认样式*/
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input{margin:0;padding:0;}
+html,body{height: 100%; font-size:62.5%;background-color:#E1E4E9;}
+img{border:none;}
+li{list-style:none;}
+input,select,textarea{outline:none;}
+textarea{resize:none;}
+a{text-decoration:none; outline:none;}
+
+
+.zw_container{ 
+	height: 100%;
+}
+.zw_main{
+	height: 38%;
+	padding-bottom:1%;
+	background-color:#fff;
+	overflow:hidden;
+}
+/*顶部*/
+.zw_head{
+	overflow:hidden;
+	position:relative;
+}
+.zw_head img{
+	width:100%;
+	height: 30%;
+}
+.zw_headImg{
+	width:100%;
+	position:absolute;
+	top:20%;
+	text-align:center;
+}
+.zw_headImg img{
+	max-width:100%;
+	width:50%;
+	height:auto;
+}
+
+/*征文内容部分*/
+.zw_main textarea{
+	width: 96%;
+	padding: 2%;
+	border: none;
+}
+.zw_addHeadImg img{
+    max-width: 100%;
+	width:20%;
+	margin-left:1%;
+	float:left;
+}
+.zw_addHeadImg span{
+	margin-left:1%; 
+	font-size: 1.4rem;
+	font-size: 14px;
+}
+.zw_uploadInfo{
+	float: left;
+	padding: 5% 1%;
+}
+.zw_uploadContent{margin-top: 5%;}
+/*提交按钮*/
+.zw_submitBtn{
+	padding: 5% 0;
+	margin: 2% 5% 0;
+	background-color: #38ABEA;
+	color: #fff;
+	display: block;
+	text-align: center;
+	border-radius: 5px;
+	font-size: 1.5rem;
+	font-size: 15px;
+}
+.zw_requireInfo{
+	margin:1% 0;
+	text-align:center;
+	font-size: 1.3rem;
+	font-size: 13px;
+}
+.zw_requireInfo i{
+	color:#f00;
+	margin-right:1%;
+	font-size: 1.3rem;
+	font-size: 13px;
+	font-style:normal;
+}
+/*征文要求*/
+.zw_requirement{margin: 0% 2% 0; padding-bottom:2%;}
+.zw_requirement h4{
+	font-size: 1.5rem;
+	font-size: 15px;
+	margin: 1% 0 2%;
+	color: #FF3838;
+	text-align:left;
+	background-color:transparent;
+}
+.zw_requirement p{padding-left: 5%;}
+.zw_requirement span{
+	/*margin-bottom: 2%;
+	display: block;*/
+	font-weight: bold;
+	color: #464646;
+	font-size: 1.7rem;
+	font-size: 17px;
+}
+.zw_requirement p{
+	font-size: 1.5rem;
+	font-size: 15px;
+	line-height: 24px;
+	margin-bottom: 2%;
+}
+
+/*ͶƱ*/
+
+.tp_list{background-color: #E1E4E9;}
+
+.tp_option{ 
+	padding: 3%;
+	margin-bottom: 3%;
+	background-color: #fff;
+	position: relative;
+}
+.tp_option_head{
+	margin-bottom: 2%;
+	overflow: hidden;
+}
+.tp_option_head img{
+	width: 7rem;
+	width: 70px;
+	height: 7rem;
+	height: 70px;
+	border-radius: 50%;
+	float: left;
+	vertical-align: middle;
+}
+.tp_option_head_author{
+	width: 60%;
+	margin-left: 2%;
+	float: left;
+}
+.tp_option_head_author span{ display: inline-block;}
+.tp_option_head_authorName{
+	margin: 4% 3% 4% 0 ;
+	font-size: 1.4rem;
+	font-size: 14px;
+	font-weight: bold;
+	color: #464646;
+}
+.tp_option_rankNum{
+	padding: 1% 4%;
+	margin: 4% 0;
+	font-size: 1.4rem;
+	font-size: 14px;
+	font-weight: bold;
+	font-style: italic;
+	color: #fff;
+	background-color: #458DE6;
+	border-radius: 1rem;
+	border-radius: 10px;
+}
+.tp_option_hospitalName{
+	font-size: 1.3rem;
+	font-size: 13px;
+	color: #A9A9A9;	
+}
+.tp_selected{
+	padding: 2% 6%;
+	border: 1px solid #E84217;
+	position: absolute;
+	top: 6%;
+	right: 3%;
+	border-radius: 0.6rem;
+	border-radius: 6px;
+	font-size: 1.3rem;
+	font-size: 13px;
+	color: #E84217;
+}
+.tp_unselected{
+	padding: 2% 3%;
+	border: 1px solid #E84217;
+	position: absolute;
+	top: 6%;
+	right: 3%;
+	border-radius: 0.6rem;
+	border-radius: 6px;
+	font-size: 1.3rem;
+	font-size: 13px;
+	background-color:#E84217;
+	color: #fff;
+}
+.tp_option_content{
+	font-size: 1.4rem;
+	font-size: 14px;
+	line-height: 2.4rem;
+	line-height: 24px;
+}
+.tp_subArea{
+	width: 100%;
+	height: 100px;
+	padding-top: 4%;
+	text-align: center;
+	overflow: hidden;
+	background-color: rgb(70,132,191);
+}
+.tp_subBtn{
+	padding: 3% 20%;
+	font-size: 1.6rem;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	border: 1px solid #fff;
+	display: inline-block;
+	border-radius: 6px;
+}
+.tp_subInfo{
+	font-size: 1.4rem;
+	font-size: 14px;
+	color: #FFBA41;
+	margin-top: 2%;
+}
+.vtList_ticketNum{
+	padding: 3% 6%;
+	position: absolute;
+	top: 6%;
+	right: 3%;
+	border-radius: 0.6rem;
+	border-radius: 6px;
+	font-size: 1.3rem;
+	font-size: 13px;
+	color: #E84217;
+}
+.vtList_ticketNum i{
+	font-size: 3rem;
+	font-size: 30px;
+	margin-right: 2px;
+}
+.votdContent{ margin-bottom:100px!important;}
+
+/*Ͷ����������*/
+.zw_details{
+	width: 100%;
+	/*height: 100%;*/
+	background:url(../images/zwDetails_bg.png) top left no-repeat;
+	background-size:cover;
+}
+.zw_details_head{
+	width: 100%;
+	background-color: transparent;
+	text-align: center;
+	overflow:hidden;
+	margin-bottom:2%;
+}
+.zw_details_head img{
+	width: 50%;
+	margin-top: 5%;
+}
+.zw_details_headName,
+.zw_details_headHospatial{
+	margin-bottom: 2%;
+	font-size: 1.5rem;
+	font-size: 15px;
+	font-weight:bold;
+	text-align:center;
+	color:#fff;
+}
+
+.zw_details_contentNum{
+	margin:0 5%;
+	color:#fff;
+}
+.zw_details_main{padding: 0 3%;margin-top:3%;overflow:hidden;}
+.zw_details_content{
+	margin:1% 5% 2%;
+	padding:3%;
+	font-size: 1.5rem;
+	font-size: 15px;
+	border: none;
+	background-color:#fff;
+}
+.zw_details_succInfo{
+    margin: 0 5% 0; 
+    padding: 3%;
+    text-align: justify;
+    letterSpacing:-.15em;
+}
+.zw_details_succInfo p{
+	font-size: 1.4rem;
+	font-size: 14px;
+    color:#E2E2E8;
+}
+.zw_details_succInfoArrow{
+	font-style: normal;
+	font-size: 1.5rem;
+	font-size: 15px;
+	margin-right: 1%;
+	font-weight: bold;
+}
+
+
+.fz .tp_option{ 
+	padding: 1%;
+	margin-bottom: 1%;
+	background-color: #fff;
+	position: relative;
+}
+.fz li.titlefz{
+	background-color: #4784C3;
+    color: #fff;
+    padding: 10px;
+    font-size: 14px;
+}
+.fz .tp_subArea{
+	height: 100px;
+}

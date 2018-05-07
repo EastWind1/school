@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ian.media.dao.InformationMapper">
+    <resultMap id="BaseResultMap" type="com.ian.media.model.Information"> 
+        <id column="pkid" property="pkid" jdbcType="VARCHAR"/>
+        <result column="brand_id" property="brandId" jdbcType="VARCHAR"/>
+        <result column="information_title" property="informationTitle"
+                jdbcType="VARCHAR"/>
+        <result column="information_image" property="informationImage"
+                jdbcType="VARCHAR"/>
+        <result column="use_state" property="useState" jdbcType="INTEGER"/>
+        <result column="end_time" property="endTime" jdbcType="VARCHAR"/>
+        <result column="start_time" property="startTime" jdbcType="VARCHAR"/>
+        <result column="create_user" property="createUser" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="VARCHAR"/>
+        <result column="delete_state" property="deleteState" jdbcType="INTEGER"/>
+        <result column="field_1" property="field1" jdbcType="VARCHAR"/>
+        <result column="field_2" property="field2" jdbcType="VARCHAR"/>
+        <result column="field_3" property="field3" jdbcType="VARCHAR"/>
+        <result column="field_4" property="field4" jdbcType="VARCHAR"/>
+        <result column="field_5" property="field5" jdbcType="VARCHAR"/>
+        <result column="media_id" property="mediaId" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.ian.media.model.Information"
+               extends="BaseResultMap">
+        <result column="information_description" property="informationDescription"
+                jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        pkid, brand_id, information_title, information_image,
+        use_state, end_time,
+        start_time, create_user,type,
+        create_time,
+        delete_state,field_1,field_2,field_3,field_4,field_5,media_id
+    </sql>
+    <sql id="Blob_Column_List">
+        information_description
+    </sql>
+	<select id="informationReadCount" resultType="com.ian.media.model.Information" parameterType="java.util.HashMap">
+		select information_title informationTitle,count(*) number from information infor join log_information_read log on infor.pkid=log.information_id 
+		group by log.information_id order by number DESC
+		 
+		<if test="pageIndex !=null">
+            limit #{pageIndex},#{rows}
+        </if>
+	</select>
+    <select id="get" resultMap="ResultMapWithBLOBs" parameterType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List"/>
+        from information
+        where 1=1
+        <if test="pkid != null">
+            and pkid = #{pkid,jdbcType=VARCHAR}
+        </if>
+        <if test="brandId != null">
+            and brand_id = #{brandId,jdbcType=VARCHAR}
+        </if>
+        <if test="informationTitle != null">
+            and information_title =
+            #{informationTitle,jdbcType=VARCHAR}
+        </if>
+        <if test="informationImage != null">
+            and information_image =
+            #{informationImage,jdbcType=VARCHAR}
+        </if>
+        <if test="useState != null">
+            and use_state = #{useState,jdbcType=INTEGER}
+        </if>
+        <if test="endTime != null">
+            and end_time = #{endTime,jdbcType=VARCHAR}
+        </if>
+        <if test="startTime != null">
+            and start_time = #{startTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="type != null">
+            and type = #{type,jdbcType=INTEGER}
+        </if>
+        <if test="createTime != null">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="deleteState != null">
+            and delete_state = #{deleteState,jdbcType=INTEGER}
+        </if>
+        <if test="field1 != null">
+            and field_1 = #{field1,jdbcType=VARCHAR}
+        </if>
+        <if test="field2 != null">
+            and field_2 = #{field2,jdbcType=VARCHAR}
+        </if>
+        <if test="field3 != null">
+            and field_3 = #{field3,jdbcType=VARCHAR}
+        </if>
+        <if test="field4 != null">
+            and field_4 = #{field4,jdbcType=VARCHAR}
+        </if>
+        <if test="field5 != null">
+            and field_5 = #{field5,jdbcType=VARCHAR}
+        </if>
+        <if test="mediaId != null">
+            and media_id = #{mediaId,jdbcType=VARCHAR}
+        </if>
+        ORDER BY create_time DESC,field_2 DESC
+        <if test="pageIndex !=null">
+            limit #{pageIndex},#{rows}
+        </if>
+    </select>
+    
+    <select id="getById" resultMap="ResultMapWithBLOBs" parameterType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from information
+        where 1=1
+        <if test="pkid != null">
+            and pkid = #{pkid,jdbcType=VARCHAR}
+        </if>
+        <if test="brandId != null">
+            and brand_id = #{brandId,jdbcType=VARCHAR}
+        </if>
+        <if test="informationTitle != null">
+            and information_title =
+            #{informationTitle,jdbcType=VARCHAR}
+        </if>
+        <if test="informationImage != null">
+            and information_image =
+            #{informationImage,jdbcType=VARCHAR}
+        </if>
+        <if test="useState != null">
+            and use_state = #{useState,jdbcType=INTEGER}
+        </if>
+        <if test="endTime != null">
+            and end_time = #{endTime,jdbcType=VARCHAR}
+        </if>
+        <if test="startTime != null">
+            and start_time = #{startTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="type != null">
+            and type = #{type,jdbcType=INTEGER}
+        </if>
+        <if test="createTime != null">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="deleteState != null">
+            and delete_state = #{deleteState,jdbcType=INTEGER}
+        </if>
+        <if test="field1 != null">
+            and field_1 = #{field1,jdbcType=VARCHAR}
+        </if>
+        <if test="field2 != null">
+            and field_2 = #{field2,jdbcType=VARCHAR}
+        </if>
+        <if test="field3 != null">
+            and field_3 = #{field3,jdbcType=VARCHAR}
+        </if>
+        <if test="field4 != null">
+            and field_4 = #{field4,jdbcType=VARCHAR}
+        </if>
+        <if test="field5 != null">
+            and field_5 = #{field5,jdbcType=VARCHAR}
+        </if>
+        <if test="mediaId != null">
+            and media_id = #{mediaId,jdbcType=VARCHAR}
+        </if>
+        ORDER BY create_time DESC,field_2 DESC
+        <if test="pageIndex !=null">
+            limit #{pageIndex},#{rows}
+        </if>
+    </select>
+
+    <select id="getCount" resultType="int" parameterType="java.util.HashMap">
+        select
+        count(*)
+        from information
+        where 1=1
+        <if test="pkid != null">
+            and pkid = #{pkid,jdbcType=VARCHAR}
+        </if>
+        <if test="brandId != null">
+            and brand_id = #{brandId,jdbcType=VARCHAR}
+        </if>
+        <if test="informationTitle != null">
+            and information_title =
+            #{informationTitle,jdbcType=VARCHAR}
+        </if>
+        <if test="informationImage != null">
+            and information_image =
+            #{informationImage,jdbcType=VARCHAR}
+        </if>
+        <if test="useState != null">
+            and use_state = #{useState,jdbcType=INTEGER}
+        </if>
+        <if test="endTime != null">
+            and end_time = #{endTime,jdbcType=VARCHAR}
+        </if>
+        <if test="startTime != null">
+            and start_time = #{startTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="type != null">
+            and type = #{type,jdbcType=INTEGER}
+        </if>
+        <if test="createTime != null">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="deleteState != null">
+            and delete_state = #{deleteState,jdbcType=INTEGER}
+        </if>
+        <if test="field1 != null">
+            and field_1 = #{field1,jdbcType=VARCHAR}
+        </if>
+        <if test="field2 != null">
+            and field_2 = #{field2,jdbcType=VARCHAR}
+        </if>
+        <if test="field3 != null">
+            and field_3 = #{field3,jdbcType=VARCHAR}
+        </if>
+        <if test="field4 != null">
+            and field_4 = #{field4,jdbcType=VARCHAR}
+        </if>
+        <if test="field5 != null">
+            and field_5 = #{field5,jdbcType=VARCHAR}
+        </if>
+        <if test="mediaId != null">
+            and media_id = #{mediaId,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <!--获取用户未阅读的优惠-->
+    <select id="notReadInformation" parameterType="java.util.HashMap" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from information where pkid NOT IN (select information_id from information_read_log where customer_id =
+        #{customerId}) and brand_id=#{brandId} and type=#{type} and delete_state=1
+    </select>
+
+	<!--获取所有消息点击量-->
+    <select id="msgclickLogCount" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+      select  information_title,date_format(create_time,'%Y-%m-%d') as createTime,(select count(*) 
+      from information_read_log as readlog where readlog.information_id=info.pkid) as counts 
+      from information as info where brand_id=#{brandId} and delete_state=1
+      <if test="datefrom != null">
+        and  substr(create_time,1,10) &gt;=  #{datefrom,jdbcType=VARCHAR}
+	    </if>
+	    <if test="dateto != null">
+	        and  substr(create_time,1,10) &lt;=  #{dateto,jdbcType=VARCHAR}
+	    </if>
+    </select>
+    
+
+    <!--获取每天点击量-->
+    <select id="getCountByInformationId" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+      select substr(read_time,1,10) as datetime,count(*) as count from information_read_log
+      where 1=1 and information_id = #{informationId}
+      <if test="startTime != null">
+          and  substr(read_time,1,10) &gt;=  #{startTime}
+      </if>
+      <if test="startTime != null">
+            and  substr(read_time,1,10) &lt;= #{endTime}
+      </if>
+      group by substr(read_time,1,10)
+    </select>
+
+
+    <!--获取一条图文几天时间内每个时间点的访问量-->
+    <select id="getTimesCountByInformationId" parameterType="java.util.HashMap" resultType="java.util.HashMap" >
+        select substr(read_time,12,2) as time,count(*) as count from information_read_log
+        where 1=1 and information_id = #{informationId}
+        <if test="startTime != null">
+            and  substr(read_time,1,10) &gt;=  #{startTime}
+        </if>
+        <if test="startTime != null">
+            and  substr(read_time,1,10) &lt;= #{endTime}
+        </if>
+        group by substr(read_time,12,2)
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+        delete from information
+        where pkid = #{pkid,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.ian.media.model.Information" >
+        insert into information (pkid, brand_id, information_title,
+        information_image, use_state, end_time,
+        start_time, create_user, create_time,
+        type, delete_state, field_1,
+        field_2, field_3, field_4,
+        field_5, media_id, information_description
+        )
+        values (#{pkid,jdbcType=VARCHAR}, #{brandId,jdbcType=VARCHAR}, #{informationTitle,jdbcType=VARCHAR},
+        #{informationImage,jdbcType=VARCHAR}, #{useState,jdbcType=INTEGER}, #{endTime,jdbcType=VARCHAR},
+        #{startTime,jdbcType=VARCHAR}, #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR},
+        #{type,jdbcType=INTEGER}, #{deleteState,jdbcType=INTEGER}, #{field1,jdbcType=VARCHAR},
+        #{field2,jdbcType=VARCHAR}, #{field3,jdbcType=VARCHAR}, #{field4,jdbcType=VARCHAR},
+        #{field5,jdbcType=VARCHAR}, #{mediaId,jdbcType=VARCHAR}, #{informationDescription,jdbcType=LONGVARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.ian.media.model.Information" >
+        insert into information
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="pkid != null" >
+                pkid,
+            </if>
+            <if test="brandId != null" >
+                brand_id,
+            </if>
+            <if test="informationTitle != null" >
+                information_title,
+            </if>
+            <if test="informationImage != null" >
+                information_image,
+            </if>
+            <if test="useState != null" >
+                use_state,
+            </if>
+            <if test="endTime != null" >
+                end_time,
+            </if>
+            <if test="startTime != null" >
+                start_time,
+            </if>
+            <if test="createUser != null" >
+                create_user,
+            </if>
+            <if test="createTime != null" >
+                create_time,
+            </if>
+            <if test="type != null" >
+                type,
+            </if>
+            <if test="deleteState != null" >
+                delete_state,
+            </if>
+            <if test="field1 != null" >
+                field_1,
+            </if>
+            <if test="field2 != null" >
+                field_2,
+            </if>
+            <if test="field3 != null" >
+                field_3,
+            </if>
+            <if test="field4 != null" >
+                field_4,
+            </if>
+            <if test="field5 != null" >
+                field_5,
+            </if>
+            <if test="mediaId != null" >
+                media_id,
+            </if>
+            <if test="informationDescription != null" >
+                information_description,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="pkid != null" >
+                #{pkid,jdbcType=VARCHAR},
+            </if>
+            <if test="brandId != null" >
+                #{brandId,jdbcType=VARCHAR},
+            </if>
+            <if test="informationTitle != null" >
+                #{informationTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="informationImage != null" >
+                #{informationImage,jdbcType=VARCHAR},
+            </if>
+            <if test="useState != null" >
+                #{useState,jdbcType=INTEGER},
+            </if>
+            <if test="endTime != null" >
+                #{endTime,jdbcType=VARCHAR},
+            </if>
+            <if test="startTime != null" >
+                #{startTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null" >
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null" >
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="deleteState != null" >
+                #{deleteState,jdbcType=INTEGER},
+            </if>
+            <if test="field1 != null" >
+                #{field1,jdbcType=VARCHAR},
+            </if>
+            <if test="field2 != null" >
+                #{field2,jdbcType=VARCHAR},
+            </if>
+            <if test="field3 != null" >
+                #{field3,jdbcType=VARCHAR},
+            </if>
+            <if test="field4 != null" >
+                #{field4,jdbcType=VARCHAR},
+            </if>
+            <if test="field5 != null" >
+                #{field5,jdbcType=VARCHAR},
+            </if>
+            <if test="mediaId != null" >
+                #{mediaId,jdbcType=VARCHAR},
+            </if>
+            <if test="informationDescription != null" >
+                #{informationDescription,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.ian.media.model.Information" >
+        update information
+        <set >
+            <if test="brandId != null" >
+                brand_id = #{brandId,jdbcType=VARCHAR},
+            </if>
+            <if test="informationTitle != null" >
+                information_title = #{informationTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="informationImage != null" >
+                information_image = #{informationImage,jdbcType=VARCHAR},
+            </if>
+            <if test="useState != null" >
+                use_state = #{useState,jdbcType=INTEGER},
+            </if>
+            <if test="endTime != null" >
+                end_time = #{endTime,jdbcType=VARCHAR},
+            </if>
+            <if test="startTime != null" >
+                start_time = #{startTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null" >
+                create_user = #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                create_time = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null" >
+                type = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="deleteState != null" >
+                delete_state = #{deleteState,jdbcType=INTEGER},
+            </if>
+            <if test="field1 != null" >
+                field_1 = #{field1,jdbcType=VARCHAR},
+            </if>
+            <if test="field2 != null" >
+                field_2 = #{field2,jdbcType=VARCHAR},
+            </if>
+            <if test="field3 != null" >
+                field_3 = #{field3,jdbcType=VARCHAR},
+            </if>
+            <if test="field4 != null" >
+                field_4 = #{field4,jdbcType=VARCHAR},
+            </if>
+            <if test="field5 != null" >
+                field_5 = #{field5,jdbcType=VARCHAR},
+            </if>
+            <if test="mediaId != null" >
+                media_id = #{mediaId,jdbcType=VARCHAR},
+            </if>
+            <if test="informationDescription != null" >
+                information_description = #{informationDescription,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where pkid = #{pkid,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ian.media.model.Information" >
+        update information
+        set brand_id = #{brandId,jdbcType=VARCHAR},
+        information_title = #{informationTitle,jdbcType=VARCHAR},
+        information_image = #{informationImage,jdbcType=VARCHAR},
+        use_state = #{useState,jdbcType=INTEGER},
+        end_time = #{endTime,jdbcType=VARCHAR},
+        start_time = #{startTime,jdbcType=VARCHAR},
+        create_user = #{createUser,jdbcType=VARCHAR},
+        create_time = #{createTime,jdbcType=VARCHAR},
+        type = #{type,jdbcType=INTEGER},
+        delete_state = #{deleteState,jdbcType=INTEGER},
+        field_1 = #{field1,jdbcType=VARCHAR},
+        field_2 = #{field2,jdbcType=VARCHAR},
+        field_3 = #{field3,jdbcType=VARCHAR},
+        field_4 = #{field4,jdbcType=VARCHAR},
+        field_5 = #{field5,jdbcType=VARCHAR},
+        media_id = #{mediaId,jdbcType=VARCHAR},
+        information_description = #{informationDescription,jdbcType=LONGVARCHAR}
+        where pkid = #{pkid,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.ian.media.model.Information" >
+        update information
+        set brand_id = #{brandId,jdbcType=VARCHAR},
+        information_title = #{informationTitle,jdbcType=VARCHAR},
+        information_image = #{informationImage,jdbcType=VARCHAR},
+        use_state = #{useState,jdbcType=INTEGER},
+        end_time = #{endTime,jdbcType=VARCHAR},
+        start_time = #{startTime,jdbcType=VARCHAR},
+        create_user = #{createUser,jdbcType=VARCHAR},
+        create_time = #{createTime,jdbcType=VARCHAR},
+        type = #{type,jdbcType=INTEGER},
+        delete_state = #{deleteState,jdbcType=INTEGER},
+        field_1 = #{field1,jdbcType=VARCHAR},
+        field_2 = #{field2,jdbcType=VARCHAR},
+        field_3 = #{field3,jdbcType=VARCHAR},
+        field_4 = #{field4,jdbcType=VARCHAR},
+        field_5 = #{field5,jdbcType=VARCHAR},
+        media_id = #{mediaId,jdbcType=VARCHAR}
+        where pkid = #{pkid,jdbcType=VARCHAR}
+    </update>
+    
+    <delete id="deleteMoreByPK" parameterType="list" >
+    delete from information
+    where pkid in
+     <foreach collection="list" index="index" item="item" open="("
+    separator="," close=")">
+	   #{item}  
+	</foreach>
+  </delete>
+
+</mapper>

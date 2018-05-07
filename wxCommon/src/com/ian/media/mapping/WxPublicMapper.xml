@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ian.media.dao.WxPublicMapper" >
+  <resultMap id="BaseResultMap" type="com.ian.media.model.WxPublic" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="public_no" property="publicNo" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="app_id" property="appId" jdbcType="VARCHAR" />
+    <result column="app_secret" property="appSecret" jdbcType="VARCHAR" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="login_pwd" property="loginPwd" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="wx_token" property="wxToken" jdbcType="VARCHAR" />
+    <result column="access_token" property="accessToken" jdbcType="VARCHAR" />
+    <result column="token_time" property="tokenTime" jdbcType="VARCHAR" />
+    <result column="delete_state" property="deleteState" jdbcType="INTEGER" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+    <result column="filed1" property="filed1" jdbcType="VARCHAR" />
+    <result column="filed2" property="filed2" jdbcType="VARCHAR" />
+    <result column="filed3" property="filed3" jdbcType="VARCHAR" />
+    <result column="filed4" property="filed4" jdbcType="VARCHAR" />
+    <result column="filed5" property="filed5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, public_no, name, app_id, app_secret, login_name, login_pwd, type,url,wx_token,access_token,token_time, delete_state, 
+    create_user, create_time, update_user, update_time, filed1, filed2, filed3, filed4, 
+    filed5
+  </sql>
+  
+  <select id="get" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+        	select
+        	<include refid="Base_Column_List"/>
+        	from wx_public
+        	where 1=1
+        	<if test="id != null" >
+		     	and id = #{id,jdbcType=VARCHAR}
+		      </if>
+	     	<if test="publicNo != null" >
+		     	and public_no = #{publicNo,jdbcType=VARCHAR}
+		      </if>
+		      <if test="name != null" >
+		       and name = #{name,jdbcType=VARCHAR}
+		      </if>
+		      <if test="appId != null" >
+		       and app_id = #{appId,jdbcType=VARCHAR}
+		      </if>
+		      <if test="appSecret != null" >
+		        and app_secret = #{appSecret,jdbcType=VARCHAR}
+		      </if>
+		      <if test="loginName != null" >
+		        and login_name = #{loginName,jdbcType=VARCHAR}
+		      </if>
+		      <if test="loginPwd != null" >
+		       and  login_pwd = #{loginPwd,jdbcType=VARCHAR}
+		      </if>
+		      <if test="type != null" >
+		        and type = #{type,jdbcType=INTEGER}
+		      </if>
+		      <if test="url != null" >
+		        and url = #{url,jdbcType=VARCHAR}
+		      </if>
+		      <if test="wxToken != null" >
+		        and wx_token = #{wxToken,jdbcType=VARCHAR}
+		      </if>
+		      <if test="accessToken != null" >
+		        and access_token = #{accessToken,jdbcType=VARCHAR}
+		      </if>
+		      <if test="tokenTime != null" >
+		        and token_time = #{tokenTime,jdbcType=VARCHAR}
+		      </if>
+		      <if test="deleteState != null" >
+		       and  delete_state = #{deleteState,jdbcType=INTEGER}
+		      </if>
+		      <if test="deleteState == null" >
+		       and  delete_state != 0
+		      </if>
+		      <if test="createUser != null" >
+		        and create_user = #{createUser,jdbcType=VARCHAR}
+		      </if>
+		      <if test="createTime != null" >
+		        and create_time = #{createTime,jdbcType=VARCHAR}
+		      </if>
+		      <if test="updateUser != null" >
+		        and update_user = #{updateUser,jdbcType=VARCHAR}
+		      </if>
+		      <if test="updateTime != null" >
+		       and  update_time = #{updateTime,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed1 != null" >
+		        and filed1 = #{filed1,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed2 != null" >
+		        and filed2 = #{filed2,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed3 != null" >
+		        and filed3 = #{filed3,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed4 != null" >
+		       and filed4 = #{filed4,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed5 != null" >
+		        and filed5 = #{filed5,jdbcType=VARCHAR}
+		      </if>
+     
+        order by create_time desc
+        <if test="pageIndex !=null">
+            limit #{pageIndex},#{rows}
+        </if>
+    </select>
+  
+  <select id="getCount" resultType="int" parameterType="java.util.HashMap">
+        select
+        count(*)
+        from wx_public
+        where 1=1
+        <if test="id != null" >
+		     	and id = #{id,jdbcType=VARCHAR}
+		      </if>
+        	<if test="publicNo != null" >
+		     	and public_no = #{publicNo,jdbcType=VARCHAR}
+		      </if>
+		      <if test="name != null" >
+		       and name = #{name,jdbcType=VARCHAR}
+		      </if>
+		      <if test="appId != null" >
+		       and app_id = #{appId,jdbcType=VARCHAR}
+		      </if>
+		      <if test="appSecret != null" >
+		        and app_secret = #{appSecret,jdbcType=VARCHAR}
+		      </if>
+		      <if test="loginName != null" >
+		        and login_name = #{loginName,jdbcType=VARCHAR}
+		      </if>
+		      <if test="loginPwd != null" >
+		       and  login_pwd = #{loginPwd,jdbcType=VARCHAR}
+		      </if>
+		      <if test="type != null" >
+		        and type = #{type,jdbcType=INTEGER}
+		      </if>
+		      <if test="url != null" >
+		        and url = #{url,jdbcType=VARCHAR}
+		      </if>
+		      <if test="wxToken != null" >
+		        and wx_token = #{wxToken,jdbcType=VARCHAR}
+		      </if>
+		      <if test="accessToken != null" >
+		        and access_token = #{accessToken,jdbcType=VARCHAR}
+		      </if>
+		      <if test="tokenTime != null" >
+		        and token_time = #{tokenTime,jdbcType=VARCHAR}
+		      </if>
+		      <if test="deleteState != null" >
+		       and  delete_state = #{deleteState,jdbcType=INTEGER}
+		      </if>
+		      <if test="deleteState == null" >
+		       and  delete_state != 0
+		      </if>
+		      <if test="createUser != null" >
+		        and create_user = #{createUser,jdbcType=VARCHAR}
+		      </if>
+		      <if test="createTime != null" >
+		        and create_time = #{createTime,jdbcType=VARCHAR}
+		      </if>
+		      <if test="updateUser != null" >
+		        and update_user = #{updateUser,jdbcType=VARCHAR}
+		      </if>
+		      <if test="updateTime != null" >
+		       and  update_time = #{updateTime,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed1 != null" >
+		        and filed1 = #{filed1,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed2 != null" >
+		        and filed2 = #{filed2,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed3 != null" >
+		        and filed3 = #{filed3,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed4 != null" >
+		       and filed4 = #{filed4,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed5 != null" >
+		        and filed5 = #{filed5,jdbcType=VARCHAR}
+		      </if>
+    </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wx_public
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wx_public
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteMoreByPK" parameterType="list" >
+    delete from wx_public
+    where id in
+     <foreach collection="list" index="index" item="item" open="("
+    separator="," close=")">
+	   #{item}  
+	</foreach>
+  </delete>
+  <insert id="insert" parameterType="com.ian.media.model.WxPublic" >
+    insert into wx_public (id, public_no, name, 
+      app_id, app_secret, login_name, 
+      login_pwd, type,url,wx_token,access_token,token_time, delete_state, 
+      create_user, create_time, update_user, 
+      update_time, filed1, filed2, 
+      filed3, filed4, filed5
+      )
+    values (#{id,jdbcType=VARCHAR}, #{publicNo,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{appId,jdbcType=VARCHAR}, #{appSecret,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
+      #{loginPwd,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER},
+      #{url,jdbcType=VARCHAR},
+      #{wxToken,jdbcType=VARCHAR},#{accessToken,jdbcType=VARCHAR},#{tokenTime,jdbcType=VARCHAR},
+      #{deleteState,jdbcType=INTEGER}, #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=VARCHAR}, #{filed1,jdbcType=VARCHAR}, #{filed2,jdbcType=VARCHAR}, 
+      #{filed3,jdbcType=VARCHAR}, #{filed4,jdbcType=VARCHAR}, #{filed5,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ian.media.model.WxPublic" >
+    insert into wx_public
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="publicNo != null" >
+        public_no,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="appSecret != null" >
+        app_secret,
+      </if>
+      <if test="loginName != null" >
+        login_name,
+      </if>
+      <if test="loginPwd != null" >
+        login_pwd,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="wxToken != null" >
+        wx_token,
+      </if>
+      <if test="accessToken != null" >
+        access_token,
+      </if>
+      <if test="tokenTime != null" >
+        token_time,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="deleteState != null" >
+        delete_state,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateUser != null" >
+        update_user,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="filed1 != null" >
+        filed1,
+      </if>
+      <if test="filed2 != null" >
+        filed2,
+      </if>
+      <if test="filed3 != null" >
+        filed3,
+      </if>
+      <if test="filed4 != null" >
+        filed4,
+      </if>
+      <if test="filed5 != null" >
+        filed5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="publicNo != null" >
+        #{publicNo,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="appSecret != null" >
+        #{appSecret,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPwd != null" >
+        #{loginPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="wxToken != null" >
+       #{wxToken,jdbcType=VARCHAR},
+      </if>
+      <if test="accessToken != null" >
+       #{accessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="tokenTime != null" >
+       #{tokenTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteState != null" >
+        #{deleteState,jdbcType=INTEGER},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="filed1 != null" >
+        #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null" >
+        #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null" >
+        #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="filed4 != null" >
+        #{filed4,jdbcType=VARCHAR},
+      </if>
+      <if test="filed5 != null" >
+        #{filed5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.ian.media.model.WxPublic" >
+    update wx_public
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="appSecret != null" >
+        app_secret = #{appSecret,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null" >
+        login_name = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPwd != null" >
+        login_pwd = #{loginPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="wxToken != null" >
+        wx_token = #{wxToken,jdbcType=VARCHAR},
+      </if>
+      <if test="accessToken != null" >
+        access_token = #{accessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="tokenTime != null" >
+       token_time = #{tokenTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteState != null" >
+        delete_state = #{deleteState,jdbcType=INTEGER},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="filed1 != null" >
+        filed1 = #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null" >
+        filed2 = #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null" >
+        filed3 = #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="filed4 != null" >
+        filed4 = #{filed4,jdbcType=VARCHAR},
+      </if>
+      <if test="filed5 != null" >
+        filed5 = #{filed5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where  public_no = #{publicNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ian.media.model.WxPublic" >
+    update wx_public
+    set public_no = #{publicNo,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      app_id = #{appId,jdbcType=VARCHAR},
+      app_secret = #{appSecret,jdbcType=VARCHAR},
+      login_name = #{loginName,jdbcType=VARCHAR},
+      login_pwd = #{loginPwd,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      wx_token = #{wxToken,jdbcType=VARCHAR},
+      access_token = #{accessToken,jdbcType=VARCHAR},
+      token_time = #{tokenTime,jdbcType=VARCHAR},
+      delete_state = #{deleteState,jdbcType=INTEGER},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR},
+      filed1 = #{filed1,jdbcType=VARCHAR},
+      filed2 = #{filed2,jdbcType=VARCHAR},
+      filed3 = #{filed3,jdbcType=VARCHAR},
+      filed4 = #{filed4,jdbcType=VARCHAR},
+      filed5 = #{filed5,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

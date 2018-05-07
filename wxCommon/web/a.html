@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-cn"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <!-- SITE TITLE -->
+    <title>下载中心</title>
+     <script type="text/javascript" src="common/jquery-1.9.1.min.js"></script>
+     <script src="common/ian.js"></script>
+</head>
+
+<body style="background-color:#008ED6;text-align:center;padding-top:40px;">
+<p style="font-size:80px;color:#fff">下载中心</p>
+<div id="downclick">
+<a url="http://test.s4s.com.cn/ychz/data/app/icu.apk" id="a-weixin">
+    <img style="width:400px;" src="weixin/images/ipa.png" />
+</a><br/>
+<a href="http://www.pgyer.com/zikg" id="a-weixin">
+      <img style="width:400px;" src="weixin/images/apk.png" />
+</a>
+<!--<a href="http://mp.weixin.qq.com/mp/redirect?url=http://ychz.s4s.com.cn/ychz/data/app/icu.apk" id="a-weixin">链接一 </a></br>
+<a href="http://www.appchina.com/" id="a-weixin">应用汇 </a></br>
+<a href="http://www.pgyer.com/C9ic" id="a-weixin">蒲公英 </a>-->
+<p style="font-size:50px;color:#fff;text-align:left;padding-left:30px">开通远程咨询，请先下载远程视频软件，谢谢！</p>
+</div>
+<div id="down" style="position:absolute;width:100%;height:100%;z-index:100;top:0px;left:0px;display:none;">
+<img style="width:100%;height:100%" src="weixin/images/yy2.png" /></div>
+</body>
+<script>
+/*
+$("#apk-weixin").on("click",function(){
+	alert("点击右上角图标，选择“用浏览器打开”下载，谢谢！");
+})
+*/
+function GetQueryString(name)
+{
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r!=null) {
+    	return unescape(r[2]);
+    }else{
+    	return null;
+    }
+}
+
+var url=GetQueryString("type");
+var url1=GetQueryString("type1");
+var url2=window.localStorage.getItem("url1");
+
+if(url == "0"){
+$("#down").hide();
+window.localStorage.setItem("url1","2");
+var u = navigator.userAgent, app = navigator.appVersion;
+var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+var url;
+var url1;
+var url2;
+var openId=GetQueryString("openId");
+if(isAndroid){
+	 url=GetQueryString("type");
+	 url1=GetQueryString("type1");
+	 url2=window.localStorage.getItem("url1");
+	if(url == "0"){//第一次进入页面,弹出层隐藏，url1标示已经在微信打开
+		$("#down").hide();
+		window.localStorage.setItem("url1","2");
+	}
+	if(url1 == "2"){
+		$("#down").hide();
+	}
+	if(url2 == "1"){//第一次在微信页面点击下载之后
+		$("#down").show();
+	}else{
+		$("#down").hide();
+	}
+>>>>>>> .r2939
+}
+<<<<<<< .mine
+
+if(url2 == "1"){
+	$("#down").show();
+}else{
+$("#down").hide();
+}
+=======
+>>>>>>> .r2939
+
+$("[id=apk-weixin]").on("click",function(e){
+	//var url1=window.localStorage.getItem("url1");
+	adddownlog(1);
+     if(url == "0"){//在微信页面点击下载
+     	window.location.href="a.html?type1=2";
+     	//$("#down").show();
+     	window.localStorage.setItem("url1","1");
+     	//return false;
+     }else{//
+     	//window.location.search="?type="+1;
+     	//UrlUpdateParams("window.location.href","type","2");
+     	//alert(window.location.href);
+     	window.localStorage.setItem("url1","2");
+     	//alert(window.localStorage.getItem("url1"));
+<<<<<<< .mine
+		
+     	window.location.href=$(this).attr("url");
+=======
+     	//window.location.href=$(this).attr("href");
+     	window.location.href="http://www.yunicu.com/ychz/data/app/icu20150909.apk";
+>>>>>>> .r2939
+     	
+     	//window.localStorage.setItem("url2","1");
+     }
+	
+})
+$("[id=a-weixin]").on("click",function(e){
+	var p=$.Params.create();
+	    p.addParams("openId",openId); 
+		p.addParams("type","2");
+	    p.ajax("http://www.yunicu.com/ychz/logdownloadapp.action?add",function(data){
+	    })
+	
+})
+
+function adddownlog(type){
+		var p=$.Params.create();
+	    p.addParams("openId",openId); 
+		p.addParams("type",type);
+	    p.ajax("http://www.yunicu.com/ychz/logdownloadapp.action?add",function(data){
+	    	
+	    })
+}
+
+
+$("#down").on("click",function(){
+	$("#down").hide();
+})
+
+
+
+function UrlUpdateParams(url, name, value) {
+            var r = url;
+            if (r != null && r != 'undefined' && r != "") {
+                value = encodeURIComponent(value);
+                var reg = new RegExp("(^|)" + name + "=([^&]*)(|$)");
+                var tmp = name + "=" + value;
+                if (url.match(reg) != null) {
+                    r = url.replace(eval(reg), tmp);
+                }
+                else {
+                    if (url.match("[\?]")) {
+                        r = url + "&" + tmp;
+                    } else {
+                        r = url + "?" + tmp;
+                    }
+                }
+            }
+            return r;
+        }
+
+
+
+
+</script>
+</html>

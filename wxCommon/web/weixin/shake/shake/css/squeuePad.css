@@ -1,0 +1,285 @@
+@charset "utf-8";
+/*重置css*/
+html{ color:#000;background:#fff; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {margin:0;padding:0;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {display:block;}
+audio,canvas,video { display: inline-block;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+abbr,acronym{border:0;font-variant:normal;}
+del {text-decoration:line-through;}
+address,caption,cite,code,dfn,em,th,var {font-style:normal;font-weight:500;}
+ol,ul {list-style:none;}
+caption,th {text-align:left;}
+h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:bold;}
+q:before,q:after {content:'';}
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline;}
+sup {top: -0.5em;}
+sub {bottom: -0.25em;}
+body,button,input,select,textarea{font-size: 12px; font-family:"微软雅黑","Microsoft YaHei",arial, sans-serif;}
+input,select,textarea{font-size:100%;}
+table { font-size: inherit; font: 100%;}
+ins,a {	text-decoration:none;}
+.fn-left,.fn-right {display:inline;}
+.fn-left {float:left;}
+.fn-right {float:right;}
+.fn-clear:before,.fn-clear:after{display:block;line-height:0;height:0;content:"";}
+.fn-clear:after{clear:both;}
+.fn-hide {display:none;}
+button{cursor:pointer;outline:none;}
+body{text-shadow:none !important;	background-color:black;}
+
+/******公共******/
+.head{padding:0; border: none; color: #FFF; font-size: 1.5em;}
+.ui-header .ui-title{padding: 0;}
+.ui-header .ui-btn{ border: none; padding: 0; box-shadow: none; height: 2.2em; margin: 0.5em;}
+.ui-header .ui-btn img{height: 100%;}
+
+.cred{color: red;}
+.ui-grid-b{font-size: 26px; font-family:"微软雅黑","Microsoft YaHei",arial, sans-serif;color:#ffffff}
+.ui-grid-b .ui-block-a{width:60%}
+.ui-grid-b .ui-block-b{width:30%}
+.ui-grid-b .ui-block-a>div{display:inline-block;}
+.time{text-align:center;width:100px;float:right;margin-top:35px;margin-right:70px;}
+/**.time{text-align:center;background-color:#800000;width:100px;float:right;margin-top:35px;margin-right:70px;}
+                原time样式↑*/
+.gamecontent a{display:none;};
+.gamecontent input{};
+
+.ui-grid-c{font-size: 15px; font-family:"微软雅黑","Microsoft YaHei",arial, sans-serif;color:#ffffff}
+.ui-grid-c .ui-block-a{width:10%;padding-left:30px;padding-top:10px;}
+.ui-grid-c .ui-block-a img{width:90%;height:90%;}
+.ui-grid-c .ui-block-b{width:80%;padding-top:40px;}
+.ui-grid-c .ui-block-c{width:10%;padding-top:30px;font-size: 15px; font-family:"微软雅黑","Microsoft YaHei",arial, sans-serif;color:#ffffff}
+
+/×××开始倒计时页面**********/
+
+
+
+
+/*头部*/
+#edit .top-nav{margin-left: 0;}
+.top-nav{margin-left: 9.8em;background: #E4E4E4; padding-left: 0.5em;}
+.top-nav li{
+    float: left;
+    padding:0 2em 0 2.8em;
+    border-bottom: 0.2em solid #e4e4e4;
+    font-size: 1.3em;
+    line-height: 2.9em;
+    background: url(../images/icon-config.png) no-repeat 1.2em 0.85em;
+    background-size: auto 1.2em;
+}
+.top-nav li.on{border-color: #F38232;}
+.top-nav li.icon-queue{
+    background-image: url(../images/icon-queue.png);
+}
+.top-nav li.icon-edit{
+    background-image: url(../images/icon-edit.png);
+}
+.top-nav li.icon-exit{
+    background-image: url(../images/icon-exit.png);
+}
+.top-nav li a{color: #b4b4b4;}
+.top-btn{
+    display: block;
+    width: 6em;
+    font-size: 1.575em !important;
+    color: #FFF;
+    text-align: center;
+    line-height: 2.5;
+    background: #F38232;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+/*关闭排队*/
+.queue-list{
+    padding: 1.5em 0;
+    font-size: 2em;
+    white-space: nowrap;
+}
+.queue-list .type{text-align: center}
+.queue-list .type span{
+    display: inline-block;
+    width: 2em;
+    line-height: 2em;
+    font-size: 2.5em;
+    font-weight: bold;
+    overflow: hidden;
+    border-radius: 3em;
+    border: 2px solid #e5e6e6;
+    color: #eb1c11;
+    box-shadow: 0 3px 5px #F1F1F1;
+}
+.queue-list p,.queue-list .oper{padding: 0 1.5em;}
+.queue-list .type-num{
+    font-size: 1em;
+    line-height: 3em;
+}
+.type-new{
+    background: #000;
+    color: #FFF;
+    line-height: 2.2em;
+    margin-bottom: 0.8em;
+}
+.queue-list dl{
+    color: #828282;
+    font-size: 0.8em;
+    line-height: 2.4em;
+    padding: 0 1.9em;
+}
+.queue-list dt,.queue-list dd{float: left;}
+.queue-btn{
+    display: inline-block;
+    width: 40%;
+    border: 0.0725em solid #EA552E;
+    color: #EA552E;
+    text-align: center;
+    font-size: 0.8em;
+    line-height: 2.3em;
+    margin: 0.5em;
+    cursor: pointer;
+}
+.queue-btn.gray{color: #aaa; border-color: #aaa;}
+
+/*开启排队*/
+.type-code{text-align: center;font-size: 1.2em; line-height: 3em}
+.type-set{
+    text-align: center;
+    color: #AAA;
+    font-size: 1.2em;
+    margin-bottom: 0.8em;
+}
+.type-set .ui-input-text{
+    display: inline-block;
+    width: 2em !important;
+    border: none;
+    box-shadow: none;
+    background: url(../images/input-bd.png) 0 bottom no-repeat;
+    background-size: 1.95em auto;
+    height: 1.2em;
+    border-radius: 0;
+    margin: 0 0.3em;
+}
+input.queue-ipt{
+    height: 100%;
+    min-height: 100%;
+    padding: 0 0.1em;
+    text-align: center;
+}
+.open-footer{
+    background: #292c33 !important;
+    padding:2em 1.5em;
+    height: 168px;
+    font: 2em/2em "微软雅黑";
+    color: #FFF;
+    border: none !important;
+}
+.open-footer .ui-input-text{
+    display: inline-block;
+    width: 2em !important;
+    border: none;
+    box-shadow: none;
+    height: 1.2em;
+    border-bottom: 2px solid #FFF;
+    border-radius: 0;
+    margin: 0 0.3em;
+}
+
+/*登陆*/
+#login{
+	background: url(../images/bg.jpg) no-repeat;
+    background-size: 100%;
+    min-height: 100% !important;
+}
+
+/*
+#login{
+	background: url(../images/yuan.png) no-repeat;
+    background-size: 90%;
+    min-height:100% !important;
+	margin:0;
+	background-color:black;
+}*/
+.log-blk{
+    width: 50%;
+    position: absolute;
+    left: 50%;
+}
+.log-blk .con{padding:5em 3em;}
+.log-hd{
+    font: normal 3em/3.5em "微软雅黑";
+    color: #F38232;
+}
+.log-blk input{
+    font-size: 1.6em;
+    padding: 0.8em 0.8em 0.8em 2em;
+    background: url('../images/icon-user.png') no-repeat 0.8em 0.9em;
+    background-size: auto 1em;
+}
+.log-blk input.key{
+    background: url('../images/icon-key.png') no-repeat 0.8em 0.8em;
+    background-size: auto 1.3em;
+}
+.log-blk .ui-input-text{margin-bottom: 2.5em;}
+.log-btn{
+    background: #F38232;
+    border: solid #FDB481;
+    border-width: 1px 0;
+    color: #FFF;
+    font-size: 2em;
+    padding: 0;
+    line-height: 2.6em;
+    text-shadow: none !important;
+}
+.log-btn.current,.top-btn.current{background: #df772d;}
+.error{
+    color: red;
+    height: 1.5em;
+    font-size: 1.5em;
+}
+/*无权访问，联系管理员*/
+#invalid .top-nav{margin-left: 0;}
+.queue-invalid{
+    display: block;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width:50%;
+    height: 30%;
+    color: #F38232;
+    font-size: 2em;
+    text-align: center;
+	border:1px solid #B3B3B3;
+	line-height:7.5;
+}
+/*修改密码*/
+.edit-blk .error{font-size: 0.9em;}
+.edit-blk{
+    width: 60%;
+    margin: 4em auto;
+    font-size: 1.8em;
+    color: #b4b4b4;
+}
+.edit-blk .log-btn{font-size: 1em;}
+.edit-blk label{font-size: 1em;}
+.edit-blk .ui-input-text{
+    box-shadow: none;
+    height: 1.7em;
+    border-radius: 0;
+    border-image:url(../images/input-bd.png) 6 6 stretch;
+    -webkit-border-image:url(../images/input-bd.png) 6 6 stretch;
+    -moz-border-image:url(../images/input-bd.png) 6 6 stretch;
+    border-width: 6px;
+    margin: 0;
+}
+.edit-blk .ui-input-text input{
+    padding: 0;
+    height: 100%;
+    min-height: 100%;
+}
+.edit-blk label{width: 5.5em;}

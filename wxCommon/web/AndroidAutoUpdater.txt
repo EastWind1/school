@@ -1,0 +1,12 @@
+{
+        "appName": "icu",
+        "appDescription": "发现新版本，请点击升级",
+        "packageName": "com.github.snowdream.android.apps.explorer",
+        "versionCode": "10",
+        "versionName": "10.0",
+        "forceUpdate": false,
+        "autoUpdate": true,
+        "apkUrl": "http://ychz.s4s.com.cn/nl_meet/data/app/icu-v-3010-20160505.apk",
+        "updateTips":"升级提示",
+        "usable":"false"
+}

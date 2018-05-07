@@ -1,0 +1,172 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<html>
+<head>
+    <title>摇一摇</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <style>
+    * { margin: 0; padding: 0; }
+    body { background: #292D2E; }
+    .hand { width: 190px; height: 300px; background: url(../images/hand.png) no-repeat; position: absolute; top: 50px; left: 50%; margin-left: -95px; }
+    .hand-animate { -webkit-animation: hand_move infinite 2s; }
+    .result { background: #393B3C; border: #2C2C2C 1px solid; box-shadow: inset #4D4F50 0 0 0 1px; border-radius: 10px; color: #fff; padding: 10px; width: 300px; position: absolute; top: 300px; left: 50%; margin-left: -161px; opacity: 0;
+        -webkit-transition: all 1s;
+           -moz-transition: all 1s;
+            -ms-transition: all 1s;
+             -o-transition: all 1s;
+                transition: all 1s; }
+    .result .pic { width: 50px; height: 50px; float: left; background: #fff; }
+    .result .con { overflow: hidden; zoom: 1; padding-left: 10px; line-height: 24px; }
+    .result-show { opacity: 1; margin-top: 50px; }
+    .loading { position: absolute; top: 240px; left: 50%; margin-left: -50px; width: 100px; height: 100px; background: url(../images/spinner.png) no-repeat; background-size: 100px 100px; opacity: 0;
+        -webkit-animation: loading infinite linear .5s;
+           -moz-animation: loading infinite linear .5s;
+            -ms-animation: loading infinite linear .5s;
+             -o-animation: loading infinite linear .5s;
+                animation: loading infinite linear .5s;
+        -webkit-transition: all .5s;
+           -moz-transition: all .5s;
+            -ms-transition: all .5s;
+             -o-transition: all .5s;
+                transition: all .5s; }
+    .loading-show { opacity: 1; }
+    
+    @-webkit-keyframes hand_move {
+        0% {
+            -webkit-transform: rotate(0);
+               -moz-transform: rotate(0);
+                -ms-transform: rotate(0);
+                 -o-transform: rotate(0);
+                    transform: rotate(0); }
+        50% {
+            -webkit-transform: rotate(15deg);
+               -moz-transform: rotate(15deg);
+                -ms-transform: rotate(15deg);
+                 -o-transform: rotate(15deg);
+                    transform: rotate(15deg); }
+        100% {
+            -webkit-transform: rotate(0);
+               -moz-transform: rotate(0);
+                -ms-transform: rotate(0);
+                 -o-transform: rotate(0);
+                    transform: rotate(0); }
+    }
+    @-webkit-keyframes loading {
+        0% {
+            -webkit-transform: rotate(0);
+               -moz-transform: rotate(0);
+                -ms-transform: rotate(0);
+                 -o-transform: rotate(0);
+                    transform: rotate(0); }
+        100% {
+            -webkit-transform: rotate(360deg);
+               -moz-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                 -o-transform: rotate(360deg);
+                    transform: rotate(360deg); }
+    }
+    </style> 
+</head>
+ <script type="text/javascript" src="common/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="js/getIp.js"></script>
+<body>
+    
+    <div id="hand" class="hand hand-animate"></div>
+    <div id="loading" class="loading"></div>
+    <div id="result" class="result">
+        <div class="pic"></div>
+        <div class="con">摇晃结果<br/>我是大</div>
+    </div>
+	<div style="display:none" id="count">0</div>
+    <script>
+   
+	/*	function GetQueryString(name)
+		{
+			var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+			var r = window.location.search.substr(1).match(reg);
+			if (r!=null) {
+				return unescape(r[2]);
+			}else{
+				return null;
+			}
+		}*/
+	    
+		var openid  = '${userInfo.openid}';
+
+		var brandId = '${aboutUs.publicNo}';
+    var SHAKE_THRESHOLD = 800;
+    var last_update = 0;
+    var x = y = z = last_x = last_y = last_z = 0;
+
+    if (window.DeviceMotionEvent) {
+        window.addEventListener('devicemotion', deviceMotionHandler, false);
+    } else {
+        alert('本设备不支持摇一摇功能');
+    }
+
+    function deviceMotionHandler(eventData) {
+        var acceleration = eventData.accelerationIncludingGravity;
+        var curTime = new Date().getTime();
+
+        if ((curTime - last_update) > 100) {
+            var diffTime = curTime - last_update;
+            last_update = curTime;
+            x = acceleration.x;
+            y = acceleration.y;
+            z = acceleration.z;
+            var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
+            var status = document.getElementById("status");
+
+            if (speed > SHAKE_THRESHOLD) {
+            
+               judgeGame();
+            }
+            last_x = x;
+            last_y = y;
+            last_z = z;
+        }
+    }
+	
+	//alert(openid);
+    function doResult() {
+		var $count =document.getElementById("count");
+		var count =	Number($count.innerHTML)+1;
+		 $count.innerHTML=count;
+		 
+		  $.ajax(getIP()+"customer.action?customerGame&customerId="+openid)
+		  	.done(function(data){
+				
+			}).fail(function(data){
+				
+			});
+		 
+		
+	
+     /**    document.getElementById("result").className = "result";
+        document.getElementById("loading").className = "loading loading-show";
+       setTimeout(function(){
+            //document.getElementById("hand").className = "hand";
+            document.getElementById("result").className = "result result-show";
+            document.getElementById("loading").className = "loading";
+        }, 1000);*/
+    }
+    //查询活动状态 是否开启
+      function judgeGame() {
+		  $.ajax(getIP()+"gameShake.action?list&brandId="+brandId)
+		  	.done(function(data){
+		  		//alert(openid);
+				//alert(data.rows[0].state);
+				if(data.rows[0].state==1){
+					doResult()
+				}else{
+					alert("活动尚未开启");
+				}
+				
+			}).fail(function(data){
+				
+			});
+    }
+    
+    </script>
+
+</body>
+</html>

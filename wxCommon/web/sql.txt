@@ -1,0 +1,197 @@
+INSERT INTO `member_order` VALUES (
+'9B0A2F54-05F1-420A-889F-1E4FCA203544',
+'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA', 
+'611', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', '00000004', '周一大交班', '2', '2016-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1', 
+'5F743C7C-EA8E-4044-B571-BE8EEFD1E8FF', '43D4B804-5FB7-41F6-A63B-BADD0978020B', '65E8ADC1-DD28-4FC2-ABAB-D8F62697C4FC', '7649EEED-67B5-41BA-B5A4-A5B8A60368BF', '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+
+INSERT INTO `member_order` VALUES (
+'2Q0A2F54-05F1-420A-889F-1E4FCA203544',
+'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA', 
+'201a5a05ad4d424885bdff1ee51ae199', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', '00000004', '周一大交班', '2', '2016-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1', 
+'56743C7C-EA8E-4044-B571-BE8EEFD1E8FF', '43D4B804-4356-41F6-A63B-BADD0978020B', '65E8ADC1-DD28-4FC2-ABAB-D8F76888C4FC', '7649EEED-67B5-98BA-B5A4-A5B8A60368BF', '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+
+
+INSERT INTO `member_order` VALUES (
+'5W0A2F54-05F1-420A-332F-1E4FCA203544',
+'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA', 
+'507', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', '00000004', '周一大交班', '2', '2016-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1', 
+'32113C7C-EA8E-4044-B571-BE8EEFD1E8FF', '43D4B804-5679-41F6-A63B-BADD0978020B', '98E8ADC1-DD28-4FC2-ABAB-D8F76888C4FC', '1243EEED-67B5-98BA-B5A4-A5B8A60368BF', '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+
+
+INSERT INTO `member_order` VALUES (
+'1U0A2F54-05F1-420A-332F-1E4FCA203266',
+'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA', 
+'317', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', '00000004', '周一大交班', '2', '2016-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1', 
+'43333C7C-EA8E-4044-B571-BE8EEFD1E8FF', '43D4B805-5679-41F6-A63B-BADD0978020B', '12E8ADC1-DD28-4FC2-ABAB-D8F76888C4FC', '1287EEED-67B5-98BA-B5A4-A5B8A60368BF', '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+
+
+INSERT INTO `member_order` VALUES (
+'1U0A2F54-05F1-420A-557F-1E4FCA203266',
+'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA', 
+'ce982e98cae445b8aacb1267cb99711f', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', '00000004', '周一大交班', '2', '2016-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1', 
+'87984C7C-EA8E-4044-B571-BE8EEFD1E8FF', '60D4B805-5679-41F6-A63B-BADD0978020B', '30E8ADC1-DD67-4FC2-ABAB-D8F76888C4FC', '1546EEED-67B5-98BA-B5A4-A5B8A60368BF', '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+
+
+INSERT INTO `member_order` VALUES (
+'400',
+'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA', 
+'306', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', '00000004', '周一大交班', '2', '2016-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1', 
+'3333333-EA8E-4044-B571-BE8EEFD1E8FF', '333333333-5679-41F6-A63B-BADD0978020B', '3333333-DD67-4FC2-ABAB-D8F76888C4FC', '33333333-67B5-98BA-B5A4-A5B8A60368BF', '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+
+
+INSERT INTO `member_order` VALUES (
+'401',
+'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA', 
+'447', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', '00000004', '周一大交班', '2', '2016-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1', 
+'99999999-EA8E-4044-B571-BE8EEFD1E8FF', '99999999-5679-41F6-A63B-BADD0978020B', '99999999999-DD67-4FC2-ABAB-D8F76888C4FC', '99999999-67B5-98BA-B5A4-A5B8A60368BF', '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+
+
+INSERT INTO `member_order` VALUES (
+'402',
+'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA', 
+<<<<<<< .mine
+'1071', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', '00000004', '周一大交班', '2', '2016-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1', 
+'888888888-EA8E-4044-B571-BE8EEFD1E8FF', '8888888-5679-41F6-A63B-BADD0978020B', '88888888-DD67-4FC2-ABAB-D8F76888C4FC', '88888888888-67B5-98BA-B5A4-A5B8A60368BF', '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+
+
+INSERT INTO `member_order` VALUES (
+'403',
+'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA', 
+'265beb04585c4429ba72ba9fecb70f95', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', '00000004', '周一大交班', '2', '2016-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1', 
+'aaaaaaaaa-EA8E-4044-B571-BE8EEFD1E8FF', 'aaaaa-5679-41F6-A63B-BADD0978020B', 'aaaaaa-DD67-4FC2-ABAB-D8F76888C4FC', 'aaaaaaaaa-67B5-98BA-B5A4-A5B8A60368BF', '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+
+INSERT INTO `member_order` VALUES (
+'404',
+'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA', 
+'356cbd0bc4d4e9c931d8465f8f3891c', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', '00000004', '周一大交班', '2', '2016-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1', 
+'aaaaaaaaa-EA8E-4044-B571-BE8EEFD1E8FF', 'aaaaa-5679-41F6-A63B-BADD0978020B', 'aaaaaa-DD67-4FC2-ABAB-D8F76888C4FC', 'aaaaaaaaa-67B5-98BA-B5A4-A5B8A60368BF', '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+
+INSERT INTO `member_order` VALUES (
+'405',
+'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA', 
+'ec-2ed9524ada4e8d893105be2771f38f', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', '00000004', '周一大交班', '2', '2016-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1', 
+'aaaaaaaaa-EA8E-4044-B571-BE8EEFD1E8FF', 'aaaaa-5679-41F6-A63B-BADD0978020B', 'aaaaaa-DD67-4FC2-ABAB-D8F76888C4FC', 'aaaaaaaaa-67B5-98BA-B5A4-A5B8A60368BF', '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+
+INSERT INTO `member_order` VALUES (
+'408',
+'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA', 
+'f-2e2b9dd214d42989678b26acd32f07a', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', '00000004', '周一大交班', '2', '2016-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1', 
+'aaaaaaaaa-EA8E-4044-B571-BE8EEFD1E8FF', 'aaaaa-5679-41F6-A63B-BADD0978020B', 'aaaaaa-DD67-4FC2-ABAB-D8F76888C4FC', 'aaaaaaaaa-67B5-98BA-B5A4-A5B8A60368BF', '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+
+INSERT INTO `member_order` VALUES (
+'406',
+'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA', 
+'a781ae88f1a0408fbfa4883b29d97bbe', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', '00000004', '周一大交班', '2', '2016-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1', 
+'aaaaaaaaa-EA8E-4044-B571-BE8EEFD1E8FF', 'aaaaa-5679-41F6-A63B-BADD0978020B', 'aaaaaa-DD67-4FC2-ABAB-D8F76888C4FC', 'aaaaaaaaa-67B5-98BA-B5A4-A5B8A60368BF', '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+
+INSERT INTO `member_order` VALUES (
+'606',
+'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA', 
+'a781ae88f1a0408fbfa4883b29d97bbe', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', '00000004', '周一大交班', '2', '2016-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1', 
+'aaaaaaaaa-EA8E-4044-B571-BE8EEFD1E8FF', 'aaaaa-5679-41F6-A63B-BADD0978020B', 'aaaaaa-DD67-4FC2-ABAB-D8F76888C4FC', 'aaaaaaaaa-67B5-98BA-B5A4-A5B8A60368BF', '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+
+
+
+
+
+
+INSERT INTO `member_order` VALUES (
+'606', 'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA',
+ 'f13ff6b59f294ce39e160de2dcf26b45', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', 
+ 'o7FDrs611ZQMAD0ryh96gdVrHfgA', '周一大交班', '2', '2017-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1',
+ '87984C7C-EA8E-4044-B571-BE8EEFD1E8FF', '60D4B805-5679-41F6-A63B-BADD0978020B', '30E8ADC1-DD67-4FC2-ABAB-D8F76888C4FC', '1546EEED-67B5-98BA-B5A4-A5B8A60368BF',
+ '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+ 
+ INSERT INTO `member_order` VALUES (
+'607', 'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA',
+ '5421053564c44fc7badbfd7b95a6ae0b', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', 
+ 'o7FDrs611ZQMAD0ryh96gdVrHfgA', '周一大交班', '2', '2017-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1',
+ '87984C7C-EA8E-4044-B571-BE8EEFD1E8FF', '60D4B805-5679-41F6-A63B-BADD0978020B', '30E8ADC1-DD67-4FC2-ABAB-D8F76888C4FC', '1546EEED-67B5-98BA-B5A4-A5B8A60368BF',
+ '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+ 
+ INSERT INTO `member_order` VALUES (
+'608', 'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA',
+ '5719d518fdff49da976ba352736ee698', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', 
+ 'o7FDrs611ZQMAD0ryh96gdVrHfgA', '周一大交班', '2', '2017-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1',
+ '87984C7C-EA8E-4044-B571-BE8EEFD1E8FF', '60D4B805-5679-41F6-A63B-BADD0978020B', '30E8ADC1-DD67-4FC2-ABAB-D8F76888C4FC', '1546EEED-67B5-98BA-B5A4-A5B8A60368BF',
+ '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+ 
+ INSERT INTO `member_order` VALUES (
+'609', 'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA',
+ '1021', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', 
+ 'o7FDrs611ZQMAD0ryh96gdVrHfgA', '周一大交班', '2', '2017-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1',
+ '87984C7C-EA8E-4044-B571-BE8EEFD1E8FF', '60D4B805-5679-41F6-A63B-BADD0978020B', '30E8ADC1-DD67-4FC2-ABAB-D8F76888C4FC', '1546EEED-67B5-98BA-B5A4-A5B8A60368BF',
+ '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+ 
+  INSERT INTO `member_order` VALUES (
+'610', 'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA',
+ '275beb04585c4429ba72ba9fecb70f95', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', 
+ 'o7FDrs611ZQMAD0ryh96gdVrHfgA', '周一大交班', '2', '2017-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1',
+ '87984C7C-EA8E-4044-B571-BE8EEFD1E8FF', '60D4B805-5679-41F6-A63B-BADD0978020B', '30E8ADC1-DD67-4FC2-ABAB-D8F76888C4FC', '1546EEED-67B5-98BA-B5A4-A5B8A60368BF',
+ '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+ 
+  INSERT INTO `member_order` VALUES (
+'611', 'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA',
+ '45a869fbf6214abd9a7bd39106685d9f', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', 
+ 'o7FDrs611ZQMAD0ryh96gdVrHfgA', '周一大交班', '2', '2017-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1',
+ '87984C7C-EA8E-4044-B571-BE8EEFD1E8FF', '60D4B805-5679-41F6-A63B-BADD0978020B', '30E8ADC1-DD67-4FC2-ABAB-D8F76888C4FC', '1546EEED-67B5-98BA-B5A4-A5B8A60368BF',
+ '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+ 
+   INSERT INTO `member_order` VALUES (
+'612', 'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA',
+ 'c6efae3ad3c443439909cf3ab5a33c4b', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', 
+ 'o7FDrs611ZQMAD0ryh96gdVrHfgA', '周一大交班', '2', '2017-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1',
+ '87984C7C-EA8E-4044-B571-BE8EEFD1E8FF', '60D4B805-5679-41F6-A63B-BADD0978020B', '30E8ADC1-DD67-4FC2-ABAB-D8F76888C4FC', '1546EEED-67B5-98BA-B5A4-A5B8A60368BF',
+ '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+ 
+   INSERT INTO `member_order` VALUES (
+'613', 'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA',
+ 'f8e2b9dd214d42989678b26acd32f07a', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', 
+ 'o7FDrs611ZQMAD0ryh96gdVrHfgA', '周一大交班', '2', '2017-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1',
+ '87984C7C-EA8E-4044-B571-BE8EEFD1E8FF', '60D4B805-5679-41F6-A63B-BADD0978020B', '30E8ADC1-DD67-4FC2-ABAB-D8F76888C4FC', '1546EEED-67B5-98BA-B5A4-A5B8A60368BF',
+ '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+ 
+   INSERT INTO `member_order` VALUES (
+'614', 'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA',
+ '861', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', 
+ 'o7FDrs611ZQMAD0ryh96gdVrHfgA', '周一大交班', '2', '2017-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1',
+ '87984C7C-EA8E-4044-B571-BE8EEFD1E8FF', '60D4B805-5679-41F6-A63B-BADD0978020B', '30E8ADC1-DD67-4FC2-ABAB-D8F76888C4FC', '1546EEED-67B5-98BA-B5A4-A5B8A60368BF',
+ '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+ 
+    INSERT INTO `member_order` VALUES (
+'615', 'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA',
+ '1006', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', 
+ 'o7FDrs611ZQMAD0ryh96gdVrHfgA', '周一大交班', '2', '2017-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1',
+ '87984C7C-EA8E-4044-B571-BE8EEFD1E8FF', '60D4B805-5679-41F6-A63B-BADD0978020B', '30E8ADC1-DD67-4FC2-ABAB-D8F76888C4FC', '1546EEED-67B5-98BA-B5A4-A5B8A60368BF',
+ '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+ 
+    INSERT INTO `member_order` VALUES (
+'616', 'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA',
+ 'ec8ed9524ada4e8d893105be2771f38f', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', 
+ 'o7FDrs611ZQMAD0ryh96gdVrHfgA', '周一大交班', '2', '2017-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1',
+ '87984C7C-EA8E-4044-B571-BE8EEFD1E8FF', '60D4B805-5679-41F6-A63B-BADD0978020B', '30E8ADC1-DD67-4FC2-ABAB-D8F76888C4FC', '1546EEED-67B5-98BA-B5A4-A5B8A60368BF',
+ '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+ 
+     INSERT INTO `member_order` VALUES (
+'617', 'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA',
+ 'e260eb9bfe934b83be65cae9d5442740', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', 
+ 'o7FDrs611ZQMAD0ryh96gdVrHfgA', '周一大交班', '2', '2017-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1',
+ '87984C7C-EA8E-4044-B571-BE8EEFD1E8FF', '60D4B805-5679-41F6-A63B-BADD0978020B', '30E8ADC1-DD67-4FC2-ABAB-D8F76888C4FC', '1546EEED-67B5-98BA-B5A4-A5B8A60368BF',
+ '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+
+     INSERT INTO `member_order` VALUES (
+'618', 'gh_8d5f9c073de7', 'o7FDrs611ZQMAD0ryh96gdVrHfgA',
+ '551730c589aa46df9978903424b05a42', null, '2016-01-03 15:44:31', '', '1', '1', '0', null, '王春亭教授', 
+ 'o7FDrs611ZQMAD0ryh96gdVrHfgA', '周一大交班', '2', '2017-01-04 12:00:00', null, '', '', '', '', '预约', '', '', '', '', '', '1',
+ '87984C7C-EA8E-4044-B571-BE8EEFD1E8FF', '60D4B805-5679-41F6-A63B-BADD0978020B', '30E8ADC1-DD67-4FC2-ABAB-D8F76888C4FC', '1546EEED-67B5-98BA-B5A4-A5B8A60368BF',
+ '', '', '', '', '', '', null, '2016-01-04 08:00:00', '18126785553');
+
+
+
+
+
+
+
+
+
+

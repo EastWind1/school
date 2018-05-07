@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ian.media.dao.WxUsersMapper" >
+  <resultMap id="BaseResultMap" type="com.ian.media.model.WxUsers" >
+    <id column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="public_no" property="publicNo" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="subscribe" property="subscribe" jdbcType="VARCHAR" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="language" property="language" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="country" property="country" jdbcType="VARCHAR" />
+    <result column="head_imgurl" property="headImgurl" jdbcType="VARCHAR" />
+    <result column="subscribe_time" property="subscribeTime" jdbcType="VARCHAR" />
+    <result column="unionid" property="unionid" jdbcType="VARCHAR" />
+    <result column="filed1" property="filed1" jdbcType="VARCHAR" />
+    <result column="filed2" property="filed2" jdbcType="VARCHAR" />
+    <result column="filed3" property="filed3" jdbcType="VARCHAR" />
+    <result column="filed4" property="filed4" jdbcType="VARCHAR" />
+    <result column="filed5" property="filed5" jdbcType="VARCHAR" />
+    <result column="dateTime" property="dateTime" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="datefrom" property="datefrom" jdbcType="VARCHAR" />
+    <result column="dateto" property="dateto" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    open_id,public_no, user_id,subscribe, nick_name, sex, language, city, province, country, head_imgurl, 
+    subscribe_time, unionid, filed1, filed2, filed3, filed4, filed5
+  </sql>
+  <select id="get" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+        	select
+        	<include refid="Base_Column_List"/>
+        	from wx_users
+        	where 1=1
+        	<if test="openId != null" >
+		        and open_id = #{openId,jdbcType=VARCHAR}
+		      </if>
+		      <if test="publicNo != null" >
+		        and public_no = #{publicNo,jdbcType=VARCHAR}
+		      </if>
+		      <if test="userId != null" >
+		        and user_id = #{userId,jdbcType=VARCHAR}
+		      </if>
+        	<if test="subscribe != null" >
+		        and subscribe = #{subscribe,jdbcType=VARCHAR}
+		      </if>
+		      <if test="nickName != null" >
+		        and nick_name = #{nickName,jdbcType=VARCHAR}
+		      </if>
+		      <if test="sex != null" >
+		       and  sex = #{sex,jdbcType=VARCHAR}
+		      </if>
+		      <if test="language != null" >
+		        and language = #{language,jdbcType=VARCHAR}
+		      </if>
+		      <if test="city != null" >
+		        and city = #{city,jdbcType=VARCHAR}
+		      </if>
+		      <if test="province != null" >
+		       and  province = #{province,jdbcType=VARCHAR}
+		      </if>
+		      <if test="country != null" >
+		       and  country = #{country,jdbcType=VARCHAR}
+		      </if>
+		      <if test="headImgurl != null" >
+		        and head_imgurl = #{headImgurl,jdbcType=VARCHAR}
+		      </if>
+		      <if test="subscribeTime != null" >
+		        and subscribe_time = #{subscribeTime,jdbcType=VARCHAR}
+		      </if>
+		      <if test="unionid != null" >
+		        and unionid = #{unionid,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed1 != null" >
+		        and filed1 = #{filed1,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed2 != null" >
+		        and filed2 = #{filed2,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed3 != null" >
+		        and filed3 = #{filed3,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed4 != null" >
+		        and filed4 = #{filed4,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed5 != null" >
+		        and filed5 = #{filed5,jdbcType=VARCHAR}
+		      </if>
+		       order by subscribe_time desc
+        <if test="pageIndex !=null">
+            limit #{pageIndex},#{rows}
+        </if>
+    </select>
+     <select id="getNumber" resultType="int" parameterType="java.util.HashMap">
+    	select count(*) from (
+    		select
+        	<include refid="Base_Column_List"/>
+        	from wx_users
+        	where 1=1
+        	<if test="openId != null" >
+		        and open_id = #{openId,jdbcType=VARCHAR}
+		      </if>
+		      <if test="publicNo != null" >
+		        and public_no = #{publicNo,jdbcType=VARCHAR}
+		      </if>
+		      <if test="userId != null" >
+		        and user_id = #{userId,jdbcType=VARCHAR}
+		      </if>
+        	<if test="subscribe != null" >
+		        and subscribe = #{subscribe,jdbcType=VARCHAR}
+		      </if>
+		      <if test="nickName != null" >
+		        and nick_name = #{nickName,jdbcType=VARCHAR}
+		      </if>
+		      <if test="sex != null" >
+		       and  sex = #{sex,jdbcType=VARCHAR}
+		      </if>
+		      <if test="language != null" >
+		        and language = #{language,jdbcType=VARCHAR}
+		      </if>
+		      <if test="city != null" >
+		        and city = #{city,jdbcType=VARCHAR}
+		      </if>
+		      <if test="province != null" >
+		       and  province = #{province,jdbcType=VARCHAR}
+		      </if>
+		      <if test="country != null" >
+		       and  country = #{country,jdbcType=VARCHAR}
+		      </if>
+		      <if test="headImgurl != null" >
+		        and head_imgurl = #{headImgurl,jdbcType=VARCHAR}
+		      </if>
+		      <if test="subscribeTime != null" >
+		        and subscribe_time = #{subscribeTime,jdbcType=VARCHAR}
+		      </if>
+		      <if test="unionid != null" >
+		        and unionid = #{unionid,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed1 != null" >
+		        and filed1 = #{filed1,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed2 != null" >
+		        and filed2 = #{filed2,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed3 != null" >
+		        and filed3 = #{filed3,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed4 != null" >
+		        and filed4 = #{filed4,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed5 != null" >
+		        and filed5 = #{filed5,jdbcType=VARCHAR}
+		      </if>
+		      <if test="datefrom != null">
+            and   date_format(subscribe_time,'%Y-%m-%d') &gt;=  #{datefrom,jdbcType=VARCHAR}
+        </if>
+        <if test="dateto != null">
+            and   date_format(subscribe_time,'%Y-%m-%d') &lt;=  #{dateto,jdbcType=VARCHAR}
+        </if>
+        ) a
+     </select>
+    <select id="listWxUsers" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+        	select
+        	<include refid="Base_Column_List"/>
+        	from wx_users
+        	where 1=1
+        	<if test="openId != null" >
+		        and open_id = #{openId,jdbcType=VARCHAR}
+		      </if>
+		      <if test="publicNo != null" >
+		        and public_no = #{publicNo,jdbcType=VARCHAR}
+		      </if>
+		      <if test="userId != null" >
+		        and user_id = #{userId,jdbcType=VARCHAR}
+		      </if>
+        	<if test="subscribe != null" >
+		        and subscribe = #{subscribe,jdbcType=VARCHAR}
+		      </if>
+		      <if test="nickName != null" >
+		        and nick_name = #{nickName,jdbcType=VARCHAR}
+		      </if>
+		      <if test="sex != null" >
+		       and  sex = #{sex,jdbcType=VARCHAR}
+		      </if>
+		      <if test="language != null" >
+		        and language = #{language,jdbcType=VARCHAR}
+		      </if>
+		      <if test="city != null" >
+		        and city = #{city,jdbcType=VARCHAR}
+		      </if>
+		      <if test="province != null" >
+		       and  province = #{province,jdbcType=VARCHAR}
+		      </if>
+		      <if test="country != null" >
+		       and  country = #{country,jdbcType=VARCHAR}
+		      </if>
+		      <if test="headImgurl != null" >
+		        and head_imgurl = #{headImgurl,jdbcType=VARCHAR}
+		      </if>
+		      <if test="subscribeTime != null" >
+		        and subscribe_time = #{subscribeTime,jdbcType=VARCHAR}
+		      </if>
+		      <if test="unionid != null" >
+		        and unionid = #{unionid,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed1 != null" >
+		        and filed1 = #{filed1,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed2 != null" >
+		        and filed2 = #{filed2,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed3 != null" >
+		        and filed3 = #{filed3,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed4 != null" >
+		        and filed4 = #{filed4,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed5 != null" >
+		        and filed5 = #{filed5,jdbcType=VARCHAR}
+		      </if>
+		      <if test="datefrom != null">
+            	and   date_format(subscribe_time,'%Y-%m-%d') &gt;=  #{datefrom,jdbcType=VARCHAR}
+        	  </if>
+        		<if test="dateto != null">
+            	and   date_format(subscribe_time,'%Y-%m-%d') &lt;=  #{dateto,jdbcType=VARCHAR}
+        		</if>
+		       order by subscribe_time desc
+        <if test="pageIndex !=null">
+            limit #{pageIndex},#{rows}
+        </if>
+    </select>
+  <select id="getCount" resultType="int" parameterType="java.util.HashMap">
+        select
+        count(*)
+        from wx_users
+        where 1=1
+        <if test="openId != null" >
+		        and open_id = #{openId,jdbcType=VARCHAR}
+		      </if>
+		      <if test="publicNo != null" >
+		        and public_no = #{publicNo,jdbcType=VARCHAR}
+		      </if>
+		      <if test="userId != null" >
+		        and user_id = #{userId,jdbcType=VARCHAR}
+		      </if>
+        	<if test="subscribe != null" >
+		        and subscribe = #{subscribe,jdbcType=VARCHAR}
+		      </if>
+		      <if test="datefrom != null">
+            	and   date_format(subscribe_time,'%Y-%m-%d') &gt;=  #{datefrom,jdbcType=VARCHAR}
+        		</if>
+        		<if test="dateto != null">
+            	and   date_format(subscribe_time,'%Y-%m-%d') &lt;=  #{dateto,jdbcType=VARCHAR}
+        		</if>
+		      <if test="nickName != null" >
+		        and nick_name = #{nickName,jdbcType=VARCHAR}
+		      </if>
+		      <if test="sex != null" >
+		       and  sex = #{sex,jdbcType=VARCHAR}
+		      </if>
+		      <if test="language != null" >
+		        and language = #{language,jdbcType=VARCHAR}
+		      </if>
+		      <if test="city != null" >
+		        and city = #{city,jdbcType=VARCHAR}
+		      </if>
+		      <if test="province != null" >
+		       and  province = #{province,jdbcType=VARCHAR}
+		      </if>
+		      <if test="country != null" >
+		       and  country = #{country,jdbcType=VARCHAR}
+		      </if>
+		      <if test="headImgurl != null" >
+		        and head_imgurl = #{headImgurl,jdbcType=VARCHAR}
+		      </if>
+		      <if test="subscribeTime != null" >
+		        and subscribe_time = #{subscribeTime,jdbcType=VARCHAR}
+		      </if>
+		      <if test="unionid != null" >
+		        and unionid = #{unionid,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed1 != null" >
+		        and filed1 = #{filed1,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed2 != null" >
+		        and filed2 = #{filed2,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed3 != null" >
+		        and filed3 = #{filed3,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed4 != null" >
+		        and filed4 = #{filed4,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed5 != null" >
+		        and filed5 = #{filed5,jdbcType=VARCHAR}
+		      </if>
+    </select>
+    
+     <select id="tjqgwxUsers" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+     	select  date_format(filed3,'%Y-%m-%d') as dateTime,count(*) as number from wx_users where subscribe=0 
+     	  group by  date_format(filed3,'%Y-%m-%d') 
+     	  order by number desc 
+     	  <if test="pageIndex !=null">
+            limit #{pageIndex},#{rows}
+        </if>
+     </select>
+     <select id="tjgzwxUsers" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+			select  date_format(subscribe_time,'%Y-%m-%d') as dateTime,count(*) as number from wx_users where subscribe=1 
+			 group by  date_format(subscribe_time,'%Y-%m-%d')  
+			 order by number desc
+			 <if test="pageIndex !=null">
+            limit #{pageIndex},#{rows}
+        </if>
+     </select>
+    
+    
+    <select id="getGameCustomer" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+        	select
+        	<include refid="Base_Column_List"/>
+        	from wx_users
+        	where 1=1
+        	<if test="openId != null" >
+		        and open_id = #{openId,jdbcType=VARCHAR}
+		      </if>
+		      <if test="publicNo != null" >
+		        and public_no = #{publicNo,jdbcType=VARCHAR}
+		      </if>
+		      <if test="userId != null" >
+		        and user_id = #{userId,jdbcType=VARCHAR}
+		      </if>
+        	<if test="subscribe != null" >
+		        and subscribe = #{subscribe,jdbcType=VARCHAR}
+		      </if>
+		      <if test="nickName != null" >
+		        and nick_name = #{nickName,jdbcType=VARCHAR}
+		      </if>
+		      <if test="sex != null" >
+		       and  sex = #{sex,jdbcType=VARCHAR}
+		      </if>
+		      <if test="language != null" >
+		        and language = #{language,jdbcType=VARCHAR}
+		      </if>
+		      <if test="city != null" >
+		        and city = #{city,jdbcType=VARCHAR}
+		      </if>
+		      <if test="province != null" >
+		       and  province = #{province,jdbcType=VARCHAR}
+		      </if>
+		      <if test="country != null" >
+		       and  country = #{country,jdbcType=VARCHAR}
+		      </if>
+		      <if test="headImgurl != null" >
+		        and head_imgurl = #{headImgurl,jdbcType=VARCHAR}
+		      </if>
+		      <if test="subscribeTime != null" >
+		        and subscribe_time = #{subscribeTime,jdbcType=VARCHAR}
+		      </if>
+		      <if test="unionid != null" >
+		        and unionid = #{unionid,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed1 != null" >
+		        and filed1 = #{filed1,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed2 != null" >
+		        and filed2 = #{filed2,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed3 != null" >
+		        and filed3 = #{filed3,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed4 != null" >
+		        and filed4 = #{filed4,jdbcType=VARCHAR}
+		      </if>
+		      <if test="filed5 != null" >
+		        and filed5 = #{filed5,jdbcType=VARCHAR}
+		      </if>
+        order by filed2+0 DESC limit 0,10
+    </select>
+    
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wx_users
+    where open_id = #{openId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wx_users
+    where open_id = #{openId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ian.media.model.WxUsers" >
+    insert into wx_users (open_id,public_no, user_id,subscribe, nick_name, 
+      sex, language, city, 
+      province, country, head_imgurl, 
+      subscribe_time, unionid, filed1, 
+      filed2, filed3, filed4, 
+      filed5)
+    values (#{openId,jdbcType=VARCHAR},#{publicNo,jdbcType=VARCHAR},#{userId,jdbcType=VARCHAR}, #{subscribe,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{language,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{headImgurl,jdbcType=VARCHAR}, 
+      #{subscribeTime,jdbcType=VARCHAR}, #{unionid,jdbcType=VARCHAR}, #{filed1,jdbcType=VARCHAR}, 
+      #{filed2,jdbcType=VARCHAR}, #{filed3,jdbcType=VARCHAR}, #{filed4,jdbcType=VARCHAR}, 
+      #{filed5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ian.media.model.WxUsers" >
+    insert into wx_users
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="publicNo != null" >
+        public_no,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="subscribe != null" >
+        subscribe,
+      </if>
+      <if test="nickName != null" >
+        nick_name,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="language != null" >
+        language,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="country != null" >
+        country,
+      </if>
+      <if test="headImgurl != null" >
+        head_imgurl,
+      </if>
+      <if test="subscribeTime != null" >
+        subscribe_time,
+      </if>
+      <if test="unionid != null" >
+        unionid,
+      </if>
+      <if test="filed1 != null" >
+        filed1,
+      </if>
+      <if test="filed2 != null" >
+        filed2,
+      </if>
+      <if test="filed3 != null" >
+        filed3,
+      </if>
+      <if test="filed4 != null" >
+        filed4,
+      </if>
+      <if test="filed5 != null" >
+        filed5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="publicNo != null" >
+        #{publicNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="subscribe != null" >
+        #{subscribe,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="language != null" >
+        #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="headImgurl != null" >
+        #{headImgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="subscribeTime != null" >
+        #{subscribeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="unionid != null" >
+        #{unionid,jdbcType=VARCHAR},
+      </if>
+      <if test="filed1 != null" >
+        #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null" >
+        #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null" >
+        #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="filed4 != null" >
+        #{filed4,jdbcType=VARCHAR},
+      </if>
+      <if test="filed5 != null" >
+        #{filed5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ian.media.model.WxUsers" >
+    update wx_users
+    <set >
+      <if test="subscribe != null" >
+        subscribe = #{subscribe,jdbcType=VARCHAR},
+      </if>
+      <if test="publicNo != null" >
+        public_no = #{publicNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="language != null" >
+        language = #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="headImgurl != null" >
+        head_imgurl = #{headImgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="subscribeTime != null" >
+        subscribe_time = #{subscribeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="unionid != null" >
+        unionid = #{unionid,jdbcType=VARCHAR},
+      </if>
+      <if test="filed1 != null" >
+        filed1 = #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null" >
+        filed2 = #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null" >
+        filed3 = #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="filed4 != null" >
+        filed4 = #{filed4,jdbcType=VARCHAR},
+      </if>
+      <if test="filed5 != null" >
+        filed5 = #{filed5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where open_id = #{openId,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateByPrimaryKeySelectiveBrand" parameterType="com.ian.media.model.WxUsers" >
+    update wx_users
+    <set >
+      <if test="subscribe != null" >
+        subscribe = #{subscribe,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="language != null" >
+        language = #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="headImgurl != null" >
+        head_imgurl = #{headImgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="subscribeTime != null" >
+        subscribe_time = #{subscribeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="unionid != null" >
+        unionid = #{unionid,jdbcType=VARCHAR},
+      </if>
+      <if test="filed1 != null" >
+        filed1 = #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null" >
+        filed2 = #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null" >
+        filed3 = #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="filed4 != null" >
+        filed4 = #{filed4,jdbcType=VARCHAR},
+      </if>
+      <if test="filed5 != null" >
+        filed5 = #{filed5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where public_no = #{publicNo,jdbcType=VARCHAR}
+  </update>
+  
+  
+  <update id="updateByPrimaryKey" parameterType="com.ian.media.model.WxUsers" >
+    update wx_users
+    set subscribe = #{subscribe,jdbcType=VARCHAR},
+      public_no = #{publicNo,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      language = #{language,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      head_imgurl = #{headImgurl,jdbcType=VARCHAR},
+      subscribe_time = #{subscribeTime,jdbcType=VARCHAR},
+      unionid = #{unionid,jdbcType=VARCHAR},
+      filed1 = #{filed1,jdbcType=VARCHAR},
+      filed2 = #{filed2,jdbcType=VARCHAR},
+      filed3 = #{filed3,jdbcType=VARCHAR},
+      filed4 = #{filed4,jdbcType=VARCHAR},
+      filed5 = #{filed5,jdbcType=VARCHAR}
+    where open_id = #{openId,jdbcType=VARCHAR}
+  </update>
+</mapper>

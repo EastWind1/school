@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ian.media.dao.QuestionTableMapper" >
+  <resultMap id="BaseResultMap" type="com.ian.media.model.QuestionTable" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="title_id" property="titleId" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="question" property="question" jdbcType="VARCHAR" />
+    <result column="question_time" property="questionTime" jdbcType="VARCHAR" />
+    <result column="member_name" property="memberName" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="filed1" property="filed1" jdbcType="VARCHAR" />
+    <result column="filed2" property="filed2" jdbcType="VARCHAR" />
+    <result column="filed3" property="filed3" jdbcType="VARCHAR" />
+    <result column="filed4" property="filed4" jdbcType="VARCHAR" />
+    <result column="filed5" property="filed5" jdbcType="VARCHAR" />
+   <!-- <result column="expert_name" property="expertName" jdbcType="VARCHAR" />
+    <result column="begin_time" property="beginTime" jdbcType="VARCHAR" />
+    <result column="end_time" property="endTime" jdbcType="VARCHAR" /> --> 
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title_id, title, open_id, question, question_time, member_name, state, filed1, 
+    filed2, filed3, filed4, filed5 
+  </sql>
+ 	
+  <select id="getNumber" resultType="int" >
+  	select count(*) number from (select
+        a.id, title_id, title, a.open_id openId, question, question_time, a.member_name, state, a.filed1, 
+    a.filed2, a.filed3, a.filed4, a.filed5 ,wx.nick_name nickName,wx.head_imgurl imgUrl
+       from question_table a join wx_users wx on a.open_id=wx.open_id 
+        where a.state=1 
+        order by a.filed1 desc
+        <if test="index !=null">
+            limit #{index},#{rows}
+        </if>) a
+  </select>
+   <select id="sel" resultType="com.ian.media.model.QuestionTable" parameterType="java.util.HashMap">
+        select
+        a.id, title_id, title, a.open_id openId, question, question_time, a.member_name, state, a.filed1, 
+    a.filed2, a.filed3, a.filed4, a.filed5 ,wx.nick_name nickName,wx.head_imgurl imgUrl
+       from question_table a, wx_users wx where a.open_id=wx.open_id 
+        and a.state=1 and a.filed3=1
+        order by a.filed1 desc
+        <if test="pageIndex !=null">
+            limit #{pageIndex},#{rows}
+        </if>
+    </select>
+  <select id="get" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+       select 
+     <include refid="Base_Column_List" /> 
+     from question_table 
+     where 1=1 
+        <if test="id != null">
+            and id=#{id,jdbcType=VARCHAR}
+        </if>
+        <if test="titleId != null">
+            and title_id=#{titleId,jdbcType=VARCHAR}
+        </if>
+        <if test="title != null">
+            and title=#{title,jdbcType=VARCHAR}
+        </if>
+        <if test="openId != null">
+            and open_id=#{openId,jdbcType=VARCHAR}
+        </if>
+        <if test="question != null">
+            and question=#{question,jdbcType=VARCHAR}
+        </if>
+        <if test="questionTime != null">
+            and question_time=#{questionTime,jdbcType=VARCHAR}
+        </if>
+         <if test="memberName != null">
+            and member_name=#{memberName,jdbcType=VARCHAR}
+        </if>
+         <if test="state != null">
+            and state =#{state,jdbcType=INTEGER}
+        </if>
+        <if test="filed1 != null">
+            and filed1=#{filed1,jdbcType=VARCHAR}
+        </if>
+        <if test="filed2 != null">
+            and filed2=#{filed2,jdbcType=VARCHAR}
+        </if>
+        <if test="filed3 != null">
+            and filed3=#{filed3,jdbcType=VARCHAR}
+        </if>
+     	<if test="filed4 != null">
+            and filed4=#{filed4,jdbcType=VARCHAR}
+        </if>
+        <if test="filed5 != null">
+            and filed5=#{filed5,jdbcType=VARCHAR}
+        </if>
+          
+        order by filed1 desc
+        <if test="pageIndex !=null">
+            limit #{pageIndex},#{rows}
+        </if>
+
+    </select>
+    
+     <select id="getCount" resultType="int" parameterType="java.util.HashMap">
+     select count(*) from question_table 
+     where 1=1 
+        <if test="id != null">
+            and id=#{id,jdbcType=VARCHAR}
+        </if>
+       <if test="titleId != null">
+            and title_id=#{titleId,jdbcType=VARCHAR}
+        </if>
+        <if test="title != null">
+            and title=#{title,jdbcType=VARCHAR}
+        </if>
+        <if test="openId != null">
+            and open_id=#{openId,jdbcType=VARCHAR}
+        </if>
+        <if test="question != null">
+            and question=#{question,jdbcType=VARCHAR}
+        </if>
+        <if test="questionTime != null">
+            and question_time=#{questionTime,jdbcType=VARCHAR}
+        </if>
+         <if test="memberName != null">
+            and member_name=#{memberName,jdbcType=VARCHAR}
+        </if>
+         <if test="state != null">
+            and state=#{state,jdbcType=INTEGER}
+        </if>
+        <if test="filed1 != null">
+            and filed1=#{filed1,jdbcType=VARCHAR}
+        </if>
+        <if test="filed2 != null">
+            and filed2=#{filed2,jdbcType=VARCHAR}
+        </if>
+        <if test="filed3 != null">
+            and filed3=#{filed3,jdbcType=VARCHAR}
+        </if>
+     	<if test="filed4 != null">
+            and filed4=#{filed4,jdbcType=VARCHAR}
+        </if>
+        <if test="filed5 != null">
+            and filed5=#{filed5,jdbcType=VARCHAR}
+        </if>
+    </select>
+  <select id="getSel" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+       select 
+     <include refid="Base_Column_List" /> 
+     from question_table 
+     where 1=1
+        <if test="id != null">
+            and id=#{id,jdbcType=VARCHAR}
+        </if>
+        <if test="titleId != null">
+            and title_id=#{titleId,jdbcType=VARCHAR}
+        </if>
+        <if test="title != null">
+            and title=#{title,jdbcType=VARCHAR}
+        </if>
+        <if test="openId != null">
+            and open_id=#{openId,jdbcType=VARCHAR}
+        </if>
+        <if test="question != null">
+            and question=#{question,jdbcType=VARCHAR}
+        </if>
+        <if test="questionTime != null">
+            and question_time=#{questionTime,jdbcType=VARCHAR}
+        </if>
+         <if test="memberName != null">
+            and member_name=#{memberName,jdbcType=VARCHAR}
+        </if>
+         <if test="state != null">
+            and state !=#{state,jdbcType=INTEGER}
+        </if>
+        <if test="filed1 != null">
+            and filed1=#{filed1,jdbcType=VARCHAR}
+        </if>
+        <if test="filed2 != null">
+            and filed2=#{filed2,jdbcType=VARCHAR}
+        </if>
+        <if test="filed3 != null">
+            and filed3=#{filed3,jdbcType=VARCHAR}
+        </if>
+     	<if test="filed4 != null">
+            and filed4=#{filed4,jdbcType=VARCHAR}
+        </if>
+        <if test="filed5 != null">
+            and filed5=#{filed5,jdbcType=VARCHAR}
+        </if>
+          
+        order by filed1 desc
+        <if test="pageIndex !=null">
+            limit #{pageIndex},#{rows}
+        </if>
+
+    </select>
+    
+     <select id="getCou" resultType="int" parameterType="java.util.HashMap">
+     select count(*) from question_table 
+     where 1=1 
+        <if test="id != null">
+            and id=#{id,jdbcType=VARCHAR}
+        </if>
+       <if test="titleId != null">
+            and title_id=#{titleId,jdbcType=VARCHAR}
+        </if>
+        <if test="title != null">
+            and title=#{title,jdbcType=VARCHAR}
+        </if>
+        <if test="openId != null">
+            and open_id=#{openId,jdbcType=VARCHAR}
+        </if>
+        <if test="question != null">
+            and question=#{question,jdbcType=VARCHAR}
+        </if>
+        <if test="questionTime != null">
+            and question_time=#{questionTime,jdbcType=VARCHAR}
+        </if>
+         <if test="memberName != null">
+            and member_name=#{memberName,jdbcType=VARCHAR}
+        </if>
+         <if test="state != null">
+            and state !=#{state,jdbcType=INTEGER}
+        </if>
+        <if test="filed1 != null">
+            and filed1=#{filed1,jdbcType=VARCHAR}
+        </if>
+        <if test="filed2 != null">
+            and filed2=#{filed2,jdbcType=VARCHAR}
+        </if>
+        <if test="filed3 != null">
+            and filed3=#{filed3,jdbcType=VARCHAR}
+        </if>
+     	<if test="filed4 != null">
+            and filed4=#{filed4,jdbcType=VARCHAR}
+        </if>
+        <if test="filed5 != null">
+            and filed5=#{filed5,jdbcType=VARCHAR}
+        </if>
+    </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from question_table
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from question_table
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteMoreByPK" parameterType="list" >
+    delete from question_table
+    where id in
+     <foreach collection="list" index="index" item="item" open="("
+    separator="," close=")">
+	   #{item}  
+	</foreach>
+  </delete>
+   <insert id="insertMore" parameterType="list" >
+    insert into question_table (id, title_id, title, 
+      open_id, question, question_time, 
+      member_name, state,filed1,filed2,filed3,filed4,filed5 )
+     values <foreach collection="list" index="index" item="item" separator="," >
+    (#{item.id},#{item.title_id},#{item.title},#{item.open_id},#{item.question},#{item.question_time},#{item.member_name},
+    #{item.state},#{item.filed1},#{item.filed2},#{item.filed3},#{item.filed4},#{item.filed5})   
+	</foreach>
+  </insert>
+  <insert id="insert" parameterType="com.ian.media.model.QuestionTable" >
+    insert into question_table (id, title_id, title, 
+      open_id, question, question_time, 
+      member_name, state, filed1, 
+      filed2, filed3, filed4, 
+      filed5)
+    values (#{id,jdbcType=VARCHAR}, #{titleId,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{openId,jdbcType=VARCHAR}, #{question,jdbcType=VARCHAR}, #{questionTime,jdbcType=VARCHAR}, 
+      #{memberName,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{filed1,jdbcType=VARCHAR}, 
+      #{filed2,jdbcType=VARCHAR}, #{filed3,jdbcType=VARCHAR}, #{filed4,jdbcType=VARCHAR}, 
+      #{filed5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ian.media.model.QuestionTable" >
+    insert into question_table
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="titleId != null" >
+        title_id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="question != null" >
+        question,
+      </if>
+      <if test="questionTime != null" >
+        question_time,
+      </if>
+      <if test="memberName != null" >
+        member_name,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="filed1 != null" >
+        filed1,
+      </if>
+      <if test="filed2 != null" >
+        filed2,
+      </if>
+      <if test="filed3 != null" >
+        filed3,
+      </if>
+      <if test="filed4 != null" >
+        filed4,
+      </if>
+      <if test="filed5 != null" >
+        filed5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="titleId != null" >
+        #{titleId,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null" >
+        #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="questionTime != null" >
+        #{questionTime,jdbcType=VARCHAR},
+      </if>
+      <if test="memberName != null" >
+        #{memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="filed1 != null" >
+        #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null" >
+        #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null" >
+        #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="filed4 != null" >
+        #{filed4,jdbcType=VARCHAR},
+      </if>
+      <if test="filed5 != null" >
+        #{filed5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ian.media.model.QuestionTable" >
+    update question_table
+    <set >
+      <if test="titleId != null" >
+        title_id = #{titleId,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null" >
+        question = #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="questionTime != null" >
+        question_time = #{questionTime,jdbcType=VARCHAR},
+      </if>
+      <if test="memberName != null" >
+        member_name = #{memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="filed1 != null" >
+        filed1 = #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null" >
+        filed2 = #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null" >
+        filed3 = #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="filed4 != null" >
+        filed4 = #{filed4,jdbcType=VARCHAR},
+      </if>
+      <if test="filed5 != null" >
+        filed5 = #{filed5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateByPrimaryKeySelectiveBegin" parameterType="com.ian.media.model.QuestionTable" >
+    update question_table 
+    <set >
+      <if test="titleId != null" >
+        title_id = #{titleId,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null" >
+        question = #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="questionTime != null" >
+        question_time = #{questionTime,jdbcType=VARCHAR},
+      </if>
+      <if test="memberName != null" >
+        member_name = #{memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="filed1 != null" >
+        filed1 = #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null" >
+        filed2 = #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null" >
+        filed3 = #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="filed5 != null" >
+        filed5 = #{filed5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id != #{id,jdbcType=VARCHAR} and filed4 = #{filed4,jdbcType=VARCHAR} 
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ian.media.model.QuestionTable" >
+    update question_table
+    set title_id = #{titleId,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      open_id = #{openId,jdbcType=VARCHAR},
+      question = #{question,jdbcType=VARCHAR},
+      question_time = #{questionTime,jdbcType=VARCHAR},
+      member_name = #{memberName,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      filed1 = #{filed1,jdbcType=VARCHAR},
+      filed2 = #{filed2,jdbcType=VARCHAR},
+      filed3 = #{filed3,jdbcType=VARCHAR},
+      filed4 = #{filed4,jdbcType=VARCHAR},
+      filed5 = #{filed5,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateMoreByPK" parameterType="java.util.HashMap" >
+  	update question_table  
+  	 <set>
+      <if test="obj.state != null" >
+       state = #{obj.state,jdbcType=INTEGER} 
+      </if>
+      </set>
+  	 where id in
+    <foreach collection="listId" index="index" item="item" open="("
+    separator="," close=")">
+	   #{item}  
+	</foreach>
+  </update>
+</mapper>

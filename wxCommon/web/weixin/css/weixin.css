@@ -1,0 +1,290 @@
+﻿@charset "utf-8";
+body{ font-family: "微软雅黑",arial, sans-serif;text-shadow:none;font-size:16px;overflow-y: scroll}
+.content{background-color: #e1e4e9}
+.noBr{border-bottom:none;}
+a{text-decoration:none}
+.card{border:0px;}
+
+/*查看专家*/
+/*顶部搜索条*/
+.checkExpert_search {
+  top:0;
+  background: none; 
+  border-bottom:none;
+  padding-right:24px;
+}
+
+.checkExpert_search input[type=search] {margin-top:2px;border-radius:5px;}
+.zjobj{margin-left: 0px;margin-right: 0px;border-radius:0px;}
+
+.checkExpert_search input[type=search] {
+  margin-top:2px;
+}
+
+
+/*内容与顶部距离*/
+.checkExpert_search + .checkExpert_content{
+	padding-top: 40px;
+}
+
+
+
+/*内容区域*/
+.expertInfo p{
+	font-size:14px;
+}
+
+.connect_icon a{
+	color:#666;
+	display:inline-block;
+	margin:0 10px 0 0;
+}
+
+.checkExpert_content_ul{
+	margin:0 0 10px 0px
+}
+
+
+.checkExpert_content .table-view-cell{
+  position: relative;
+  padding: 11px 15px 11px 0;
+  overflow: hidden;
+  border-bottom: 1px solid #ddd;
+    margin-top: 0;
+}
+
+.checkExpert_content a{
+	text-decoration:none;
+}
+
+.checkExpert_content_ul li a img.media-object{width: 110px;height: 110px;margin-left: 5px;}
+.checkExpert_content_ul li .iconimg img{width: 32px;height: 32px;}
+
+/*去掉>括号*/
+.navigate-right:after {
+  position: absolute;
+  top: 50%;
+  display: none;
+  font-family: Ratchicons;
+  font-size: inherit;
+  line-height: 1;
+  color: #bbb;
+  text-decoration: none;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-font-smoothing: antialiased;
+}
+
+.navigate-right:HOVER{text-decoration: none;}
+
+.formobj ul,.zxobj ul,.zxxobj ul{margin-left: 0px;}
+.formobj .table-view-cell{padding: 11px 10px 11px 10px;border-bottom: 0px;}
+input,select{width: 100%;border-top: 0px;border-left: 0px;border-right: 0px;border-radius:0px;border-bottom: 1px solid #ccc}
+select{margin-bottom: 0px;line-height: 20px;}
+select option:first-child{color: #ccc}
+.table-view-divider{color:#000;}
+
+/**资讯**/
+.zxobj,.zxxobj,.zjdeobj{background-color:rgba(255, 255, 255, 0);border: 0px; }
+.zxobj ul,.zjdeobj ul{background-color: rgba(255, 255, 255, 0);}
+.zxobj ul li{background-color: #fff;padding-right:11px;margin-bottom: 7px;border-radius:5px;}
+.zxobj ul li span{font-weight: bold;}
+.zxobj ul li .zxcon{font-weight:800;color:#353333}
+.zxobj ul li hr{margin:10px 0px;}
+
+
+.zxxobj .table-view-divider{background-color: #EAE6E6}
+.zxxobj ul li{padding-right:11px;}
+.zxxobj ul li label{color:#3560E7}
+
+/****专家详情********/
+.zjdeobj{border:0px;margin: 0px;}
+.zjdeobj ul{margin: 0px;}
+.zjdeobj ul li{padding: 0px;}
+.topzj{border-bottom: 0px;}
+.zjdeobj ul li p.head{text-align: center;padding-top: 10px}
+.zjdeobj ul li p.head img{height:120px;width:120px; border-radius:50%;}
+.barbutton a{display: inline-block;width:50%;color:#000;text-align: center;border: 1px solid #E7DFDF;height: 50px;line-height: 3}
+.zjdeobj li.zjcont{padding: 10px;margin: 10px;background-color:#fff;border-radius:5px;}
+.zjdeobj p{font-weight: 800;color:#353333}
+.zjdeobj p.zjtitle{font-size:16px;}
+
+/*求助列表*/
+.helpList{ position:relative}
+.helpList_ul{
+	margin:0 0 10px 15px;
+}
+.helpList_ul li{ 
+	border-bottom:none;
+}
+.helpListInfo{
+	font-size:20px;
+}
+.helpList a{
+	text-decoration:none;
+}
+.helpList a:hover{
+	color:
+}
+
+.connectIcon{
+	position:absolute;
+	right:25px;
+	bottom:11px
+}
+
+
+.cont {
+  background-color: #f4f4f4;
+}
+
+.navsz, .navsz, .navsz nav {
+  background-color: #f4f4f4;
+  border: 0px;
+}
+/*.card {
+  margin: 10px;
+  overflow: hidden;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}*/
+
+.navsz .navbar {
+  margin-bottom: 0;
+}
+.navsz nav {
+  margin-left: 0;
+  margin-right: 0;
+}
+.navsz, .navsz, .navsz nav {
+  background-color: #f4f4f4;
+  border: 0px;
+}
+.navbar {
+  padding-right: 0px;
+  padding-left: 0px;
+  position: relative;
+}
+.bar>.onLineClass_tab{
+  top: 0;
+  margin: 0 auto;
+  height: 100%;
+}
+
+
+.navsz .segmented-control .control-item {
+  padding-top: 14px !important;
+  font-size: 16px;
+}
+.segmented-control .control-item {
+  display: table-cell;
+  width: 1%;
+  padding-top: 6px;
+  padding-bottom: 7px;
+  overflow: hidden;
+  line-height: 1;
+  color: #333;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-left: 1px solid #ccc;
+}
+
+.navsz .segmented-control .control-item.active {
+  border-bottom: 0px;
+  background-color: #0084FF;
+  color: #fff;
+}
+
+
+/*在线课程*/
+
+.classInfo{ border-bottom:none;}
+.classIn{
+	padding-left:50px;
+	position:relative;
+}
+.onLineClass_tab a{
+	text-decoration:none;
+	cursor:pointer;
+}
+
+.onLineClass_play{
+	width:50px;
+	height:28px;
+	line-height:30px;
+	text-align:center;
+	border-radius:5px;
+	display:inline-block;
+	background-color:orange;
+	float:right;
+	  margin-top: -7px;
+	  position:absolute;
+	  right:20px;
+	  bottom:10px;
+}
+
+/*在线课程详情*/
+.classDetails li{
+	border-bottom:none;
+	padding: 11px 35px 11px 15px;
+}
+
+.classTitle{ 
+	text-align:center;
+	font-weight:bold;
+}
+
+.classInfo{
+	color:#000;
+	font-size:16px;
+	font-weight:bold;
+}
+
+.classInfo_content{
+	text-indent:2em;
+	font-size:15px;
+	margin-top:-15px;
+}
+
+/*录课在线 */
+.classVideo{
+	margin-top:-10px;
+}
+
+.classVideo img{
+	width:300px;
+	height: 180px;
+	margin-bottom:11px;
+}
+
+/*回复内容*/
+.replyContent{
+	padding: 0 25px 11px 15px;
+}
+
+.replyContent textarea{
+	width:100%;
+	height:70px;
+}
+
+.helpReply_btn{
+	margin: -10px 25px 10px 15px;
+}
+
+.zxobj img[class="xq_content_img"]{
+	width:300px;
+	height:100px;
+	margin-top:10px;
+}
+
+.zxobj p{
+	margin-top:5px;
+	color:#353333;
+	font-weight: 800;
+}
+.zxobj p[class="xq_content"]{
+	margin-top:10px;
+}

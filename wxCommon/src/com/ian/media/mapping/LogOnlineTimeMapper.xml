@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ian.media.dao.LogOnlineTimeMapper" >
+  <resultMap id="BaseResultMap" type="com.ian.media.model.LogOnlineTime" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="VARCHAR" />
+    <result column="end_time" property="endTime" jdbcType="VARCHAR" />
+    <result column="online_no" property="onlineNo" jdbcType="VARCHAR" />
+    <result column="filed1" property="filed1" jdbcType="VARCHAR" />
+    <result column="filed2" property="filed2" jdbcType="VARCHAR" />
+    <result column="filed3" property="filed3" jdbcType="VARCHAR" />
+    <result column="filed4" property="filed4" jdbcType="VARCHAR" />
+    <result column="filed5" property="filed5" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="email" property="emails" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, open_id, start_time, end_time, online_no, filed1, filed2, filed3, filed4, filed5
+  </sql>
+  <select id="getList" resultType="com.ian.media.model.LogOnlineTime" parameterType="java.util.HashMap">
+  	select mem.name name,mem.tel tel,mem.email email,online.id,online.start_time startTime,online.end_time endTime,online.online_no onlineNo,online.filed1 from 
+  	log_online_time online,member mem where online.open_id=mem.id 
+  		<if test="id != null">
+            and online.id=#{id,jdbcType=VARCHAR}
+        </if>
+  		<if test="startTime != null">
+            and online.start_time=#{startTime,jdbcType=VARCHAR}
+        </if>
+        <if test="endTime != null">
+            and online.end_time=#{endTime,jdbcType=VARCHAR}
+        </if>
+         <if test="onlineNo != null">
+            and online.online_no=#{onlineNo,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null">
+            and mem.name=#{name,jdbcType=VARCHAR}
+        </if>
+        <if test="tel != null">
+            and mem.tel=#{tel,jdbcType=VARCHAR}
+        </if>
+        <if test="email != null">
+            and mem.email=#{email,jdbcType=VARCHAR}
+        </if>
+        <if test="filed1 != null">
+            and online.filed1=#{filed1,jdbcType=VARCHAR}
+        </if>
+         order by online.start_time desc
+  		<if test="pageIndex !=null">
+            limit #{pageIndex},#{rows}
+        </if>
+  </select>
+  <select id="getNumber1" resultType="int" parameterType="java.util.HashMap">
+  	select count(*) from 
+  	log_online_time online,member mem where online.open_id=mem.id 
+  		<if test="id != null">
+            and online.id=#{id,jdbcType=VARCHAR}
+        </if>
+  		<if test="startTime != null">
+            and online.start_time=#{startTime,jdbcType=VARCHAR}
+        </if>
+        <if test="endTime != null">
+            and online.end_time=#{endTime,jdbcType=VARCHAR}
+        </if>
+         <if test="onlineNo != null">
+            and online.online_no=#{onlineNo,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null">
+            and mem.name=#{name,jdbcType=VARCHAR}
+        </if>
+        <if test="tel != null">
+            and mem.tel=#{tel,jdbcType=VARCHAR}
+        </if>
+        <if test="email != null">
+            and mem.email=#{email,jdbcType=VARCHAR}
+        </if>
+        <if test="filed1 != null">
+            and online.filed1=#{filed1,jdbcType=VARCHAR}
+        </if>
+         
+  </select>
+  <select id="get" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List"/>
+        from log_online_time
+        where 1=1
+        <if test="id != null">
+            and id=#{id,jdbcType=VARCHAR}
+        </if>
+        <if test="openId != null">
+            and open_id=#{openId,jdbcType=VARCHAR}
+        </if>
+         <if test="startTime != null">
+            and start_time=#{startTime,jdbcType=VARCHAR}
+        </if>
+        <if test="endTime != null">
+            and end_time=#{endTime,jdbcType=VARCHAR}
+        </if>
+         <if test="onlineNo != null">
+            and online_no=#{onlineNo,jdbcType=VARCHAR}
+        </if>
+        <if test="filed1 != null">
+            and filed1=#{filed1,jdbcType=VARCHAR}
+        </if>
+        <if test="filed2 != null">
+            and filed2=#{filed2,jdbcType=VARCHAR}
+        </if>
+        <if test="filed3 != null">
+            and filed3=#{filed3,jdbcType=VARCHAR}
+        </if>
+        <if test="filed4 != null">
+            and filed4=#{filed4,jdbcType=VARCHAR}
+        </if>
+        <if test="filed5 != null">
+            and filed5=#{filed5,jdbcType=VARCHAR}
+        </if>
+        order by start_time desc
+        <if test="pageIndex !=null">
+            limit #{pageIndex},#{rows}
+        </if>
+    </select>
+    
+    <select id="getCount" resultType="int" parameterType="java.util.HashMap">
+        select
+        count(*)
+        from log_online_time
+        where 1=1
+         <if test="id != null">
+            and id=#{id,jdbcType=VARCHAR}
+        </if>
+        <if test="openId != null">
+            and open_id=#{openId,jdbcType=VARCHAR}
+        </if>
+         <if test="startTime != null">
+            and start_time=#{startTime,jdbcType=VARCHAR}
+        </if>
+        <if test="endTime != null">
+            and end_time=#{endTime,jdbcType=VARCHAR}
+        </if>
+         <if test="onlineNo != null">
+            and online_no=#{onlineNo,jdbcType=VARCHAR}
+        </if>
+        <if test="filed1 != null">
+            and filed1=#{filed1,jdbcType=VARCHAR}
+        </if>
+        <if test="filed2 != null">
+            and filed2=#{filed2,jdbcType=VARCHAR}
+        </if>
+        <if test="filed3 != null">
+            and filed3=#{filed3,jdbcType=VARCHAR}
+        </if>
+        <if test="filed4 != null">
+            and filed4=#{filed4,jdbcType=VARCHAR}
+        </if>
+        <if test="filed5 != null">
+            and filed5=#{filed5,jdbcType=VARCHAR}
+        </if>
+    </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from log_online_time
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from log_online_time
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteMoreByPK" parameterType="list" >
+    delete from log_online_time
+    where id in
+     <foreach collection="list" index="index" item="item" open="("
+    separator="," close=")">
+	   #{item}  
+	</foreach>
+  </delete>
+  <insert id="insert" parameterType="com.ian.media.model.LogOnlineTime" >
+    insert into log_online_time (id, open_id, start_time, 
+      end_time, online_no, filed1, 
+      filed2, filed3, filed4, 
+      filed5)
+    values (#{id,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, #{startTime,jdbcType=VARCHAR}, 
+      #{endTime,jdbcType=VARCHAR}, #{onlineNo,jdbcType=VARCHAR}, #{filed1,jdbcType=VARCHAR}, 
+      #{filed2,jdbcType=VARCHAR}, #{filed3,jdbcType=VARCHAR}, #{filed4,jdbcType=VARCHAR}, 
+      #{filed5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ian.media.model.LogOnlineTime" >
+    insert into log_online_time
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="onlineNo != null" >
+        online_no,
+      </if>
+      <if test="filed1 != null" >
+        filed1,
+      </if>
+      <if test="filed2 != null" >
+        filed2,
+      </if>
+      <if test="filed3 != null" >
+        filed3,
+      </if>
+      <if test="filed4 != null" >
+        filed4,
+      </if>
+      <if test="filed5 != null" >
+        filed5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="onlineNo != null" >
+        #{onlineNo,jdbcType=VARCHAR},
+      </if>
+      <if test="filed1 != null" >
+        #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null" >
+        #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null" >
+        #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="filed4 != null" >
+        #{filed4,jdbcType=VARCHAR},
+      </if>
+      <if test="filed5 != null" >
+        #{filed5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ian.media.model.LogOnlineTime" >
+    update log_online_time
+    <set >
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="onlineNo != null" >
+        online_no = #{onlineNo,jdbcType=VARCHAR},
+      </if>
+      <if test="filed1 != null" >
+        filed1 = #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null" >
+        filed2 = #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null" >
+        filed3 = #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="filed4 != null" >
+        filed4 = #{filed4,jdbcType=VARCHAR},
+      </if>
+      <if test="filed5 != null" >
+        filed5 = #{filed5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByElementsSelective" parameterType="com.ian.media.model.LogOnlineTime" >
+    update log_online_time
+    <set >
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="onlineNo != null" >
+        online_no = #{onlineNo,jdbcType=VARCHAR},
+      </if>
+      <if test="filed1 != null" >
+        filed1 = #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null" >
+        filed2 = #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null" >
+        filed3 = #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="filed4 != null" >
+        filed4 = #{filed4,jdbcType=VARCHAR},
+      </if>
+      <if test="filed5 != null" >
+        filed5 = #{filed5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where filed1 = #{filed1,jdbcType=VARCHAR} and open_id= #{openId,jdbcType=VARCHAR} and end_time is null
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ian.media.model.LogOnlineTime" >
+    update log_online_time
+    set open_id = #{openId,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=VARCHAR},
+      end_time = #{endTime,jdbcType=VARCHAR},
+      online_no = #{onlineNo,jdbcType=VARCHAR},
+      filed1 = #{filed1,jdbcType=VARCHAR},
+      filed2 = #{filed2,jdbcType=VARCHAR},
+      filed3 = #{filed3,jdbcType=VARCHAR},
+      filed4 = #{filed4,jdbcType=VARCHAR},
+      filed5 = #{filed5,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

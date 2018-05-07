@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ian.media.dao.LogPushMsgMapper" >
+  <resultMap id="BaseResultMap" type="com.ian.media.model.LogPushMsg" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="equitment_id" property="equitmentId" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="push_time" property="pushTime" jdbcType="VARCHAR" />
+    <result column="filed1" property="filed1" jdbcType="VARCHAR" />
+    <result column="filed2" property="filed2" jdbcType="VARCHAR" />
+    <result column="filed3" property="filed3" jdbcType="VARCHAR" />
+    <result column="filed4" property="filed4" jdbcType="VARCHAR" />
+    <result column="filed5" property="filed5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, equitment_id, title, content, push_time, filed1, filed2, filed3, filed4, filed5
+  </sql>
+  <select id="get" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List"/>
+        from log_push_msg 
+        where 1=1
+        <if test="id != null">
+            and id=#{id,jdbcType=VARCHAR}
+        </if>
+        <if test="equitmentId != null">
+            and equitment_id=#{equitmentId,jdbcType=VARCHAR}
+        </if>
+        <if test="title != null">
+            and title=#{title,jdbcType=VARCHAR}
+        </if>
+        <if test="content != null">
+            and content=#{content,jdbcType=VARCHAR}
+        </if>
+        <if test="pushTime != null">
+            and push_time=#{pushTime,jdbcType=VARCHAR}
+        </if>
+        <if test="filed1 != null">
+            and filed1=#{filed1,jdbcType=VARCHAR}
+        </if>
+        <if test="filed2 != null">
+            and filed2=#{filed2,jdbcType=VARCHAR}
+        </if>
+        <if test="filed3 != null">
+            and filed3=#{filed3,jdbcType=VARCHAR}
+        </if>
+        <if test="filed4 != null">
+            and filed4=#{filed4,jdbcType=VARCHAR}
+        </if>
+        <if test="filed5 != null">
+            and filed5=#{filed5,jdbcType=VARCHAR}
+        </if>
+     
+        order by push_time desc
+        <if test="pageIndex !=null">
+            limit #{pageIndex},#{rows}
+        </if>
+    </select>
+    
+   <select id="getCount" resultType="int" parameterType="java.util.HashMap">
+        select
+        count(*)
+        from log_push_msg
+        where 1=1
+        <if test="id != null">
+            and id=#{id,jdbcType=VARCHAR}
+        </if>
+        <if test="equitmentId != null">
+            and equitment_id=#{equitmentId,jdbcType=VARCHAR}
+        </if>
+        <if test="title != null">
+            and title=#{title,jdbcType=VARCHAR}
+        </if>
+        <if test="content != null">
+            and content=#{content,jdbcType=VARCHAR}
+        </if>
+        <if test="pushTime != null">
+            and push_time=#{pushTime,jdbcType=VARCHAR}
+        </if>
+        <if test="filed1 != null">
+            and filed1=#{filed1,jdbcType=VARCHAR}
+        </if>
+        <if test="filed2 != null">
+            and filed2=#{filed2,jdbcType=VARCHAR}
+        </if>
+        <if test="filed3 != null">
+            and filed3=#{filed3,jdbcType=VARCHAR}
+        </if>
+        <if test="filed4 != null">
+            and filed4=#{filed4,jdbcType=VARCHAR}
+        </if>
+        <if test="filed5 != null">
+            and filed5=#{filed5,jdbcType=VARCHAR}
+        </if>
+    </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from log_push_msg
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from log_push_msg
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ian.media.model.LogPushMsg" >
+    insert into log_push_msg (id, equitment_id, title, 
+      content, push_time, filed1, 
+      filed2, filed3, filed4, 
+      filed5)
+    values (#{id,jdbcType=VARCHAR}, #{equitmentId,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{pushTime,jdbcType=VARCHAR}, #{filed1,jdbcType=VARCHAR}, 
+      #{filed2,jdbcType=VARCHAR}, #{filed3,jdbcType=VARCHAR}, #{filed4,jdbcType=VARCHAR}, 
+      #{filed5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ian.media.model.LogPushMsg" >
+    insert into log_push_msg
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="equitmentId != null" >
+        equitment_id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="pushTime != null" >
+        push_time,
+      </if>
+      <if test="filed1 != null" >
+        filed1,
+      </if>
+      <if test="filed2 != null" >
+        filed2,
+      </if>
+      <if test="filed3 != null" >
+        filed3,
+      </if>
+      <if test="filed4 != null" >
+        filed4,
+      </if>
+      <if test="filed5 != null" >
+        filed5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="equitmentId != null" >
+        #{equitmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="pushTime != null" >
+        #{pushTime,jdbcType=VARCHAR},
+      </if>
+      <if test="filed1 != null" >
+        #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null" >
+        #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null" >
+        #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="filed4 != null" >
+        #{filed4,jdbcType=VARCHAR},
+      </if>
+      <if test="filed5 != null" >
+        #{filed5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ian.media.model.LogPushMsg" >
+    update log_push_msg
+    <set >
+      <if test="equitmentId != null" >
+        equitment_id = #{equitmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="pushTime != null" >
+        push_time = #{pushTime,jdbcType=VARCHAR},
+      </if>
+      <if test="filed1 != null" >
+        filed1 = #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null" >
+        filed2 = #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null" >
+        filed3 = #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="filed4 != null" >
+        filed4 = #{filed4,jdbcType=VARCHAR},
+      </if>
+      <if test="filed5 != null" >
+        filed5 = #{filed5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ian.media.model.LogPushMsg" >
+    update log_push_msg
+    set equitment_id = #{equitmentId,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      push_time = #{pushTime,jdbcType=VARCHAR},
+      filed1 = #{filed1,jdbcType=VARCHAR},
+      filed2 = #{filed2,jdbcType=VARCHAR},
+      filed3 = #{filed3,jdbcType=VARCHAR},
+      filed4 = #{filed4,jdbcType=VARCHAR},
+      filed5 = #{filed5,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no"/>
+<title>搖一搖</title>
+<link rel="stylesheet" href="css/squeuePad.css">
+<link rel="stylesheet" href="common/jm/jquery.mobile-1.4.2.min.css">
+<script type="text/javascript" src="common/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="common/jm/jquery.mobile-1.4.2.min.js"></script>
+<script type="text/javascript" src="common/jquery.pause.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/getIp.js"></script>
+<style type="text/css">
+.con{
+position: absolute;margin-top: 200px;margin-left: 130px;width: 70%;
+}
+.con ul {
+						position: relative;
+						margin: 0px 10px 0px 10px;
+						top: 0;
+						left: 0;
+						padding: 0;
+					}
+					.con ul li {
+						width: 100%;
+						padding: 2px 0;
+						_padding: 8px 0;
+						overflow: hidden;
+					}
+					.con ul li .div_left {
+						float: left;
+						width: 50px;
+						height:50px;
+						border: 1px solid;
+					}
+					.con ul li .div_left img{
+						width:100%;
+						height:100%;
+					}
+					.con ul li .div_right {
+						width: 100%;
+						padding-left:40px;
+					}
+					.con ul li .div_right a {
+						color: #6EAFD5;
+						padding: 0px;
+						//background:url(images/logo.png) no-repeat;
+						//width:115px;
+					}
+					.con ul li .div_right .twit_item_time {
+						color: #999;
+						padding: 0px;
+						background: url(images/t.png) no-repeat 2em;
+					}
+					#slider-fill{display:none;}
+					.cusName span{
+						font-family:"微软雅黑", "Microsoft Yahei", Arial, Helvetica, sans-serif;
+						font-size:18px;
+						font-weight:bold;
+						}
+					
+	
+	/**
+	* 增加排行榜样式style
+	*/    
+		#Marklee{background-color:#000000; opacity:0.5; -moz-opacity:0.5; filter:alpha(opacity=50);}	   
+		body { font-family:Verdana; font-size:14px; margin:0; TEXT-ALIGN: center;}
+		#container {margin:0 auto; width:900px;}
+		#imgs{width:119px;
+			height:119px;
+			margin-left:10px; 
+			margin-right:10px;
+			margin-bottom:-30px;
+		}
+		#img{width:30%;
+			 height:30%;
+			margin-top:115px;
+			margin-right:11px;
+		}
+		td div{margin:auto;}
+		td{align:center; vertical-align:middle;}
+		p{color:#FFFFFF; font-size:1.6em; position:relative;
+		}
+		.Translucent{
+			filter:Alpha(opacity=40); background:#000;/*实现IE背景透明*/
+			-moz-opacity:0.4;/*支持3.5以下低的火狐背景透明*/
+			opacity:0.4;/*支持3.5以上火狐遨游，opera等背景透明*/
+			font-size:18px;
+			margin-left:10px; 
+			margin-right:10px;
+			margin-bottom:-24px;
+			height:26px;
+			width:119px;
+			
+		}
+		.bottom1{
+			float:left;
+			padding-left:5px;
+			background: url(images/yyy_rank.png) no-repeat;
+			font-size:1.5em;
+			position:absolute;
+			margin-left:10px;
+			width:60px;
+			height:60px;
+			text-align:left;
+			color:#fff;
+			font-family:"微软雅黑", "Microsoft Yahei", Arial, Helvetica, sans-serif;
+			text-shadow:#333333 2px 2px 0;
+		}
+		.con ul li:nth-of-type(odd){
+						color:rgb(240, 250, 9);
+					}
+					.con ul li:nth-of-type(even){
+						color:red;
+					}
+
+</style>
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+     var brandId=GetQueryString("brandId");
+     
+     $("#closewindow").click(function(){
+     	window.close(); 
+     });
+		//$("#openY").click(function(){
+		//	$("#con").hide();
+		//	$("#beginY").hide();
+		//	$("#imgclick").show();
+		//});
+		$("#mainContent").hide();
+		 $("#times").hide();
+		getNumber();
+		getTime();
+		
+		$("#imgclick img").click(function(){
+			$('#img').css("width",350);
+		$('#img').css("height",350);
+		$('#img').css("margin-top",150);
+		$('#img').attr("src","images/5.png");
+				
+			$('#img').animate({
+                    width:"0",
+                    height:"0"
+                },1000,function(){
+					$('#img').animate({
+						width:"20%",
+						height:"20%"
+					},1000); 
+					$('#img').attr("src","images/4.png");
+						$('#img').animate({
+							width:"0",
+							height:"0"
+						},1000,function(){
+							$('#img').attr("src","images/3.png");
+							$('#img').animate({
+								width:"20%",
+								height:"20%"
+							},1000,function(){
+								$('#img').animate({
+									width:"0",
+									height:"0"
+								},1000,function(){
+									$('#img').attr("src","images/2.png");
+									$('#img').animate({
+										width:"20%",
+										height:"20%"
+									},1000,function(){
+										$('#img').animate({
+											width:"0",
+											height:"0"
+										},1000,function(){
+											$('#img').attr("src","images/1.png");
+											$('#img').animate({
+												width:"20%",
+												height:"20%"
+											},1000,function(){
+												
+												resetShake();	
+												updateState(1);
+												listCustomer();
+												
+												$("#imgclick").hide();
+												$("#beginY").show()
+											})
+										})
+									})
+							})
+							
+						})
+						
+					}); 
+					
+
+				}); 
+		});
+	//获取倒计时时间
+	var gameTime;
+	function getTime (){
+		$.ajax(getIP()+"gameShake.action?list&brandId="+brandId+"&timestamp="+new Date().valueOf()).done(function(data){		   
+			 gameTime=data.rows[0].gameTime;
+			 var path = "data/game/";
+			 var background_image = path + data.rows[0].backgroundImage;
+			 // $("#times").show();
+			 $("#times").html(gameTime);
+			 //alert(gameTime);
+		}).fail(function(){ 
+			
+		});	
+	}
+	//时间减少	  
+	function timeReduce(){
+	var timeReduces=setInterval(function(){
+			 gameTime=gameTime-1;
+			 $("#times").show();
+			 $("#times").html(gameTime);
+				 if(gameTime==0){
+				 getTopTen();
+				 $("#times").hide();
+				 $("#shake1").html("再摇一次");
+				 clearInterval(timeReduces);
+				    $("#con").hide();
+					$("#beginY").hide();
+					//$("#imgclick").show();
+					$("#mainContent").show();			
+				}
+		},1000);
+	}
+	//再摇一次
+		$("#shake1").click( 
+			function (){   
+			
+		/*	$.ajax(getIP()+"customer.action?updateGame&brandId="+brandId+"&timestamp="+new Date().valueOf()).done(function(data){
+																															 																											
+		  	}).fail(function(){
+		  		//alert("摇一摇数量重置失败");
+			});	*/
+				location.replace(location.href);
+			}
+		);
+			
+	//重置customer摇一摇次数
+	function resetShake(){
+		$.ajax(getIP()+"wxUsers.action?updateGame&publicNo="+brandId).done(function(data){
+																								 																											
+		}).fail(function(){
+			//alert("摇一摇数量重置失败");
+		});
+	}		
+	//开启/关闭状态
+	function updateState(num){
+		
+		$.ajax(getIP()+"gameShake.action?updState&brandId="+brandId+"&state="+num).done(function(data){
+																							 																											
+		}).fail(function(){
+			//alert("更新状态失败");
+		});
+	}
+	//获取前十名
+	function getTopTen(){
+		clearInterval(stopInterval);//停止读取摇一摇次数
+		updateState(0);//关闭摇一摇。更改状态0
+		$.ajax(getIP()+"wxUsers.action?getTopTens&brandId="+brandId+"&timestamp="+new Date().valueOf()).done(function(data){		   
+			//循环赋值排行榜
+			
+			for(i=0;i<10;i++){
+			var number;
+			//var customerName=data.rows[i].customerName;
+			var customerName=data.rows[i].nickName;
+			var customerImg=data.rows[i].headImgurl;
+			
+			/*if(customerName==null||customerName==""){//判断名字为空就显示网名
+					customerName=data.rows[i].nickName;
+			}*/
+				
+				 $.ajax( {
+				url :getIP()+"gameshakeprize.action?addPrize",
+	
+				type : 'POST',
+	
+				data : {
+					"customerId":data.rows[i].openId,
+					"brandId":brandId,
+					"customerName":customerName,
+					"batch":batch,
+					"number":data.rows[i].filed2,
+					"timestamp":new Date().valueOf()
+				},
+				dataType : 'html',
+	
+				timeout : 1000,
+	
+				error : function() {
+					
+				},
+				});
+			
+			
+			
+				if(customerImg == "" ||customerImg == null){//头像为空就显示默认头像
+							customerImg="images/default.jpg";
+				}
+				/*if(customerName.length>2){
+							customerName=customerName.substr(0,1)+"**";
+						}
+						if(customerName.length<2){
+							customerName=customerName.substr(0,1)+"*";
+						}*/
+				if(customerName.length>5){
+					customerName=customerName.substr(0,5);
+				}
+				$("#No"+i).find("p").html(customerName);
+				$("#No"+i).find("img").attr("src",customerImg);
+				
+				
+			}
+			resetShake();	//清空摇一摇数据
+		}).fail(function(){ 	
+		});	
+	}
+		
+		
+		
+		//获取批次
+		var batch;
+		function getNumber(){
+			$.ajax(getIP()+"gameshakeprize.action?getPrizeNumber&brandId="+brandId+"&timestamp="+new Date().valueOf()).done(function(data){
+					batch=data.rows;
+			}).fail(function(){ 	
+			});	
+		}
+		//获取客户数据
+		var stopInterval;//计时器
+		function listCustomer(){
+		
+			timeReduce()
+			
+			stopInterval=setInterval(function(){
+				$.ajax(getIP()+"wxUsers.action?getGameCustomer&brandId="+brandId).done(function(data){
+					var html="";
+					$.each(data,function(i,val){
+						var customerImg=val.headImgurl;
+						//var customerName=val.customerName;
+						var customerName=val.nickName;
+						if(customerImg == "" || customerImg == null){
+							customerImg="images/default.jpg";
+						}
+						/*if(customerName==null||customerName==""){//判断名字为空就显示网名
+							customerName=val.nickName;
+						}*/
+						/*if(customerName.length>2){
+							customerName=customerName.substr(0,1)+"**";
+						}
+						if(customerName.length<2){
+							customerName=customerName.substr(0,1)+"*";
+						}*/
+						if(customerName != "" && customerName.length>5){
+							customerName=customerName.substr(0,5)
+						}
+						//alert(val.customerName);
+						$("#beginY ul li:eq("+i+") .cusName span").html(customerName);
+						$("#beginY ul li:eq("+i+") .div_left img").attr("src",customerImg);
+						$("#beginY ul li:eq("+i+") .twit_item_time input").val(data[i].filed2).slider("refresh");  	
+					});
+				}).fail(function(){ 
+					
+				});	
+			},1000);
+		}
+		
+		
+    });
+</script>
+</head>
+<body style="overflow-y:hidden">
+<!--登陆-->
+<div data-role="page" data-theme="c" id="login"  style="overflow-y:hidden">
+	<div id="closewindow" style="float: right;color:#ffffff;cursor:pointer;width:50px;height:50px"></div>
+  <div data-role="content" class="pd0">
+   <!--微信墙-->
+   <div id="openY" class="ui-grid-a" style="margin-top: 5%;float: right;margin-right:170px;color:#ffffff;cursor:pointer"><div id="times">摇一摇</div><div id="shake1"></div></div>
+  <!-- <div id="openY" class="ui-grid-a" style="margin-top: 5%;float: right;margin-right:170px;color:#ffffff;cursor:pointer"><a>再来一局</a></div>-->  
+  <!--摇一摇倒计时-->
+	<div id="imgclick" style="background: url(images/y.png) no-repeat center 12px;overflow-y:hidden;background-size: 50%;min-height: 100%;top: 105px;position: absolute;width: 100%;text-align:center;">
+		<!--<img id="img" src="images/5.png" style="margin-top:150px;margin-right:20px" />-->
+		<img id="img" src="images/yyy.png"  />
+	</div>
+	 <!--排行榜-->
+	  <div id="mainContent" style="margin-top:160px;overflow-y:hidden">   
+	  		<table align="center">
+				<tr>
+				<td colspan="4">
+				<table align="center">
+							<tr>
+								<td id="No0" >
+								<div class="bottom1">1</div>
+								<div><img id="imgs" src="images/17.jpg"/><div class="Translucent"></div></div><p></p></td>
+								</tr>
+						</table>
+				</tr>
+				<tr>
+					<td></td>
+					<td id="No1">
+						<div class="bottom1">2</div>
+						<div>
+							<img id="imgs" src="images/17.jpg"/>
+							<div class="Translucent"></div>
+						</div>
+						<p></p>
+						</td>
+					<td id="No2">
+						<div class="bottom1">3</div>
+						<div>
+							<img id="imgs" src="images/17.jpg"/>
+							<div class="Translucent"></div>
+						</div>
+						<p></p>
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td colspan="4">
+						<table align="center">
+							<tr>
+								<td id="No3">
+								<div class="bottom1">4</div>
+								<div><img id="imgs" src="images/17.jpg"/><div class="Translucent"></div></div><p></p></td>
+								<td id="No4">
+								<div class="bottom1">5</div>
+								<div><img id="imgs" src="images/17.jpg"/><div class="Translucent"></div></div><p></p></td>
+								<td id="No5">
+								<div class="bottom1">6</div>
+								<div><img id="imgs" src="images/17.jpg"/><div class="Translucent"></div></div><p></p></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td id="No6">
+					<div class="bottom1">7</div>
+					<div><img id="imgs" src="images/17.jpg"/><div class="Translucent"></div></div><p></p></td>
+					<td id="No7">
+					<div class="bottom1">8</div>
+					<div><img id="imgs" src="images/17.jpg"/><div class="Translucent"></div></div><p></p></td>
+					<td id="No8">
+					<div class="bottom1">9</div>
+					<div><img id="imgs" src="images/17.jpg"/><div class="Translucent"></div></div><p></p></td>
+					<td id="No9">
+					<div class="bottom1">10</div>
+					<div><img id="imgs" src="images/17.jpg"/><div class="Translucent"></div></div><p></p></td>
+				</tr>
+				
+			</table> 
+			
+	  </div>
+		
+
+	
+	<!--摇一摇开始display:none;-->
+	<div class="con" id="beginY" style="margin-top:150px;display:none;">
+        <div class="bottomcover" style="z-index: 2;"></div>
+        <ul>
+           <li>
+                <div class="div_left">
+                        <img src="" >
+                </div>
+                <div  class="div_right">
+                    <div class="cusName"><span></span></div>
+					<div class="twit_item_time"> 
+					  <input type="range" name="slider-fill" id="slider-fill" min="0"  max="160" data-highlight="true" />
+					</div>
+				</div>
+            </li>  <li>
+                <div class="div_left">
+                        <img src="" >
+                </div>
+                <div  class="div_right">
+                     <div class="cusName"><span></span></div>
+					<div class="twit_item_time"> 
+					  <input type="range" name="slider-fill" id="slider-fill" min="0"   max="160" data-highlight="true" />
+					</div>
+				</div>
+            </li> <li>
+                <div class="div_left">
+                        <img src="" >
+                </div>
+                <div  class="div_right">
+                      <div class="cusName"><span></span></div>
+					<div class="twit_item_time"> 
+					  <input type="range" name="slider-fill" id="slider-fill" min="0"   max="160" data-highlight="true" />
+					</div>
+				</div>
+            </li> <li>
+                <div class="div_left">
+                        <img src="" >
+                </div>
+                <div  class="div_right">
+                      <div class="cusName"><span></span></div>
+					<div class="twit_item_time"> 
+					  <input type="range" name="slider-fill" id="slider-fill" min="0"   max="160" data-highlight="true" />
+					</div>
+				</div>
+            </li> <li>
+                <div class="div_left">
+                        <img src="" >
+                </div>
+                <div  class="div_right">
+                      <div class="cusName"><span></span></div>
+					<div class="twit_item_time"> 
+					  <input type="range" name="slider-fill" id="slider-fill" min="0"   max="160" data-highlight="true" />
+					</div>
+				</div>
+            </li> <li>
+                <div class="div_left">
+                        <img src="">
+                </div>
+                <div  class="div_right">
+                      <div class="cusName"><span></span></div>
+					<div class="twit_item_time"> 
+					  <input type="range" name="slider-fill" id="slider-fill" min="0"   max="160" data-highlight="true" />
+					</div>
+				</div>
+            </li> <li>
+                <div class="div_left">
+                        <img src="">
+                </div>
+                <div  class="div_right">
+                      <div class="cusName"><span></span></div>
+					<div class="twit_item_time"> 
+					  <input type="range" name="slider-fill" id="slider-fill" min="0"   max="160" data-highlight="true" />
+					</div>
+				</div>
+            </li> <li>
+                <div class="div_left">
+                        <img src="">
+                </div>
+                <div  class="div_right">
+                      <div class="cusName"><span></span></div>
+					<div class="twit_item_time"> 
+					  <input type="range" name="slider-fill" id="slider-fill" min="0"   max="160" data-highlight="true" />
+					</div>
+				</div>
+            </li> <li>
+                <div class="div_left">
+                        <img src="">
+                </div>
+                <div  class="div_right">
+                      <div class="cusName"><span></span></div>
+					<div class="twit_item_time"> 
+					  <input type="range" name="slider-fill" id="slider-fill" min="0"   max="160" data-highlight="true" />
+					</div>
+				</div>
+            </li> <li>
+                <div class="div_left">
+                        <img src="">
+                </div>
+                <div  class="div_right">
+                      <div class="cusName"><span></span></div>
+					<div class="twit_item_time"> 
+					  <input type="range" name="slider-fill" id="slider-fill" min="0"   max="160" data-highlight="true" />
+					</div>
+				</div>
+            </li>
+        </ul>
+    </div>
+
+ </div>
+</div>
+<!--  <script type="text/javascript" charset="utf-8" src="index.js"></script>-->
+</html>

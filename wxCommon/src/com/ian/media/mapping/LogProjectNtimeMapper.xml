@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ian.media.dao.LogProjectNtimeMapper" >
+  <resultMap id="BaseResultMap" type="com.ian.media.model.LogProjectNtime" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, pid, create_time, time
+  </sql>
+  
+  <select id="get" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+        select
+        log.*,p.name as pname
+        from log_project_ntime log,project p
+        where log.pid=p.id
+        <if test="id != null">
+            and log.id=#{id,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null">
+            and log.name=#{name,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null">
+            and log.create_time=#{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="time != null">
+            and log.time=#{time,jdbcType=VARCHAR}
+        </if>
+		<if test="pid != null">
+            and log.pid=#{pid,jdbcType=VARCHAR}
+        </if>
+     
+        order by log.create_time asc
+        <if test="index !=null">
+            limit #{index},#{rows}
+        </if>
+
+    </select>
+    
+    
+     <select id="getCount" resultType="int" parameterType="java.util.HashMap">
+        select
+        count(*)
+        from log_project_ntime
+        where 1=1
+        <if test="id != null">
+            and id=#{id,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null">
+            and name=#{name,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null">
+            and create_time=#{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="time != null">
+            and time=#{time,jdbcType=VARCHAR}
+        </if>
+		<if test="pid != null">
+            and pid=#{pid,jdbcType=VARCHAR}
+        </if>
+     
+    </select>
+  
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from log_project_ntime
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from log_project_ntime
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ian.media.model.LogProjectNtime" >
+    insert into log_project_ntime (id, name, pid, 
+      create_time, time)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ian.media.model.LogProjectNtime" >
+    insert into log_project_ntime
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ian.media.model.LogProjectNtime" >
+    update log_project_ntime
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ian.media.model.LogProjectNtime" >
+    update log_project_ntime
+    set name = #{name,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      time = #{time,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <delete id="deleteMoreByPK" parameterType="list" >
+    delete from log_project_ntime
+    where id in
+     <foreach collection="list" index="index" item="item" open="("
+    separator="," close=")">
+	   #{item}  
+	</foreach>
+  </delete>
+</mapper>

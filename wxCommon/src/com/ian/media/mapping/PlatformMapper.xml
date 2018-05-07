@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ian.media.dao.PlatformMapper" >
+  <resultMap id="BaseResultMap" type="com.ian.media.model.Platform" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="platformuser" property="platformuser" jdbcType="VARCHAR" />
+    <result column="platformtime" property="platformtime" jdbcType="VARCHAR" />
+    <result column="platformstate" property="platformstate" jdbcType="VARCHAR" />
+    <result column="platform" property="platform" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, platformuser, platformtime, platformstate, platform
+  </sql>
+   
+  <select id="get" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List"/>
+        from  platform
+        where 1=1 
+        <if test="id != null">
+            and id=#{id,jdbcType=VARCHAR}
+        </if>
+        <if test="platformuser != null">
+            and platformuser=#{platformuser,jdbcType=VARCHAR}
+        </if>
+        <if test="platformtime != null">
+            and platformtime=#{platformtime,jdbcType=VARCHAR}
+        </if>
+         <if test="platform != null">
+            and platform=#{platform,jdbcType=VARCHAR}
+        </if>
+       
+        </select>
+        
+        
+        
+         <select id="getCount" resultType="int" parameterType="java.util.HashMap">
+        select
+        count(*)
+        from platform
+        where 1=1
+        	 <if test="id != null">
+            and id=#{id,jdbcType=VARCHAR}
+	        </if>
+	        <if test="platformuser != null">
+	            and platformuser=#{platformuser,jdbcType=VARCHAR}
+	        </if>
+	        <if test="platformtime != null">
+	            and platformtime=#{platformtime,jdbcType=VARCHAR}
+	        </if>
+	         <if test="platform != null">
+            and platform=#{platform,jdbcType=VARCHAR}
+        </if>
+        </select>
+        
+        
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from platform
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+    
+  <delete id="deleteMoreByPK" parameterType="list" >
+    delete from platform
+    where id in
+     <foreach collection="list" index="index" item="item" open="("
+    separator="," close=")">
+	   #{item}  
+	</foreach>
+  </delete>
+ <!--  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from platform
+    where id = #{id,jdbcType=VARCHAR}
+  </delete> -->
+  <insert id="insert" parameterType="com.ian.media.model.Platform" >
+    insert into platform (id, platformuser, platformtime, 
+      platformstate, platform)
+    values (#{id,jdbcType=VARCHAR}, #{platformuser,jdbcType=VARCHAR},now()
+      #{platformstate,jdbcType=VARCHAR}, #{platform,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ian.media.model.Platform" >
+    insert into platform
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="platformuser != null" >
+        platformuser,
+      </if>
+     
+        platformtime,
+      
+      <if test="platformstate != null" >
+        platformstate,
+      </if>
+      <if test="platform != null" >
+        platform,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="platformuser != null" >
+        #{platformuser,jdbcType=VARCHAR},
+      </if>
+    	 NOW(),
+      <if test="platformstate != null" >
+        #{platformstate,jdbcType=VARCHAR},
+      </if>
+      <if test="platform != null" >
+        #{platform,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ian.media.model.Platform" >
+    update platform
+    <set >
+      <if test="platformuser != null" >
+        platformuser = #{platformuser,jdbcType=VARCHAR},
+      </if>
+      <if test="platformtime != null" >
+        platformtime = #{platformtime,jdbcType=VARCHAR},
+      </if>
+      <if test="platformstate != null" >
+        platformstate = #{platformstate,jdbcType=VARCHAR},
+      </if>
+      <if test="platform != null" >
+        platform = #{platform,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ian.media.model.Platform" >
+    update platform
+    set platformuser = #{platformuser,jdbcType=VARCHAR},
+      platformtime = #{platformtime,jdbcType=VARCHAR},
+      platformstate = #{platformstate,jdbcType=VARCHAR},
+      platform = #{platform,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+</mapper>

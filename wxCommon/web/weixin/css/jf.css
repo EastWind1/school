@@ -1,0 +1,311 @@
+﻿/*
+ *		清零
+ */
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input{margin:0;padding:0;}
+body{font-size:62.5%;}
+img{border:none;}
+li{list-style:none;}
+input,select,textarea{outline:none;}
+textarea{resize:none;}
+a{text-decoration:none; outline:none;}
+
+
+/*
+ *		通用
+ */
+.mr0{margin: 0;}
+
+
+
+/*
+ *		head部分
+ */
+.jf_head p{
+	margin: 8px 0;
+	text-align: center;
+	font-size: 1.6rem;
+	font-size: 16px;
+	color: #272636;
+}
+
+.jf_head .jf_head_meetName{
+	margin: 4px 25px;
+	font-size: 1.8rem;
+	font-size: 18px;
+	font-weight: bold;
+	color: #458DE6;
+}
+
+.jf_head_identityContainer{
+	margin: 15px auto;
+	overflow: hidden;
+}
+.jf_head_identityContainer li{
+	width: 28.33%;
+	margin: 0 2.5%;
+	padding: 10px;
+	text-align: center;
+	border: 1px solid #458DE6;
+	border-radius: 3px;
+	font-size: 1.4rem;
+	font-size: 14px;
+	color: #458DE6;
+	display: block;
+	float: left;
+}
+.jf_head_identityContainer li.active{
+	background-color: #458DE6;
+    border-radius: 3px;
+    color: #fff;
+}
+.jf_head_doctor img{ width: 100%;}
+.jf_head_doctor span{
+	letter-spacing: 1px;
+	display: block;
+}
+.jf_price{font-weight: bold;}
+
+.jf_head_promptCards{
+	margin: 15px 0;
+	display: none;
+}
+.jf_head_promptCards p{color: #FC5858;}
+
+
+.jf_head_infoConfirm{margin: 5px 10px;}
+.jf_head_infoConfirm p{
+	margin: 0;
+	text-align: left;
+}
+.jf_head_infoConfirm .jf_head_infoTips{
+	font-size: 1.4rem;
+	font-size: 14px;
+	color: #FC5858;
+}
+
+
+
+/*
+ *		个人信息部分 
+ */
+.jf_info{
+	padding: 10px 0;
+	border: none;
+	border-color: transparent;
+	background-color: #fff;
+}
+.jf_info .table-view-cell{
+	padding: 11px 40px 11px 15px;  /*消除框架样式的影响*/
+}
+.jf_info_basics{
+	padding: 11px 0 11px 15px !important;
+	background-image: none !important;
+	border: none
+}
+.jf_info_basics .navigate-right:after, .push-right:after {
+    right: 15px;
+    content: '' !important;
+}
+.jf_info_basics .zc_infoIcon_name{
+	background: url(../images/jf/name.png) left 4px no-repeat;
+	background-size: contain;
+}
+.jf_info_basics .zc_infoIcon_hospital{
+	background: url(../images/jf/hospital.png) left 4px no-repeat;
+	background-size: contain;
+}
+.jf_info_basics .zc_infoIcon_phone{
+	background: url(../images/jf/phone.png) left 4px no-repeat;
+	background-size: contain;
+}
+.jf_info_basics .media-body{
+	padding: 6px 0;
+	border-bottom: 1px solid #ccc;
+	font-size: 1.6rem;
+	font-size: 16px;
+}
+
+.jf_info_name{
+	font-size: 1.6rem;
+	font-size: 16px;
+}
+.jf_info_classification{
+	font-size: 1.3rem;
+	font-size: 13px;
+}
+.jf_info_address .media-body{
+	font-size: 1.6rem;
+	font-size: 16px;
+}
+.jf_info_address .navigate-right:after, .push-right:after {
+    right: 15px;
+    content: '';
+}
+.jf_info_selAddress select
+/*,.jf_info_selAddress input*/
+{
+	/*margin-top: 10px;
+	margin-bottom: 0;*/
+	margin-top: 10px;
+    width: 50%;
+    margin-bottom: 5px;
+    /* margin-right: 4%; */
+    float: left;
+    background-color: #FAFAFA;
+    border: 1px solid #ccc;
+}
+.jf_info_selAddress select:first-child{
+	width: 48%;
+	margin-right: 2%;
+}
+
+.jf_info_selAddress + input{
+	background-color: #FAFAFA;
+}
+
+.zc_infoIcon{
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+}
+.zc_infoIcon_address{
+	background: url(../images/jf/dizhi.png) left top no-repeat;
+	background-size: contain;	
+}
+
+
+/*
+ * 		发票部分 
+ */
+.jf_invoice{
+	margin: 15px 0;
+	padding-top: 10px;
+	border: none;
+	border-color: transparent;
+	background-color: #fff;
+}
+.jf_invoice .input-row{border: none;}
+.jf_invoice_head{
+	padding: 5px 15px;
+	padding-left: 45px;	
+	font-size: 1.4rem;
+	font-size: 14px;
+	font-weight: bold;
+	background: url(../images/jf/fapiao.png) 10px center no-repeat;
+	background-size: contain;
+}
+.jf_invoice_head span{
+	float: right;
+	font-size: 1.3rem;
+	font-size: 13px;
+	font-weight: normal;
+}
+
+.jf_invoice .input-group{
+	padding: 10px 15px 15px;
+	background-image: none;
+}
+.jf_invoice .input-row label{
+	width: 30%;
+	text-align: center;
+	font-size: 1.4rem;
+	font-size: 14px;
+}
+.jf_invoice .input-row input{
+	width: 70%;
+	background-color: #FAFAFA;
+	border-radius: 3px;
+}
+
+/*
+ *		选择酒店 
+ */
+.jf_hotel{
+	margin: 15px 0;
+	padding-top: 10px;
+	border: none;
+	border-color: transparent;
+	background-color: #fff;
+}
+.jf_hotel .input-row{border: none;}
+.jf_hotel_head{
+	padding: 5px 15px;
+	padding-left: 45px;	
+	font-size: 1.4rem;
+	font-size: 14px;
+	font-weight: bold;
+	background: url(../images/jf/hotel.png) 10px center no-repeat;
+	background-size: contain;
+}
+.jf_hotel_head span{
+	float: right;
+	font-size: 1.3rem;
+	font-size: 13px;
+	font-weight: normal;
+	color: #FF5959;
+}
+
+.jf_hotel .input-group{
+	padding: 10px 15px 15px;
+	background-image: none;
+}
+.jf_hotel .input-row label{
+	width: 30%;
+	text-align: center;
+	font-size: 1.4rem;
+	font-size: 14px;
+}
+.jf_hotel .input-row input{
+	width: 70%;
+	background-color: #FAFAFA;
+	border-radius: 3px;
+}
+
+
+.jf_hotel .cell{padding: 0 20px;}
+.jf_hotel .weui_cell:before,
+.jf_hotel .weui_cells:before{border: none;}
+.jf_hotel .weui_cells{margin-top: 10px;}
+.jf_hotel .weui_cells_checkbox .weui_check:checked+.weui_icon_checked:before{
+    content: '\EA06';
+    color: #458DE6 !important;
+}
+
+
+/* 
+ *		微信支付部分
+ */
+.weChatPay{
+	margin: 15px 0;
+	padding-top: 10px;
+	text-align: center;
+	border: none;
+	border-color: transparent;
+	background-color: #fff;
+}
+.weChatPay img{
+	width: 50%;
+    margin: 10px 0 15px;
+}
+.weChatPay_head{
+	padding: 5px 15px;
+	padding-left: 45px;
+	text-align: left;	
+	font-size: 1.4rem;
+	font-size: 14px;
+	font-weight: bold;
+	background: url(../images/jf/pay.png) 10px center no-repeat;
+	background-size: contain;
+}
+
+
+/* 
+ *		缴费按钮 
+ */
+.jf_btn{
+	margin: 10px 30px;
+	border: none;
+}
+.jf_btn .btn-block{
+	height: auto;
+}

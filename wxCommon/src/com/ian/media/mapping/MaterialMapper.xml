@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ian.media.dao.MaterialMapper">
+    <resultMap id="BaseResultMap" type="com.ian.media.model.Material">
+        <id column="pkid" property="pkid" jdbcType="VARCHAR"/>
+        <result column="brand_id" property="brandId" jdbcType="VARCHAR"/>
+        <result column="author" property="author" jdbcType="VARCHAR"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="image_url" property="imageUrl" jdbcType="VARCHAR"/>
+        <result column="content_source_url" property="contentSourceUrl" jdbcType="VARCHAR"/>
+        <result column="digest" property="digest" jdbcType="VARCHAR"/>
+        <result column="show_cover_pic" property="showCoverPic" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="VARCHAR"/>
+        <result column="field1" property="field1" jdbcType="VARCHAR"/>
+        <result column="field2" property="field2" jdbcType="VARCHAR"/>
+        <result column="field3" property="field3" jdbcType="VARCHAR"/>
+        <result column="field4" property="field4" jdbcType="VARCHAR"/>
+        <result column="field5" property="field5" jdbcType="VARCHAR"/>
+        <result column="field6" property="field6" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <resultMap id="ResultMapWithBLOBs" type="com.ian.media.model.Material" extends="BaseResultMap">
+        <result column="contents" property="contents" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+
+    <resultMap id="AllResult" type="com.ian.media.model.Material" extends="ResultMapWithBLOBs">
+        <collection property="materialSub" javaType="java.util.List" ofType="com.ian.media.model.MaterialSub">
+            <id column="pkid1" property="pkid" jdbcType="VARCHAR"/>
+            <result column="brand_id1" property="brandId" jdbcType="VARCHAR"/>
+            <result column="author1" property="author" jdbcType="VARCHAR"/>
+            <result column="title1" property="title" jdbcType="VARCHAR"/>
+            <result column="image_url1" property="imageUrl" jdbcType="VARCHAR"/>
+            <result column="content_source_url1" property="contentSourceUrl" jdbcType="VARCHAR"/>
+            <result column="digest1" property="digest" jdbcType="VARCHAR"/>
+            <result column="show_cover_pic1" property="showCoverPic" jdbcType="VARCHAR"/>
+            <result column="create_time1" property="createTime" jdbcType="VARCHAR"/>
+            <result column="field11" property="field1" jdbcType="VARCHAR"/>
+            <result column="field21" property="field2" jdbcType="VARCHAR"/>
+            <result column="field31" property="field3" jdbcType="VARCHAR"/>
+            <result column="field41" property="field4" jdbcType="VARCHAR"/>
+            <result column="field51" property="field5" jdbcType="VARCHAR"/>
+            <result column="field61" property="field6" jdbcType="VARCHAR"/>
+            <result column="contents1" property="contents" jdbcType="LONGVARCHAR"/>
+        </collection>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+    pkid, brand_id, author, title, image_url, content_source_url, digest, show_cover_pic, 
+    create_time, field1, field2, field3, field4, field5, field6
+    </sql>
+    <sql id="Blob_Column_List">
+    contents
+    </sql>
+
+
+    <select id="get" resultMap="ResultMapWithBLOBs" parameterType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from material
+        where 1=1
+        <if test="pkid != null">
+            and pkid = #{pkid,jdbcType=VARCHAR}
+        </if>
+        <if test="brandId != null">
+            and brand_id = #{brandId,jdbcType=VARCHAR}
+        </if>
+        <if test="author != null">
+            and author = #{author,jdbcType=VARCHAR}
+        </if>
+        <if test="title != null">
+            and title = #{title,jdbcType=VARCHAR}
+        </if>
+        <if test="imageUrl != null">
+            and image_url = #{imageUrl,jdbcType=VARCHAR}
+        </if>
+        <if test="contentSourceUrl != null">
+            and content_source_url = #{contentSourceUrl,jdbcType=VARCHAR}
+        </if>
+        <if test="digest != null">
+            and digest = #{digest,jdbcType=VARCHAR
+        </if>
+        <if test="showCoverPic != null">
+            and show_cover_pic = #{showCoverPic,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="field1 != null">
+            and field1 = #{field1,jdbcType=VARCHAR}
+        </if>
+        <if test="field2 != null">
+            and field2 = #{field2,jdbcType=VARCHAR}
+        </if>
+        <if test="field3 != null">
+            and field3 = #{field3,jdbcType=VARCHAR}
+        </if>
+        <if test="field4 != null">
+            and field4 = #{field4,jdbcType=VARCHAR}
+        </if>
+        <if test="field5 != null">
+            and field5 = #{field5,jdbcType=VARCHAR}
+        </if>
+        <if test="field6 != null">
+            and field6 = #{field6,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+
+    <select id="getAllMaterial" resultMap="AllResult" parameterType="java.util.HashMap">
+        select m1.*,m2.pkid as pkid1, m2.brand_id as brand_id1, m2.author as author1, m2.title as title1, m2.image_url as image_url1,m2.contents as contents1, m2.content_source_url as content_source_url1, m2.digest as digest1, m2.show_cover_pic as show_cover_pic1,
+    m2.create_time as create_time1, m2.field1 as field11, m2.field2 as field21, m2.field3 as field31, m2.field4 as field41, m2.field5 as field51, m2.field6 as field61
+        from material m1 LEFT JOIN material m2
+        on m1.pkid = m2.parent_id
+        where 1=1 and m1.parent_id = '' and m1.brand_id=#{brandId}
+         <if test="parentId!= null">
+             and m1.pkid=#{parentId}
+         </if>
+         <if test="pkid!= null">
+             and m1.pkid=#{pkid}
+         </if>
+         order by m1.create_time DESC,m2.field1 ASC
+    </select>
+
+	<select id="getAllMaterialBypr" resultMap="AllResult" parameterType="java.util.HashMap">
+        select m1.*,m2.pkid as pkid1, m2.brand_id as brand_id1, m2.author as author1, m2.title as title1, m2.image_url as image_url1,m2.contents as contents1, m2.content_source_url as content_source_url1, m2.digest as digest1, m2.show_cover_pic as show_cover_pic1,
+    m2.create_time as create_time1, m2.field1 as field11, m2.field2 as field21, m2.field3 as field31, m2.field4 as field41, m2.field5 as field51, m2.field6 as field61
+        from material m1 LEFT JOIN material m2
+        on m1.pkid = m2.parent_id
+        where 1=1  
+        and m1.brand_id=#{brandId}
+         <if test="parentId!= null">
+             and m1.parent_id=#{parentId}
+         </if>
+          <if test="pkid!= null">
+             and m1.pkid=#{pkid}
+         </if>
+         order by m1.create_time DESC,m2.field1 ASC
+    </select>
+
+    <select id="getCount" resultType="int" parameterType="java.util.HashMap">
+        select
+        count(*)
+        from material
+        where 1=1
+        <if test="pkid != null">
+            and pkid = #{pkid,jdbcType=VARCHAR}
+        </if>
+        <if test="brandId != null">
+            and brand_id = #{brandId,jdbcType=VARCHAR}
+        </if>
+        <if test="author != null">
+            and author = #{author,jdbcType=VARCHAR}
+        </if>
+        <if test="title != null">
+            and title = #{title,jdbcType=VARCHAR}
+        </if>
+        <if test="imageUrl != null">
+            and image_url = #{imageUrl,jdbcType=VARCHAR}
+        </if>
+        <if test="contentSourceUrl != null">
+            and content_source_url = #{contentSourceUrl,jdbcType=VARCHAR}
+        </if>
+        <if test="digest != null">
+            and digest = #{digest,jdbcType=VARCHAR
+        </if>
+        <if test="showCoverPic != null">
+            and show_cover_pic = #{showCoverPic,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="field1 != null">
+            and field1 = #{field1,jdbcType=VARCHAR}
+        </if>
+        <if test="field2 != null">
+            and field2 = #{field2,jdbcType=VARCHAR}
+        </if>
+        <if test="field3 != null">
+            and field3 = #{field3,jdbcType=VARCHAR}
+        </if>
+        <if test="field4 != null">
+            and field4 = #{field4,jdbcType=VARCHAR}
+        </if>
+        <if test="field5 != null">
+            and field5 = #{field5,jdbcType=VARCHAR}
+        </if>
+        <if test="field6 != null">
+            and field6 = #{field6,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from material
+    where pkid = #{pkid,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.ian.media.model.Material">
+        INSERT INTO material (pkid, brand_id, author,
+                              title, image_url, content_source_url,
+                              digest, show_cover_pic, create_time,
+                              parent_id, field1, field2,
+                              field3, field4, field5,
+                              field6, contents)
+        VALUES (#{pkid,jdbcType=VARCHAR}, #{brandId,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR},
+                #{title,jdbcType=VARCHAR}, #{imageUrl,jdbcType=VARCHAR}, #{contentSourceUrl,jdbcType=VARCHAR},
+                #{digest,jdbcType=VARCHAR}, #{showCoverPic,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR},
+                #{parentId,jdbcType=VARCHAR}, #{field1,jdbcType=VARCHAR}, #{field2,jdbcType=VARCHAR},
+                #{field3,jdbcType=VARCHAR}, #{field4,jdbcType=VARCHAR}, #{field5,jdbcType=VARCHAR},
+                #{field6,jdbcType=VARCHAR}, #{contents,jdbcType=LONGVARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.ian.media.model.Material">
+        insert into material
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pkid != null">
+                pkid,
+            </if>
+            <if test="brandId != null">
+                brand_id,
+            </if>
+            <if test="author != null">
+                author,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="imageUrl != null">
+                image_url,
+            </if>
+            <if test="contentSourceUrl != null">
+                content_source_url,
+            </if>
+            <if test="digest != null">
+                digest,
+            </if>
+            <if test="showCoverPic != null">
+                show_cover_pic,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="parentId != null">
+                parent_id,
+            </if>
+            <if test="field1 != null">
+                field1,
+            </if>
+            <if test="field2 != null">
+                field2,
+            </if>
+            <if test="field3 != null">
+                field3,
+            </if>
+            <if test="field4 != null">
+                field4,
+            </if>
+            <if test="field5 != null">
+                field5,
+            </if>
+            <if test="field6 != null">
+                field6,
+            </if>
+            <if test="contents != null">
+                contents,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="pkid != null">
+                #{pkid,jdbcType=VARCHAR},
+            </if>
+            <if test="brandId != null">
+                #{brandId,jdbcType=VARCHAR},
+            </if>
+            <if test="author != null">
+                #{author,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="imageUrl != null">
+                #{imageUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="contentSourceUrl != null">
+                #{contentSourceUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="digest != null">
+                #{digest,jdbcType=VARCHAR},
+            </if>
+            <if test="showCoverPic != null">
+                #{showCoverPic,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId != null">
+                #{parentId,jdbcType=VARCHAR},
+            </if>
+            <if test="field1 != null">
+                #{field1,jdbcType=VARCHAR},
+            </if>
+            <if test="field2 != null">
+                #{field2,jdbcType=VARCHAR},
+            </if>
+            <if test="field3 != null">
+                #{field3,jdbcType=VARCHAR},
+            </if>
+            <if test="field4 != null">
+                #{field4,jdbcType=VARCHAR},
+            </if>
+            <if test="field5 != null">
+                #{field5,jdbcType=VARCHAR},
+            </if>
+            <if test="field6 != null">
+                #{field6,jdbcType=VARCHAR},
+            </if>
+            <if test="contents != null">
+                #{contents,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.ian.media.model.Material">
+        update material
+        <set>
+            <if test="brandId != null">
+                brand_id = #{brandId,jdbcType=VARCHAR},
+            </if>
+            <if test="author != null">
+                author = #{author,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="imageUrl != null">
+                image_url = #{imageUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="contentSourceUrl != null">
+                content_source_url = #{contentSourceUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="digest != null">
+                digest = #{digest,jdbcType=VARCHAR},
+            </if>
+            <if test="showCoverPic != null">
+                show_cover_pic = #{showCoverPic,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId != null">
+                parent_id = #{parentId,jdbcType=VARCHAR},
+            </if>
+            <if test="field1 != null">
+                field1 = #{field1,jdbcType=VARCHAR},
+            </if>
+            <if test="field2 != null">
+                field2 = #{field2,jdbcType=VARCHAR},
+            </if>
+            <if test="field3 != null">
+                field3 = #{field3,jdbcType=VARCHAR},
+            </if>
+            <if test="field4 != null">
+                field4 = #{field4,jdbcType=VARCHAR},
+            </if>
+            <if test="field5 != null">
+                field5 = #{field5,jdbcType=VARCHAR},
+            </if>
+            <if test="field6 != null">
+                field6 = #{field6,jdbcType=VARCHAR},
+            </if>
+            <if test="contents != null">
+                contents = #{contents,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where pkid = #{pkid,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ian.media.model.Material">
+        update material
+        set brand_id = #{brandId,jdbcType=VARCHAR},
+        author = #{author,jdbcType=VARCHAR},
+        title = #{title,jdbcType=VARCHAR},
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+        content_source_url = #{contentSourceUrl,jdbcType=VARCHAR},
+        digest = #{digest,jdbcType=VARCHAR},
+        show_cover_pic = #{showCoverPic,jdbcType=VARCHAR},
+        create_time = #{createTime,jdbcType=VARCHAR},
+        parent_id = #{parentId,jdbcType=VARCHAR},
+        field1 = #{field1,jdbcType=VARCHAR},
+        field2 = #{field2,jdbcType=VARCHAR},
+        field3 = #{field3,jdbcType=VARCHAR},
+        field4 = #{field4,jdbcType=VARCHAR},
+        field5 = #{field5,jdbcType=VARCHAR},
+        field6 = #{field6,jdbcType=VARCHAR},
+        contents = #{contents,jdbcType=LONGVARCHAR}
+        where pkid = #{pkid,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.ian.media.model.Material">
+    update material
+    set brand_id = #{brandId,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
+      content_source_url = #{contentSourceUrl,jdbcType=VARCHAR},
+      digest = #{digest,jdbcType=VARCHAR},
+      show_cover_pic = #{showCoverPic,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=VARCHAR},
+      field1 = #{field1,jdbcType=VARCHAR},
+      field2 = #{field2,jdbcType=VARCHAR},
+      field3 = #{field3,jdbcType=VARCHAR},
+      field4 = #{field4,jdbcType=VARCHAR},
+      field5 = #{field5,jdbcType=VARCHAR},
+      field6 = #{field6,jdbcType=VARCHAR}
+    where pkid = #{pkid,jdbcType=VARCHAR}
+  </update>
+</mapper>
