@@ -29,7 +29,6 @@
 			   	 			dataType: "JSON",
 			   	 			success: function(data){
 			   	 				alert(data.msg);
-			   	 				window.history.go(-1);
 			   	 			}
 						});
 					}
@@ -51,7 +50,6 @@
 			   	 			dataType: "JSON",
 			   	 			success: function(data){
 			   	 				alert(data.msg);
-			   	 				window.history.go(-1);
 			   	 			}
 						});
 					}
