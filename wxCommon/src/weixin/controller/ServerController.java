@@ -1,5 +1,7 @@
 package weixin.controller;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -68,6 +70,46 @@ public class ServerController {
     	
     	return map;
     }
+	
+	@RequestMapping(params="getMyServer")
+	@ResponseBody
+	public Map<Object, Object> getMyServer(HttpSession session)//修改商家
+    {
+		String userId = (String) session.getAttribute("userId");//获取用户id
+		Server server=null;
+		
+    	Map<Object, Object> map=new HashMap<Object, Object>();
+    	try {
+    		server=serverMapper.selectByPrimaryKey(userId);
+    		
+    		map.put("rows", server);
+    		map.put("msg", "查询成功");
+    		
+		} catch (Exception e) {
+			map.put("msg", "查询失败");
+		}
+    	
+    	return map;
+    }
+	
+	@RequestMapping(params = "changeServer")
+	@ResponseBody
+	public Map<Object, Object> changeServer(Server server,HttpSession session){//修改服务
+		String userId = (String) session.getAttribute("userId");//获取用户id
+		
+    	Map<Object, Object> map=new HashMap<Object, Object>();
+    	try {
+    		server.setId(userId);
+    		serverMapper.updateByPrimaryKeySelective(server);
+    		
+    		map.put("msg", "更改成功");
+    		
+		} catch (Exception e) {
+			map.put("msg", "更改失败");
+		}
+    	
+    	return map;
+	}
 	
 	@RequestMapping(params="addService")
 	@ResponseBody
@@ -209,6 +251,7 @@ public class ServerController {
 		}
 		return map;
 	}
+
 	
 	@RequestMapping(params = "deleteService")
 	@ResponseBody

@@ -7,17 +7,20 @@
     		$(function(){
     			$("#submit").on('click',function(){
 					var name=$('#name').val();
-					$.ajax({
-						url:"",
-			   	 		data:{"name":name,"dec":dec},
-			   	 		type: "post",
-			   	 		dataType: "JSON",
-			   	 		success: function(data){
-			   	 		data.msg
-			   	 			window.location.href="";
-			   	 			alert("商户进驻成功");
-			   	 		}
-					});
+					if(name!=""){
+						$.ajax({
+							url:"server.action?openShop",
+				   	 		data:{"name":name,"description":$("#dec").val()},
+				   	 		type: "post",
+				   	 		dataType: "JSON",
+				   	 		success: function(data){
+				   	 			alert(data.msg);
+				   	 		}
+						});
+					}
+					else{
+						alert("店名不能为空");
+					}
 				});	
     		});
     	</script>
