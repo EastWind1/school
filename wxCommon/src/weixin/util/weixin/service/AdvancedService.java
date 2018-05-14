@@ -50,7 +50,7 @@ public class AdvancedService {
 		Properties properties = new Properties();
 		try {
 			properties.load(new FileInputStream("resource/config.properties"));
-			serverUrl=properties.getProperty("serverurl");
+			serverUrl=properties.getProperty("server_url");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -136,7 +136,7 @@ public class AdvancedService {
 		return newurl;
 	}
 	private void sendtextcustommessage(){// 发送客服消息
-		String jsonTextMsg = AdvancedUtil.makeTextCustomMessage("owTDF1Zla6fxNO_KKjQocBmvK0WA", "点击查看<a href=\"http://blog.csdn.net/lyq8479\">柳峰的博客</a>");
+		String jsonTextMsg = AdvancedUtil.makeTextCustomMessage("owTDF1Zla6fxNO_KKjQocBmvK0WA", "点击查看<a href=\"http://www.baidu.com\">百度首页</a>");
 
 		AdvancedUtil.sendCustomMessage(accessToken, jsonTextMsg);
 
@@ -251,7 +251,6 @@ public class AdvancedService {
 		try {
 			properties.load(new FileInputStream("resource/config.properties"));
 			serverUrl=properties.getProperty("server_url");
-			System.out.println(serverUrl);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -259,7 +258,7 @@ public class AdvancedService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//advancedService.createMenu();
+		advancedService.createMenu();
 		//advancedService.getgroups();
 		//advancedService.updategroup();
 		//advancedService.getuserinfo("owTDF1Zla6fxNO_KKjQocBmvK0WA");

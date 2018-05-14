@@ -95,7 +95,7 @@ public class CommonUtil {
 	}
 
 	/**
-	 * 获取接口访问凭证
+	 * 获取接口访问凭证access_token
 	 * 
 	 * @param appid 凭证
 	 * @param appsecret 密钥

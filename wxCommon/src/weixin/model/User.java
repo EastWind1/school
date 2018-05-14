@@ -12,8 +12,8 @@ public class User {
     private String question;
 
     private String answer;
-
-    private String type;
+    
+    private String state;
     
     public String getId() {
         return id;
@@ -63,12 +63,14 @@ public class User {
         this.answer = answer == null ? null : answer.trim();
     }
 
-	public String getType() {
-		return type;
+	public String getState() {
+		return state;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setState(String state) {
+		this.state = state;
 	}
+
+
     
 }

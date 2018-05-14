@@ -24,6 +24,7 @@ public class SignUtil {
 	 */
 	public static boolean checkSignature(String signature, String timestamp, String nonce) {
 		// 对token、timestamp和nonce按字典排序
+		
 		String[] paramArr = new String[] { token, timestamp, nonce };
 		Arrays.sort(paramArr);
 

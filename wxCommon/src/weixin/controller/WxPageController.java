@@ -67,8 +67,7 @@ public class WxPageController {
 			}
 			
 			// 设置要传递的参数
-			request.setAttribute("snsUserInfo", snsUserInfo);
-			request.getSession().setAttribute("userId", snsUserInfo.getOpenId());
+			request.getSession().setAttribute("user", snsUserInfo);
 			
 			
 		}

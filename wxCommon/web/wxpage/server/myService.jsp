@@ -37,10 +37,7 @@
                                 +'</div>'
                           	+'</div>'
                             +'<div class="mer-shop-pj">'
-                                +'<p></p>'
-                               	+'<div id="star" class="star star-1" data-num="'+elt.credit+'"></div>'
-                                +'<div class="hinit">'+elt.credit+'分</div>'
-                                                    	
+                                +'<p></p>'                 	
 	                            +'<a name="confirm%'+elt.kind+'_'+elt.serverId+'"  class="btn btn-hollow default">下单</a>'
 
                             +'</div>'

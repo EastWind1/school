@@ -1,3 +1,3 @@
 eclipse.preferences.version=1
-validator.Checked=web
+validator.Checked=web/media/goods/js/jquery.uploadify.min.js,web
 validator.Unchecked=
