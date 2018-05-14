@@ -38,9 +38,7 @@ public class WxPageTest {
 			// 设置要传递的参数
 		request.setAttribute("snsUserInfo", snsUserInfo);
 		request.getSession().setAttribute("user", snsUserInfo);
-		
-		
-		
+
 		request.getRequestDispatcher("wxpage/"+user+"/"+action+".jsp").forward(request, response);
 	}
 
