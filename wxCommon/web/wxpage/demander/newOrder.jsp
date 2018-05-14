@@ -11,7 +11,7 @@
 		$(function(){
 			var serverId="<%=serverId%>";
 			var kind=<%=kind%>;
-			if(serverId!=""){
+			if(serverId!="null"){
 				$("title").html("发布定向订单");
 				$("#classId").val(kind);
 				$("#classId").attr("disabled","disabled");
