@@ -120,9 +120,9 @@
 	                                <div class="grids-icon"><img src="wxpage/images//wangzhan.png"></div>
 	                                <div class="grids-txt"><span>网站建设</span></div>
 	                            </a>
-	                            <a value="app开发" class="grids-item">
+	                            <a value="APP开发" class="grids-item">
 	                                <div class="grids-icon"><img src="wxpage/images//APP.png"></div>
-	                                <div class="grids-txt"><span>app开发</span></div>
+	                                <div class="grids-txt"><span>APP开发</span></div>
 	                            </a>
 	                            <a value="微信开发" class="grids-item">
 	                                <div class="grids-icon"><img src="wxpage/images//weixin.png"></div>
