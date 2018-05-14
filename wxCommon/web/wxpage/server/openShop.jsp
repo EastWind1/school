@@ -5,6 +5,20 @@
     	<title>商户进驻</title>
     	<script type="text/javascript">
     		$(function(){
+    			$.ajax({
+					url:"server.action?getMyServer",
+		   	 		data:{},
+		   	 		type: "get",
+		   	 		dataType: "JSON",
+		   	 		success: function(data){
+		   	 			if(data.rows==null){
+		   	 			}
+		   	 			else{
+							alert("您已开店，无需重复开店");
+		   	 				window.open('', '_self', '');window.close();
+		   	 			}
+		   	 		}
+				});
     			$("#submit").on('click',function(){
 					var name=$('#name').val();
 					if(name!=""){

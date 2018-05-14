@@ -18,6 +18,9 @@
    	 			success: function(data){
    	 				var servicelist="";
    	 				$.each(data.rows, function(i, elt) {
+   	 					var price=elt.price;
+   	 					if(price==null)
+   	 						price="面议";
    	 					servicelist+='<div class="mer-shop clearfix">'
                             +'<div class="mer-shop-img fl">'
                                 +'<a><img src="'+returnimg(elt.kind)+'" alt=""></a>'
@@ -33,7 +36,7 @@
                             +'</div>'
                             +'<div class="mer-shop-phone clearfix fr">'
                                 +'<div class="mer-shop-tel">'
-									+'<font size="5" face="arial" color="red">￥</font><font size="5" face="arial" color="red">'+elt.price+'</font>'
+									+'<font size="5" face="arial" color="red">￥</font><font size="5" face="arial" color="red">'+price+'</font>'
                                 +'</div>'
                           	+'</div>'
                             +'<div class="mer-shop-pj">'
@@ -95,37 +98,6 @@
 				   	 				}
 								});
 							}
-							break;
-						case "evaluate":
-							window.location.href=returnBaseUrl()+"user=demander&action=evaluate&id="+orderid;
-							break;
-						case "unpay":
-							if(confirm("确认退款吗？")){
-								$.ajax({
-									url:"demander.action?delete",
-				   	 				data:{"id":orderid},
-				   	 				type: "get",
-				   	 				dataType: "JSON",
-				   	 				success: function(data){
-				   	 					alert(data.msg);
-				   	 					window.location.reload();
-				   	 				}
-								});
-							}
-							break;
-						case "confirmf":
-							if(confirm("确认完成吗？")){
-								$.ajax({
-									url:"server.action?confirm",
-									data:{"id":orderid,"state":<%=OrderState.WAIT_EVALUATE%>},
-					   	 			type: "post",
-					   	 			dataType: "JSON",
-					   	 			success: function(data){
-										alert(data.msg);
-				   	 					window.location.reload();
-				   	 					}
-									});
-								}
 							break;
 					}
      		});

@@ -23,12 +23,12 @@
 		   	 			}
 		   	 		}
 				});
-	    		$('#sumbit').bind('click',function(){
+	    		$('#submit').bind('click',function(){
 					var name=$('#name').val();
 					var kind=$("#classId").val();
 					if(name!=""&&kind!="请选择类型"){
 						$.ajax({
-							url:"",
+							url:"server.action?addService",
 			   	 			data:{"name":name,"description":$("#dec").val(),"price":$("#price").val(),"kind":kind},
 			   	 			type: "post",
 			   	 			dataType: "JSON",
@@ -71,7 +71,7 @@
 	                <div class="m-cell">
 	                    <div class="cell-item">
 	                        <select style="margin-left:20px" class="btn btn-default" name="classId" id="classId">
-	                        	<option value="请选择订单类型">请选择订单类型</option>
+	                        	<option value="请选择订单类型">请选择类型</option>
 				                <option value="网站建设">网站建设</option>
 				                <option value="APP开发">APP开发</option>
 				                <option value="微信开发">微信开发</option>
@@ -110,7 +110,7 @@
 	            </div>
 	            <div class="eva-list">
 	                <div class="orl-list clearfix">  
-	                    <a class="btn-block btn-primary">发布服务</a>
+	                    <a id="submit" class="btn-block btn-primary">发布服务</a>
 	                </div>
 	            </div>
 	        </div>  

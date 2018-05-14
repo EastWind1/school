@@ -125,7 +125,7 @@ public class ServerController {
     	Map<Object, Object> map=new HashMap<Object, Object>();
     	try {
     		Server server = serverMapper.selectByPrimaryKey(userId);
-    		if(server!=null && server.getState()==ServerState.PASS){
+    		if(server!=null && server.getState().equals(ServerState.PASS)){
     			serviceMapper.insertSelective(service);
     			
     			newServiceId=service.getId();
@@ -362,19 +362,24 @@ public class ServerController {
 		SNSUserInfo user=(SNSUserInfo)session.getAttribute("user");
 		String userId = user.getOpenId();//获取用户id
 		try {
-			
-			ServerOrder serverOrder =new ServerOrder();
-			serverOrder.setOid(order.getId());
-			serverOrder.setSid(userId);
-			
-			serverOrderMapper.insertSelective(serverOrder);
-			
-			order.setState(OrderState.ONGOING);
-			orderMapper.updateByPrimaryKeySelective(order);
-			
-			map.put("msg", "接单成功");
-			map.put("success", true);
-			
+			Server server = serverMapper.selectByPrimaryKey(userId);
+			if(server!=null && server.getState().equals(ServerState.PASS)){
+				ServerOrder serverOrder =new ServerOrder();
+				serverOrder.setOid(order.getId());
+				serverOrder.setSid(userId);
+				
+				serverOrderMapper.insertSelective(serverOrder);
+				
+				order.setState(OrderState.ONGOING);
+				orderMapper.updateByPrimaryKeySelective(order);
+				
+				map.put("msg", "接单成功");
+				map.put("success", true);
+			}
+			else{
+				map.put("msg", "商户审核未通过");
+				map.put("success", false);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			map.put("msg", "接单失败");

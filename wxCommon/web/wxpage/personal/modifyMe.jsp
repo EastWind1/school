@@ -16,7 +16,7 @@
 	    				$('#answer').val(data.userinfo.answer);
 	    			}
 	    		});
-	    		$('#sumbit').bind('click',function(){
+	    		$('#submit').bind('click',function(){
 					var name=$('#name').val();
 					$.ajax({
 						url:"wxuser.action?update",

@@ -7075,7 +7075,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          * @example
          * ```javascript
          * editor.sync();
-         * form.sumbit(); //form变量已经指向了form元素
+         * form.submit(); //form变量已经指向了form元素
          * ```
          */
 

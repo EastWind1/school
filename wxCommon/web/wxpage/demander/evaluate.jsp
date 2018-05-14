@@ -9,7 +9,7 @@
     	<script>
     	$(function(){
     		var description=$("#desc").val();
-	    	$('#sumbit').on('click',function(){
+	    	$('#submit').on('click',function(){
 	    		if(description!=""){
 	    			var id=<%=id%>;
 					$.ajax({
