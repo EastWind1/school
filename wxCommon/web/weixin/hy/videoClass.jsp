@@ -16,9 +16,9 @@
  			<div id="all_fenlei" style="padding: 5% 0 1% 6%;" value="0">全部分类</div>
  			<ul class="cityListInfo vd_fenlei" style="padding-left:5%;margin-top:0px;">
  				<li>
-					<a value="1">脓毒症</a>
+					<a value="网站建设">脓毒症</a>
 					<a value="10">重症超声</a>
-					<a value="3">重症感染</a>
+					<a value="微信开发">重症感染</a>
 					<a value="4">重症神经</a>
 					<a value="9">出血与凝血</a>
 					<a value="6">重症营养</a>
@@ -33,7 +33,7 @@
 				<li>
 					<a value="8">重症心脏与血流动力学</a>
 					<a value="5">重症肾脏与血液净化</a>
-					<a value="2">重症呼吸与机械通气</a>
+					<a value="app开发">重症呼吸与机械通气</a>
 					<a value="14">重症信息与互联网</a>
 				</li>
 				<li>

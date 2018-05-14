@@ -7,18 +7,21 @@
 	    	$(function(){
 	    		$('#sumbit').bind('click',function(){
 					var name=$('#name').val();
-					var kind=$("#classId").val();
-					$.ajax({
-						url:"",
-		   	 			data:{"name":name,"dec":dec,"price":price,"classId":classId},
-		   	 			type: "post",
-		   	 			dataType: "JSON",
-		   	 			success: function(data){
-		   	 			data.msg
-		   	 				window.location.href="";
-		   	 				alert("发布成功");
-		   	 			}
-					});
+					var kind=$("#classId").text();
+					if(name!=""&&kind!="请选择类型"){
+						$.ajax({
+							url:"",
+			   	 			data:{"name":name,"description":$("#dec").val(),"price":$("#price").val(),"kind":kind},
+			   	 			type: "post",
+			   	 			dataType: "JSON",
+			   	 			success: function(data){
+			   	 				alert(data.msg);
+			   	 			}
+						});
+					}
+					else{
+						alert("名称或类型为空");
+					}
 				});
 	    	});
 	    </script>
@@ -50,7 +53,7 @@
 	                <div class="m-cell">
 	                    <div class="cell-item">
 	                        <select style="margin-left:20px" class="btn btn-default" name="classId" id="classId">
-	                        	<option value=0>默认类型</option>
+	                        	<option value=0>请选择类型</option>
 				                <option value=1>网站建设</option>
 				                <option value=2>APP开发</option>
 				                <option value=3>微信开发</option>

@@ -40,9 +40,9 @@
 			else{
 				$("#submit").on("click",function(){
 					var name=$('#name').val();
-					var kind=$("#classId").val();
+					var kind=$("#classId").text();
 					var price=$("#price").val();
-					if(name!="" &&kind!="0"&&price!=""){
+					if(name!="" &&kind!="请选择订单类型"&&price!=""){
 						$.ajax({
 							url:"demander.action?releaseOrder",
 			   	 			data:{"name":name,"description":$("#description").val(),"price":$("#price").val(),"kind":kind,"finishdate":$("#date").val()},

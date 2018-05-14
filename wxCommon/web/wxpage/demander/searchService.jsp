@@ -116,43 +116,43 @@
 	                <div class="slider-wrapper">
 	                    <div class="slider-item">
 	                        <div class="m-grids-5">
-	                            <a value="1" class="grids-item">
+	                            <a value="网站建设" class="grids-item">
 	                                <div class="grids-icon"><img src="wxpage/images//wangzhan.png"></div>
 	                                <div class="grids-txt"><span>网站建设</span></div>
 	                            </a>
-	                            <a value="2" class="grids-item">
+	                            <a value="app开发" class="grids-item">
 	                                <div class="grids-icon"><img src="wxpage/images//APP.png"></div>
 	                                <div class="grids-txt"><span>app开发</span></div>
 	                            </a>
-	                            <a value="3" class="grids-item">
+	                            <a value="微信开发" class="grids-item">
 	                                <div class="grids-icon"><img src="wxpage/images//weixin.png"></div>
 	                                <div class="grids-txt"><span>微信开发</span></div>
 	                            </a>
-	                            <a value="4" class="grids-item">
+	                            <a value="桌面软件" class="grids-item">
 	                                <div class="grids-icon"><img src="wxpage/images//desktop.png"></div>
 	                                <div class="grids-txt"><span>桌面软件</span></div>
 	                            </a>
-	                            <a value="5" class="grids-item">
+	                            <a value="UI设计" class="grids-item">
 	                                <div class="grids-icon"><img src="wxpage/images//UI.png"></div>
 	                                <div class="grids-txt"><span>UI设计</span></div>
 	                            </a>
-	                            <a value="6" class="grids-item">
+	                            <a value="解决方案" class="grids-item">
 	                                <div class="grids-icon"><img src="wxpage/images//jiejue.png"></div>
 	                                <div class="grids-txt"><span>解决方案</span></div>
 	                            </a>
-	                            <a value="7" class="grids-item">
+	                            <a value="数据服务" class="grids-item">
 	                               <div class="grids-icon"><img src="wxpage/images//shuju.png"></div>
 	                                <div class="grids-txt"><span>数据服务</span></div>
 	                            </a>
-	                            <a value="8" class="grids-item">
+	                            <a value="安全服务" class="grids-item">
 	                                <div class="grids-icon"><img src="wxpage/images//safe.png"></div>
 	                                <div class="grids-txt"><span>安全服务</span></div>
 	                            </a>
-	                            <a value="9" class="grids-item">
+	                            <a value="测试服务" class="grids-item">
 	                                <div class="grids-icon"><img src="wxpage/images//test.png"></div>
 	                                <div class="grids-txt"><span>测试服务</span></div>
 	                            </a>
-	                            <a value="10" class="grids-item">
+	                            <a value="HTML5" class="grids-item">
 	                                <div class="grids-icon"><img src="wxpage/images//H5.png"></div>
 	                                <div class="grids-txt"><span>HTML5</span></div>
 	                            </a>
@@ -160,15 +160,15 @@
 	                    </div>
 	                    <div class="slider-item">
 	                        <div class="m-grids-5">
-	                            <a value="11" class="grids-item">
+	                            <a value="域名服务" class="grids-item">
 	                                <div class="grids-icon"><img src="wxpage/images//yuming.png"></div>
 	                                <div class="grids-txt"><span>域名服务</span></div>
 	                            </a>
-	                            <a value="12" class="grids-item">
+	                            <a value="云服务" class="grids-item">
 	                                <div class="grids-icon"><img src="wxpage/images//yun.png"></div>
 	                                <div class="grids-txt"><span>云服务</span></div>
 	                            </a>
-	                            <a value="13" class="grids-item">
+	                            <a value="人力外派" class="grids-item">
 	                                <div class="grids-icon"><img src="wxpage/images//people.png"></div>
 	                                <div class="grids-txt"><span>人力外派</span></div>
 	                            </a>
