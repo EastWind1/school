@@ -229,7 +229,7 @@ public class DemanderController {
 				map.put("success", true);
 			}
 			else{
-				map.put("msg", "当前订单已被结单，无法修改");
+				map.put("msg", "当前订单已被接单，无法修改");
 				map.put("success", false);
 			}
 		} catch (Exception e) {

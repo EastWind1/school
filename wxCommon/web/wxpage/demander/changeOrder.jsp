@@ -60,20 +60,20 @@
 	                <div class="m-cell">
 	                    <div class="cell-item">
 	                        <select style="margin-left:20px" class="btn btn-default" name="classId" id="classId">
-	                        	<option value=0>请选择订单类型</option>
-				                <option value=1>网站建设</option>
-				                <option value=2>APP开发</option>
-				                <option value=3>微信开发</option>
-				                <option value=4>桌面软件开发</option>
-				                <option value=5>UI设计</option>
-				                <option value=6>解决方案</option>
-				                <option value=7>数据服务</option>
-				                <option value=8>安全服务</option>
-				                <option value=9>测试服务</option>
-				                <option value=10>HTML5开发</option>
-				                <option value=11>域名服务</option>
-				                <option value=12>云服务</option>
-				                <option value=13>人力外派</option>
+	                        	<option value="请选择订单类型">请选择订单类型</option>
+				                <option value="网站建设">网站建设</option>
+				                <option value="APP开发">APP开发</option>
+				                <option value="微信开发">微信开发</option>
+				                <option value="桌面软件开发">桌面软件开发</option>
+				                <option value="UI设计">UI设计</option>
+				                <option value="解决方案">解决方案</option>
+				                <option value="数据服务">数据服务</option>
+				                <option value="安全服务">安全服务</option>
+				                <option value="测试服务">测试服务</option>
+				                <option value="HTML5开发">HTML5开发</option>
+				                <option value="域名服务">域名服务</option>
+				                <option value="云服务">云服务</option>
+				                <option value="人力外派">人力外派</option>
 							</select> 
 	                    </div>
 	                </div>

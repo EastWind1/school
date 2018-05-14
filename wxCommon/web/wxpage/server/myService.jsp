@@ -38,8 +38,8 @@
                           	+'</div>'
                             +'<div class="mer-shop-pj">'
                                 +'<p></p>'                 	
-	                            +'<a name="confirm%'+elt.kind+'_'+elt.serverId+'"  class="btn btn-hollow default">下单</a>'
-
+	                            +'<a name="change_'+elt.id+'"  class="btn btn-hollow default">修改服务</a>'
+								+'<a name="delete_'+elt.id+'"  class="btn btn-hollow default">删除</a>'
                             +'</div>'
                     	 +'</div>';
 
@@ -58,9 +58,58 @@
      		});
      		$("#servicelist").on("click",".btn",function(){
      			var	name=$(this).attr("name");
-				var serverid=name.substring(name.indexOf('_')+1, name.length);
-				var kind=name.substring(name.indexOf('%')+1, name.indexOf('_'));
-				window.location.href=returnBaseUrl()+"user=demander&action=newOrder&id="+serverid+"&kind="+kind;
+					var orderid=name.substring(name.indexOf('_')+1, name.length);
+					var action=name.substring(0,name.indexOf('_'));
+					switch(action){
+						case "change":
+							window.location.href=returnBaseUrl()+"user=server&action=changeService&id="+orderid;
+							break;
+						case "delete":
+							if(confirm("确认删除吗？")){
+								$.ajax({
+									url:"server.action?deleteService",
+				   	 				data:{"id":orderid},
+				   	 				type: "get",
+				   	 				dataType: "JSON",
+				   	 				success: function(data){
+				   	 					alert(data.msg);
+				   	 					window.location.reload();
+				   	 				}
+								});
+							}
+							break;
+						case "evaluate":
+							window.location.href=returnBaseUrl()+"user=demander&action=evaluate&id="+orderid;
+							break;
+						case "unpay":
+							if(confirm("确认退款吗？")){
+								$.ajax({
+									url:"demander.action?delete",
+				   	 				data:{"id":orderid},
+				   	 				type: "get",
+				   	 				dataType: "JSON",
+				   	 				success: function(data){
+				   	 					alert(data.msg);
+				   	 					window.location.reload();
+				   	 				}
+								});
+							}
+							break;
+						case "confirmf":
+							if(confirm("确认完成吗？")){
+								$.ajax({
+									url:"server.action?confirm",
+									data:{"id":orderid,"state":<%=OrderState.WAIT_EVALUATE%>},
+					   	 			type: "post",
+					   	 			dataType: "JSON",
+					   	 			success: function(data){
+										alert(data.msg);
+				   	 					window.location.reload();
+				   	 					}
+									});
+								}
+							break;
+					}
      		});
    	 	});
    	 	
@@ -107,73 +156,7 @@
 	                <!-- 分页标识 -->
 	            </div>
 
-	            <div class="m-slider menu-swiper clearfix" style="height:180px">
-	                <div class="slider-wrapper">
-	                    <div class="slider-item">
-	                        <div class="m-grids-5">
-	                            <a value="网站建设" class="grids-item">
-	                                <div class="grids-icon"><img src="wxpage/images//wangzhan.png"></div>
-	                                <div class="grids-txt"><span>网站建设</span></div>
-	                            </a>
-	                            <a value="APP开发" class="grids-item">
-	                                <div class="grids-icon"><img src="wxpage/images//APP.png"></div>
-	                                <div class="grids-txt"><span>APP开发</span></div>
-	                            </a>
-	                            <a value="微信开发" class="grids-item">
-	                                <div class="grids-icon"><img src="wxpage/images//weixin.png"></div>
-	                                <div class="grids-txt"><span>微信开发</span></div>
-	                            </a>
-	                            <a value="桌面软件" class="grids-item">
-	                                <div class="grids-icon"><img src="wxpage/images//desktop.png"></div>
-	                                <div class="grids-txt"><span>桌面软件</span></div>
-	                            </a>
-	                            <a value="UI设计" class="grids-item">
-	                                <div class="grids-icon"><img src="wxpage/images//UI.png"></div>
-	                                <div class="grids-txt"><span>UI设计</span></div>
-	                            </a>
-	                            <a value="解决方案" class="grids-item">
-	                                <div class="grids-icon"><img src="wxpage/images//jiejue.png"></div>
-	                                <div class="grids-txt"><span>解决方案</span></div>
-	                            </a>
-	                            <a value="数据服务" class="grids-item">
-	                               <div class="grids-icon"><img src="wxpage/images//shuju.png"></div>
-	                                <div class="grids-txt"><span>数据服务</span></div>
-	                            </a>
-	                            <a value="安全服务" class="grids-item">
-	                                <div class="grids-icon"><img src="wxpage/images//safe.png"></div>
-	                                <div class="grids-txt"><span>安全服务</span></div>
-	                            </a>
-	                            <a value="测试服务" class="grids-item">
-	                                <div class="grids-icon"><img src="wxpage/images//test.png"></div>
-	                                <div class="grids-txt"><span>测试服务</span></div>
-	                            </a>
-	                            <a value="HTML5" class="grids-item">
-	                                <div class="grids-icon"><img src="wxpage/images//H5.png"></div>
-	                                <div class="grids-txt"><span>HTML5</span></div>
-	                            </a>
-	                        </div>
-	                    </div>
-	                    <div class="slider-item">
-	                        <div class="m-grids-5">
-	                            <a value="域名服务" class="grids-item">
-	                                <div class="grids-icon"><img src="wxpage/images//yuming.png"></div>
-	                                <div class="grids-txt"><span>域名服务</span></div>
-	                            </a>
-	                            <a value="云服务" class="grids-item">
-	                                <div class="grids-icon"><img src="wxpage/images//yun.png"></div>
-	                                <div class="grids-txt"><span>云服务</span></div>
-	                            </a>
-	                            <a value="人力外派" class="grids-item">
-	                                <div class="grids-icon"><img src="wxpage/images//people.png"></div>
-	                                <div class="grids-txt"><span>人力外派</span></div>
-	                            </a>
-	                            
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="slider-pagination"></div>
-	                <!-- 分页标识 -->
-	            </div>
+	         
 	            
 	            <!-- index-hot -->
 	            <div class="index-near clearfix">
