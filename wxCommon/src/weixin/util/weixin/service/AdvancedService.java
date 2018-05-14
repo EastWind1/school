@@ -94,6 +94,11 @@ public class AdvancedService {
 		btn24.setType("view");
 		btn24.setUrl(replace(serverUrl+"wxpage.action?user=server&action=myService"));
 
+		ViewButton btn25 = new ViewButton();
+		btn24.setName("商户管理");
+		btn24.setType("view");
+		btn24.setUrl(replace(serverUrl+"wxpage.action?user=server&action=changeServer"));
+		
 		ViewButton btn31 = new ViewButton();
 		btn31.setName("个人信息");
 		btn31.setType("view");
@@ -110,7 +115,7 @@ public class AdvancedService {
 
 		ComplexButton mainBtn2 = new ComplexButton();
 		mainBtn2.setName("我是服务方");
-		mainBtn2.setSub_button(new Button[] { btn21, btn22, btn23,btn24});
+		mainBtn2.setSub_button(new Button[] { btn21, btn22, btn23,btn24,btn25});
 
 		ComplexButton mainBtn3 = new ComplexButton();
 		mainBtn3.setName("个人中心");

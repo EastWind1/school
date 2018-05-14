@@ -5604,7 +5604,7 @@ var PDFViewerApplication = {
                                             'Unexpected server response.');
         }
         window.alert(loadingErrorMessage);
-        return window.close();
+        return window.open('', '_self', '');window.close();
 
         var moreInfo = {
           message: message

@@ -44,7 +44,7 @@
 		            <div class="m-celltitle">商户名称</div>
 		            <div class="m-cell">
 		                <div class="cell-item">
-		                     <input id="name" style="margin-left:20px;width:400px;height:40px" type="text" name="tital" class="tital" placeholder="输入你的订单标题" >
+		                     <input id="name" style="margin-left:20px;width:400px;height:40px" type="text" name="tital" class="tital" placeholder="输入订单名称" >
 		                </div>
 		            </div>
 	        	</div>

@@ -5,6 +5,24 @@
 	    <title>发布服务</title>
 	    <script>
 	    	$(function(){
+	    		$.ajax({
+					url:"server.action?getMyServer",
+		   	 		data:{},
+		   	 		type: "get",
+		   	 		dataType: "JSON",
+		   	 		success: function(data){
+		   	 			if(data.rows!=null){
+		   	 			}
+		   	 			else{
+		   	 				if(confirm("您没有店铺，是否前去开店")){
+		   	 					window.location.href=returnBaseUrl()+"user=server&action=openShop";
+		   	 				}
+		   	 				else{
+		   	 					window.open('', '_self', '');window.close();
+		   	 				}
+		   	 			}
+		   	 		}
+				});
 	    		$('#sumbit').bind('click',function(){
 					var name=$('#name').val();
 					var kind=$("#classId").val();

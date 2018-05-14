@@ -162,7 +162,26 @@
 				});
 			}
 			$(function(){
-				get();
+				$.ajax({
+					url:"server.action?getMyServer",
+		   	 		data:{},
+		   	 		type: "get",
+		   	 		dataType: "JSON",
+		   	 		success: function(data){
+		   	 			if(data.rows!=null){
+		   	 				get();
+		   	 			}
+		   	 			else{
+		   	 				if(confirm("您没有店铺，是否前去开店")){
+		   	 					window.location.href=returnBaseUrl()+"user=server&action=openShop";
+		   	 				}
+		   	 				else{
+		   	 					window.open('', '_self', '');window.close();
+		   	 				}
+		   	 			}
+		   	 		}
+				});
+				
 				$(".tab-panel-item").on("click",".btn", function() {
 					var	name=$(this).attr("name");
 					var orderid=name.substring(name.indexOf('_')+1, name.length);

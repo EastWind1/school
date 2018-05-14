@@ -54,7 +54,8 @@ public class ServerController {
 	@ResponseBody
 	public Map<Object, Object> openShop(HttpServletRequest request,HttpSession session,Server server)//创建商家
     {
-		String userId = (String) session.getAttribute("userId");//获取用户id
+		SNSUserInfo user=(SNSUserInfo)session.getAttribute("user");
+		String userId = user.getOpenId();//获取用户id
 		
     	Map<Object, Object> map=new HashMap<Object, Object>();
     	try {
@@ -75,7 +76,8 @@ public class ServerController {
 	@ResponseBody
 	public Map<Object, Object> getMyServer(HttpSession session)//修改商家
     {
-		String userId = (String) session.getAttribute("userId");//获取用户id
+		SNSUserInfo user=(SNSUserInfo)session.getAttribute("user");
+		String userId = user.getOpenId();//获取用户id
 		Server server=null;
 		
     	Map<Object, Object> map=new HashMap<Object, Object>();
@@ -95,7 +97,8 @@ public class ServerController {
 	@RequestMapping(params = "changeServer")
 	@ResponseBody
 	public Map<Object, Object> changeServer(Server server,HttpSession session){//修改服务
-		String userId = (String) session.getAttribute("userId");//获取用户id
+		SNSUserInfo user=(SNSUserInfo)session.getAttribute("user");
+		String userId = user.getOpenId();//获取用户id
 		
     	Map<Object, Object> map=new HashMap<Object, Object>();
     	try {
@@ -115,7 +118,8 @@ public class ServerController {
 	@ResponseBody
 	public Map<Object, Object> addService(HttpServletRequest request,HttpSession session,Service service)//添加服务
     {
-		String userId = (String) session.getAttribute("userId");//获取用户id
+		SNSUserInfo user=(SNSUserInfo)session.getAttribute("user");
+		String userId = user.getOpenId();//获取用户id
 		int newServiceId=0;
 		
     	Map<Object, Object> map=new HashMap<Object, Object>();
