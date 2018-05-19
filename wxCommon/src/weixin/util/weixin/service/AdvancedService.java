@@ -95,9 +95,9 @@ public class AdvancedService {
 		btn24.setUrl(replace(serverUrl+"wxpage.action?user=server&action=myService"));
 
 		ViewButton btn25 = new ViewButton();
-		btn24.setName("商户管理");
-		btn24.setType("view");
-		btn24.setUrl(replace(serverUrl+"wxpage.action?user=server&action=changeServer"));
+		btn25.setName("商户管理");
+		btn25.setType("view");
+		btn25.setUrl(replace(serverUrl+"wxpage.action?user=server&action=changeServer"));
 		
 		ViewButton btn31 = new ViewButton();
 		btn31.setName("个人信息");
