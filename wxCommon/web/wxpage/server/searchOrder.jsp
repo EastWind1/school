@@ -41,7 +41,7 @@
                                 +'</div>'
                             +'</div>'
                              +'<div class="mer-shop-pj">'
-	                            +'<a name="receive_'+elt.id+'"  class="btn btn-hollow default">下单</a>'
+	                            +'<a name="receive_'+elt.id+'"  class="btn btn-hollow default">接单</a>'
                             +'</div>'
                     	 +'</div>';
    	 				});

@@ -347,7 +347,7 @@ public class DemanderController {
 	}
 	@RequestMapping(params = "confirmFinish")
 	@ResponseBody
-	public Map<Object, Object> confirmFinish(Order order){//选择商家，确认订单
+	public Map<Object, Object> confirmFinish(Order order){//确认订单完成
 		Map<Object, Object> map = new HashMap<Object, Object>();
 		try {			
 			order.setState(OrderState.WAIT_EVALUATE);

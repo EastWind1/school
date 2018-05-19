@@ -6,7 +6,7 @@
 %>
 <html>
 	<head>
-	    <title>发表评价</title> 
+	    <title>发表需求</title> 
 	    <script>
 		$(function(){
 			var serverId="<%=serverId%>";

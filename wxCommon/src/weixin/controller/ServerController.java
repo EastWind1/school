@@ -369,7 +369,7 @@ public class ServerController {
 				
 				serverOrderMapper.insertSelective(serverOrder);
 				
-				order.setState(OrderState.ONGOING);
+				order.setState(OrderState.WAIT_CONFIME);
 				orderMapper.updateByPrimaryKeySelective(order);
 				
 				map.put("msg", "接单成功");
