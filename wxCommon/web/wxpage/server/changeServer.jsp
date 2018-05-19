@@ -89,7 +89,7 @@
 	            </div>
 	            <div class="eva-list">
 	                <div class="orl-list clearfix">
-	                    <a id="submit" class="btn-block btn-primary">商户进驻</a>
+	                    <a id="submit" class="btn-block btn-primary">提交修改</a>
 	                </div>
 	            </div>
 	        </div>

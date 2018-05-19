@@ -259,23 +259,13 @@ public class ServerController {
 	
 	@RequestMapping(params = "deleteService")
 	@ResponseBody
-	public Map<Object, Object> deleteService(String id){//删除服务
+	public Map<Object, Object> deleteService(Integer id){//删除服务
 		Map<Object, Object> map = new HashMap<Object, Object>();
         try {
-        	List<String> listId = new ArrayList<String>();
-            String[] arrId = id.split(",");
-            for(int i = 0 ; i < arrId.length ; i ++ ){            	
-            	listId.add(arrId[i]);
-            }
-            if( listId.size() > 0 ){
-            	serviceMapper.deleteMoreByPK(listId);
-            	serverServiceMapper.deleteMoreByService(listId);
-            	map.put("msg", "删除成功");
-                map.put("success", true);
-            }else{
-            	 map.put("msg", "缺少删除条件");
-                 map.put("success", false);
-            }
+            serviceMapper.deleteByPrimaryKey(id);
+            serverServiceMapper.deleteByServiceId(id);
+            map.put("msg", "删除成功");
+            map.put("success", true);
         } catch (Exception e) {
             e.printStackTrace();
             map.put("msg", "删除失败");
