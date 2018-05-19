@@ -341,8 +341,7 @@ public class ServerController {
 		ifMap.put("sid", userId);
 		try {
 			List<Order> list = orderMapper.serverGet(ifMap);
-			resultMap.put("draw", Integer.parseInt(request.getParameter("draw")));
-			resultMap.put("data", list);
+			resultMap.put("rows", list);
 			resultMap.put("total", orderMapper.serverGetCount(ifMap));
 			resultMap.put("success",true);
 			resultMap.put("page", page);
