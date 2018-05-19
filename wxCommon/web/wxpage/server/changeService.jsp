@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@include file="../common/head.jsp" %>
-<%String serviceid=request.getParameter("id"); %>>
+<%String serviceid=request.getParameter("id"); %>
 <html>
 	<head>
  		<title>修改服务</title>
