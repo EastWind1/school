@@ -140,8 +140,8 @@ public class AdvancedService {
 		String newurl=utfurl.replace("REDIRECT_URL", CommonUtil.urlEncodeUTF8(url));
 		return newurl;
 	}
-	private void sendtextcustommessage(){// 发送客服消息
-		String jsonTextMsg = AdvancedUtil.makeTextCustomMessage("owTDF1Zla6fxNO_KKjQocBmvK0WA", "点击查看<a href=\"http://www.baidu.com\">百度首页</a>");
+	private void sendtextcustommessage(String openid,String text){// 发送客服消息
+		String jsonTextMsg = AdvancedUtil.makeTextCustomMessage(openid, text);
 
 		AdvancedUtil.sendCustomMessage(accessToken, jsonTextMsg);
 
@@ -263,7 +263,8 @@ public class AdvancedService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		advancedService.createMenu();
+		advancedService.sendtextcustommessage("owTDF1Zla6fxNO_KKjQocBmvK0WA", "点击查看<a href=\"http://www.baidu.com\">百度首页</a>");
+		//advancedService.createMenu();
 		//advancedService.getgroups();
 		//advancedService.updategroup();
 		//advancedService.getuserinfo("owTDF1Zla6fxNO_KKjQocBmvK0WA");

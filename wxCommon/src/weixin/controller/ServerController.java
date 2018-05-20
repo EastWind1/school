@@ -239,7 +239,23 @@ public class ServerController {
 		}
 		return resultMap;
     }
-	
+	@RequestMapping(params="getServiceById")
+	@ResponseBody
+	public Map<Object, Object> getServiceById(HttpServletRequest request,Integer id)//根据id获取订单详情
+    {
+		Map<Object, Object> resultMap = new HashMap<Object, Object>();
+		try {
+			Service service = serviceMapper.selectByPrimaryKey(id);
+			resultMap.put("rows", service);
+			resultMap.put("success",true);
+			resultMap.put("msg","查询成功");
+		} catch (Exception e) {
+			e.printStackTrace();
+			resultMap.put("success",false);
+			resultMap.put("msg","查询失败");
+		}
+		return resultMap;
+    }
 	@RequestMapping(params = "updMoreByPkId")
 	@ResponseBody
 	public Map<Object, Object> updMoreByPkId(Service service){//修改服务

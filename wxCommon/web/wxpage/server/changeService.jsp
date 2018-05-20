@@ -7,7 +7,7 @@
  		<script>
  			$(function(){
  				$.ajax({
-					url:"demander.action?getOrderById",
+					url:"server.action?getServiceById",
 		   	 		data:{"id":<%=serviceid%>},
 		   	 		type: "get",
 		   	 		dataType: "JSON",
@@ -25,10 +25,7 @@
 			   	 		type: "get",
 			   	 		dataType: "JSON",
 			   	 		success: function(data){
-			   	 			$("#name").val(data.rows.name);
-			   	 			$("#classId").val(data.rows.kind);
-			   	 			$("#description").val(data.rows.description);
-			   	 			$("#price").val(data.rows.price);
+			   	 			alert(data.msg);
 			   	 		}
 					});
 				});

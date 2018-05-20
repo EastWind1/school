@@ -7863,3 +7863,7 @@ Caused by: java.net.ConnectException: Connection refused: connect
 [DEBUG][2018-05-19 20:08:11,083][org.apache.commons.beanutils.converters.ArrayConverter]Converting 'java.net.URL[]' value '[Ljava.net.URL;@5123a213' to type 'java.net.URL[]'
 [DEBUG][2018-05-19 20:08:11,083][org.apache.commons.beanutils.converters.ArrayConverter]    No conversion required, value is already a java.net.URL[]
 [INFO][2018-05-19 20:08:12,588][weixin.util.weixin.service.AdvancedService]菜单创建成功！
+[INFO][2018-05-19 23:21:13,832][weixin.util.weixin.util.AdvancedUtil]消息内容：{"touser":"owTDF1Zla6fxNO_KKjQocBmvK0WA","msgtype":"text","text":{"content":"点击查看<a href=\"http://www.baidu.com\">百度首页</a>"}}
+[INFO][2018-05-19 23:21:14,099][weixin.util.weixin.util.AdvancedUtil]消息发送成功 errcode:0 errmsg:ok
+[INFO][2018-05-19 23:22:14,620][weixin.util.weixin.util.AdvancedUtil]消息内容：{"touser":"owTDF1Zla6fxNO_KKjQocBmvK0WA","msgtype":"text","text":{"content":"点击查看<a href=\"http://www.baidu.com\">百度首页</a>"}}
+[INFO][2018-05-19 23:22:14,879][weixin.util.weixin.util.AdvancedUtil]消息发送成功 errcode:0 errmsg:ok

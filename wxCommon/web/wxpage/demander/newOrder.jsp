@@ -10,7 +10,7 @@
 	    <script>
 		$(function(){
 			var serverId="<%=serverId%>";
-			var kind=<%=kind%>;
+			var kind="<%=kind%>";
 			if(serverId!="null"){
 				$("title").html("发布定向订单");
 				$("#classId").val(kind);
